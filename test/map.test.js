@@ -13,7 +13,7 @@ test('does nothing to empty iterables', t => {
   sinon.assert.notCalled(fn)
 })
 
-test('returns a new iterator', t => {
+test('returns a new iterator with values mapped', t => {
   const fn = sinon.fake(n => n * n)
   const result = map([1, 2, 3], fn)
 
