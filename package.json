@@ -1,0 +1,25 @@
+{
+  "name": "iterpal",
+  "description": "Your friend who can help you with iterators",
+  "version": "0.0.0",
+  "scripts": {
+    "pretest": "npm run lint",
+    "lint": "standard --fix",
+    "test": "ava"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md",
+    "*.js"
+  ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^1.4.1",
+    "sinon": "^7.3.2",
+    "standard": "^12.0.1"
+  }
+}
