@@ -4,4 +4,5 @@
 ### Added
 - 'filter'
 - `first`
+- `join`
 - `map`
