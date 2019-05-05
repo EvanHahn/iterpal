@@ -2,4 +2,5 @@
 
 ## Unreleased
 ### Added
+- `first`
 - `map`
