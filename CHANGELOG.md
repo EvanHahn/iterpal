@@ -2,9 +2,10 @@
 
 ## Unreleased
 ### Added
+- 'filter'
 - `at`
 - `concat`
-- 'filter'
 - `first`
 - `join`
 - `map`
+- `objectEntries`
