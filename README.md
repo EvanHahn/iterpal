@@ -32,7 +32,7 @@ console.log([...squareEvens(myNumbersAsSet)])
 <details>
 <summary><code>at</code></summary>
 
-Get the nth element from an iterable.
+Get the nth element from an iterable. Returns `undefined` if the index is out of range.
 
 ```js
 const at = require('iterpal/at')
