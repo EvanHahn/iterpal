@@ -30,9 +30,9 @@ console.log([...squareEvens(myNumbersAsSet)])
 ## API docs
 
 <details>
-<summary><code>at</code></summary>
+<summary><code>at(iterable, index)</code></summary>
 
-Get the nth element from an iterable. Returns `undefined` if the index is out of range.
+Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
 
 ```js
 const at = require('iterpal/at')
@@ -45,5 +45,49 @@ at(['hello', 'world'], 1)
 
 at(new Set(['hello', 'world']), 2)
 // => undefined
+```
+</details>
+
+<details>
+<summary><code>concat(...iterables)</code></summary>
+
+Concatenates multiple iterables, returning a new iterable.
+
+```js
+const concat = require('iterpal/concat')
+
+const myArray = [1, 2, 3]
+const mySet = new Set([4, 5, 6])
+const myMap = new Map([['bing', 'bong']])
+
+concat(myArray, mySet, myMap)
+// => Iterable yielding 1, 2, 3, 4, 5, 6, ['bing', 'bong']
+
+[...concat(myArray, mySet, myMap)]
+// => [1, 2, 3, 4, 5, 6, ['bing', 'bong']]
+```
+</details>
+
+<details>
+<summary><code>filter(iterable, predicate)</code></summary>
+
+Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.
+
+The predicate function is invoked with one argument: the current value.
+
+```js
+const filter = require('iterpal/filter')
+
+function isEven(n) {
+  return (n % 2) === 0
+}
+
+const mySet = new Set([1, 2, 3, 4, 5, 6])
+
+filter(mySet, isEven)
+// => Iterable yielding 2, 4, 6
+
+[...filter(mySet, isEven)]
+// => [2, 4, 6]
 ```
 </details>
