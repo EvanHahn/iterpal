@@ -2,6 +2,7 @@
 
 ## Unreleased
 ### Added
+- `at`
 - `concat`
 - 'filter'
 - `first`
