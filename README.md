@@ -8,9 +8,21 @@ Here's a quick sample:
 const map = require('iterpal/map')
 const filter = require('iterpal/filter')
 
-const square = n => n * n
+function squareEvens (iterable) {
+  let result = iterable
+  result = filter(result, n => (n % 2) === 0)
+  result = map(result, n => n * n)
+  return result
+}
 
-// TODO
+const myNumbers = [1, 2, 3, 4, 5, 6]
+const myNumbersAsSet = new Set(myNumbers)
+
+console.log([...squareEvens(myNumbers)])
+// => [4, 16, 36]
+
+console.log([...squareEvens(myNumbersAsSet)])
+// => [4, 16, 36]
 ```
 
 :warning: This library is [licensed with GPL3](https://github.com/EvanHahn/iterpal/blob/master/LICENSE.txt), so you can't use it with closed-source projects.
