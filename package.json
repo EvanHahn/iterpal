@@ -1,6 +1,6 @@
 {
   "name": "iterpal",
-  "description": "Your friend who can help you with iterators",
+  "description": "A friendly collection of utilities for iterables",
   "version": "0.0.0",
   "scripts": {
     "pretest": "npm run lint",
