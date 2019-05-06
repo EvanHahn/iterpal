@@ -1,9 +1,8 @@
 module.exports = function filter (iterable, fn) {
-  const iterator = iterable[Symbol.iterator]()
-
   return Object.create(null, {
     [Symbol.iterator]: {
       value: function () {
+        const iterator = iterable[Symbol.iterator]()
         return Object.create(null, {
           next: {
             value: function () {

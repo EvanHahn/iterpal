@@ -91,3 +91,89 @@ filter(mySet, isEven)
 // => [2, 4, 6]
 ```
 </details>
+
+<details>
+<summary><code>first(iterable)</code></summary>
+
+Returns the first value in an iterable. Returns `undefined` if the iterable is empty.
+
+```js
+const first = require('iterpal/first')
+
+first(new Set(['hello', 'world']))
+// => 'hello'
+
+first([10, 11, 12])
+// => 10
+
+first(new Map())
+// => undefined
+```
+</details>
+
+<details>
+<summary><code>join(iterable, separator=',')</code></summary>
+
+Converts all elements in `iterable` into a string separated by `separator`.
+
+Like `Array.prototype.join`, `null` and `undefined` are converted to empty strings.
+
+```js
+const join = require('iterpal/join')
+
+join(new Set(['hello', 'world']))
+// => 'hello,world'
+
+join(new Set(['hello', 'world']), ' and ')
+// => 'hello and world'
+
+join([1, undefined, 2, null, 3])
+// => '1,,2,,3'
+
+join(new Map())
+// => ''
+```
+</details>
+
+<details>
+<summary><code>map(iterable, fn)</code></summary>
+
+Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for each value.
+
+`fn` is invoked with one argument: the current value.
+
+```js
+const map = require('iterpal/map')
+
+function square(n) {
+  return n * n
+}
+
+const mySet = new Set([1, 2, 3])
+
+map(mySet, square)
+// => Iterable yielding 1, 4, 9
+
+[...map(mySet, square)]
+// => [1, 4, 9]
+```
+</details>
+
+<details>
+<summary><code>objectEntries(obj)</code></summary>
+
+Returns an iterable, yielding `[key, value]` for each entry in the object. An iterable version of `Object.entries`.
+
+```js
+const objectEntries = require('iterpal/objectEntries')
+
+objectEntries({
+  bing: 'bong',
+  foo: 'boo'
+})
+// => Iterable yielding ['bing', 'bong'], ['foo', 'boo']
+
+objectEntries({})
+// => Empty iterable
+```
+</details>
