@@ -1,11 +1,22 @@
 module.exports = function filter (iterable, fn) {
-  return {
-    [Symbol.iterator]: function * () {
-      for (const value of iterable) {
-        if (fn(value)) {
-          yield value
-        }
+  const iterator = iterable[Symbol.iterator]()
+
+  return Object.create(null, {
+    [Symbol.iterator]: {
+      value: function () {
+        return Object.create(null, {
+          next: {
+            value: function () {
+              while (true) {
+                const nextIteration = iterator.next()
+                if (nextIteration.done || fn(nextIteration.value)) {
+                  return nextIteration
+                }
+              }
+            }
+          }
+        })
       }
     }
-  }
+  })
 }
