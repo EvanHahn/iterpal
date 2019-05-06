@@ -25,6 +25,14 @@ test('returns a new iterator with values mapped', t => {
   sinon.assert.calledThrice(fn)
 })
 
+test('iterating doesn\'t "spend" the iterable', t => {
+  const result = map([1, 2, 3], n => n * n)
+
+  t.deepEqual([...result], [1, 4, 9])
+  t.deepEqual([...result], [1, 4, 9])
+  t.deepEqual([...result], [1, 4, 9])
+})
+
 test('can map over an infinite iterable', t => {
   const everyNumber = {
     [Symbol.iterator]: function * () {
