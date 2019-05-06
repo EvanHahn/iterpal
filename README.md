@@ -26,3 +26,24 @@ console.log([...squareEvens(myNumbersAsSet)])
 ```
 
 :warning: This library is [licensed with GPL3](https://github.com/EvanHahn/iterpal/blob/master/LICENSE.txt), so you can't use it with closed-source projects.
+
+## API docs
+
+<details>
+<summary><code>at</code></summary>
+
+Get the nth element from an iterable.
+
+```js
+const at = require('iterpal/at')
+
+at(new Set(['hello', 'world']), 0)
+// => 'hello'
+
+at(['hello', 'world'], 1)
+// => 'world'
+
+at(new Set(['hello', 'world']), 2)
+// => undefined
+```
+</details>
