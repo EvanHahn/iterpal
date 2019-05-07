@@ -5,6 +5,7 @@ import path from 'path'
 import { promisify } from 'util'
 import map from '../map'
 import filter from '../filter'
+import some from '../some'
 
 const readFileAsync = promisify(fs.readFile)
 const readdirAsync = promisify(fs.readdir)
@@ -35,9 +36,8 @@ test('documents all functions', t => {
   ))
 
   for (const expectedFunction of t.context.expectedFunctions) {
-    // TODO: convert this to use `some` once it exists
     t.assert(
-      [...codeInSummary].some(code => code.startsWith(expectedFunction + '(')),
+      some(codeInSummary, code => code.startsWith(expectedFunction + '(')),
       `Expected "${expectedFunction}" to be documented`
     )
   }

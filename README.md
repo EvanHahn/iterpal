@@ -177,3 +177,27 @@ objectEntries({})
 // => Empty iterable
 ```
 </details>
+
+<details>
+<summary><code>some(iterable, predicate)</code></summary>
+
+Returns `true` if `predicate(value)` returns true for any value in `iterable`, and false otherwise. Returns `false` for an empty iterable.
+
+```js
+const some = require('iterpal/some')
+
+function isEven(n) {
+  return (n % 2) === 0
+}
+
+const mySet = new Set([1, 2, 3])
+some(mySet, isEven)
+// => true
+
+some([1, 3, 5], isEven)
+// => false
+
+some([], () => true)
+// => false
+```
+</details>
