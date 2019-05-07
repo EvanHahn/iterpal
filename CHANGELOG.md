@@ -6,6 +6,7 @@
 - `concat`
 - `every`
 - `filter`
+- `find`
 - `first`
 - `join`
 - `map`
