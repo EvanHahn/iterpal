@@ -268,7 +268,7 @@ Reduces `iterable` to a single value. On each iteration, calls `fn` with the res
 const reduce = require('iterpal/reduce')
 
 function add (a, b) {
-	return a + b
+  return a + b
 }
 
 reduce(new Set([1, 2, 3]), add, 0)
