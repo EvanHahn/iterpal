@@ -69,6 +69,30 @@ concat(myArray, mySet, myMap)
 </details>
 
 <details>
+<summary><code>every(iterable, predicate)</code></summary>
+
+Returns `true` if `predicate(value)` returns true for every value in `iterable`, and false otherwise. Returns `true` for an empty iterable.
+
+```js
+const every = require('iterpal/every')
+
+function isEven(n) {
+  return (n % 2) === 0
+}
+
+const mySet = new Set([2, 4, 6, 8])
+every(mySet, isEven)
+// => true
+
+every([2, 3, 4], isEven)
+// => false
+
+every([], () => false)
+// => true
+```
+</details>
+
+<details>
 <summary><code>filter(iterable, predicate)</code></summary>
 
 Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.

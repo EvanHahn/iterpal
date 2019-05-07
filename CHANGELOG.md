@@ -4,6 +4,7 @@
 ### Added
 - `at`
 - `concat`
+- `every`
 - `filter`
 - `first`
 - `join`
