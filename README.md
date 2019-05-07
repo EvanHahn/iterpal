@@ -27,6 +27,18 @@ console.log([...squareEvens(myNumbersAsSet)])
 
 :warning: This library is [licensed with GPL3](https://github.com/EvanHahn/iterpal/blob/master/LICENSE.txt), so keep that in mind.
 
+:warning: This library is experimental!
+
+## Why Iterpal?
+
+Iterpal offers a few benefits:
+
+1. Iterpal lets you **use collection functions with non-arrays like Sets and Maps**. For example, `map` and `filter` and `reduce` are super useful, but `Set`s don't have them built in.
+
+1. Iterpal is often more **performant** than using native methods, depending on what you're doing. Because JavaScript iterables are lazily evaluated, memory usage can go way down for large collections. And if you don't need to "calculate" an entire collection, the time to completion can drop dramatically. Check out the `benchmarks/` folder to see some samples for yourself.
+
+1. Iterpal lets you deal with **huge collections** with ease. For example, you can't express an array of every positive integer—you'd run out of memory. Iterpal's `range()` function returns a lazily-evaluated iterable that yields every positive integer.
+
 ## API docs
 
 <details>
