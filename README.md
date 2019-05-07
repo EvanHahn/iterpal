@@ -179,6 +179,28 @@ objectEntries({})
 </details>
 
 <details>
+<summary><code>range(start = 0, finish = Infinity)</code></summary>
+
+Returns an iterable of integers from `start` to `finish`.
+
+```js
+const range = require('iterpal/range')
+
+range()
+// => Iterable yielding 0, 1, 2, 3, 4, 5...
+
+range(10)
+// => Iterable yielding 10, 11, 12, 13, 14, 15...
+
+range(6, 9)
+// => Iterable yielding 6, 7, 8
+
+[...range(6, 9)]
+// => [6, 7, 8]
+```
+</details>
+
+<details>
 <summary><code>some(iterable, predicate)</code></summary>
 
 Returns `true` if `predicate(value)` returns true for any value in `iterable`, and false otherwise. Returns `false` for an empty iterable.

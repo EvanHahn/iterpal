@@ -9,4 +9,5 @@
 - `join`
 - `map`
 - `objectEntries`
+- `range`
 - `some`
