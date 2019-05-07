@@ -3,8 +3,10 @@ import test from 'ava'
 import some from '../some'
 
 test('returns false for empty iterables', t => {
-  t.false(some([]))
-  t.false(some(new Map()))
+  const alwaysTrue = () => true
+
+  t.false(some([], alwaysTrue))
+  t.false(some(new Map(), alwaysTrue))
 })
 
 test('returns true if any of the elements return true, stopping after something is found', t => {
