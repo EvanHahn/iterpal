@@ -10,4 +10,5 @@
 - `map`
 - `objectEntries`
 - `range`
+- `repeat`
 - `some`

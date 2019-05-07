@@ -201,6 +201,25 @@ range(6, 9)
 </details>
 
 <details>
+<summary><code>repeat(value, times = Infinity)</code></summary>
+
+Returns an iterable that yields `value`. If `times` is supplied, the length is boundless. If `times` is not supplied, the iterable is infinite.
+
+```js
+const repeat = require('iterpal/repeat')
+
+repeat('foo')
+// => Iterable yielding 'foo', 'foo', 'foo', 'foo'...
+
+repeat('hi', 5)
+// => Iterable yielding 'hi', 'hi', 'hi', 'hi', 'hi'
+
+[...repeat('hi', 5)]
+// => ['hi', 'hi', 'hi', 'hi', 'hi']
+```
+</details>
+
+<details>
 <summary><code>some(iterable, predicate)</code></summary>
 
 Returns `true` if `predicate(value)` returns true for any value in `iterable`, and false otherwise. Returns `false` for an empty iterable.
