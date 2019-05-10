@@ -39,6 +39,55 @@ Iterpal offers a few benefits:
 
 1. Iterpal lets you deal with **huge collections** with ease. For example, you can't express an array of every positive integer—you'd run out of memory. Iterpal's `range()` function returns a lazily-evaluated iterable that yields every positive integer.
 
+## Recipes
+
+<details>
+<summary>Map over a Map</summary>
+
+```js
+const map = require('iterpal/map')
+
+const ages = new Map([
+  ['Esmeralda', 30],
+  ['Carlo', 45],
+  ['Ignacio', 99]
+])
+
+const agesNextYear = new Map(map(ages, ([name, age]) => (
+  [name, age + 1]
+)))
+
+ages.get('Esmeralda')
+// => 30
+
+agesNextYear.get('Esmeralda')
+// => 31
+```
+</details>
+
+<details>
+<summary>Invert a Map</summary>
+
+```js
+const zip = require('iterpal/zip')
+const map = require('iterpal/map')
+
+function invertMap (toInvert) {
+  return new Map([toInvert.values(), toInvert.keys()])
+}
+
+const nameById = new Map([
+  [123, 'Burt'],
+  [456, 'Ernie'],
+  [456, 'Big Bird']
+])
+const idByName = invertMap(nameById)
+
+idByName.get('Ernie')
+// => 456
+```
+</details>
+
 ## API docs
 
 <details>
@@ -413,9 +462,36 @@ Returns a new iterable with `amount` elements taken from the beginning.
 const take = require('iterpal/take')
 
 take(['hello', 'to', 'you!'], 2)
-// Iterable yielding 'hello', 'to'
+// => Iterable yielding 'hello', 'to'
 
 take(['hello', 'to', 'you!'], 200)
-// Iterable yielding 'hello', 'to', 'you!'
+// => Iterable yielding 'hello', 'to', 'you!'
+```
+</details>
+
+<details>
+<summary><code>zip(iterables)</code></summary>
+
+Returns an iterable of arrays. The first array contains the first elements of each of the input iterables, the second contains the second elements of each input iterable, and so on. Useful when constructing `Map`s.
+
+```js
+const zip = require('iterpal/zip')
+const range = require('iterpal/range')
+
+const everyPositiveInteger = range(1)
+const smallSet = new Set(['hello', 'world'])
+const primes = [2, 3, 5, 7, 11]
+
+zip([smallSet, everyPositiveInteger])
+// => Iterable yielding ['hello', 1], ['world', 2]
+
+new Map(zip([smallSet, everyPositiveInteger]))
+// => Map { 'hello' => 1, 'world' => 2 }
+
+zip([smallSet, primes, everyPositiveInteger])
+// => Iterable yielding ['hello', 2, 1], ['world', 3, 2]
+
+zip([everyPositiveInteger, smallSet])
+// => Infinite iterable yielding [1, 'hello'], [2, 'world'], [3, undefined], [4, undefined], ...
 ```
 </details>

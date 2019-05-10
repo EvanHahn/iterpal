@@ -7,6 +7,7 @@
 - `objectKeys`
 - `objectValues`
 - `take`
+- `zi`
 - Additional package metadata (homepage, repository, keywords, bugs)
 
 ### Changed
