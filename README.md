@@ -87,7 +87,6 @@ agesNextYear.get('Esmeralda')
 
 ```js
 const zip = require('iterpal/zip')
-const map = require('iterpal/map')
 
 function invertMap (toInvert) {
   return new Map(zip([toInvert.values(), toInvert.keys()]))
