@@ -5,6 +5,10 @@ import objectEntries from '../objectEntries'
 test('returns an iterable of entries', t => {
   function Klass (prop) {
     this.prop = prop
+    Object.defineProperty(this, 'notEnumerable', {
+      value: 123,
+      enumerable: false
+    })
   }
   Klass.prototype.shouldBeIgnored = true
 
