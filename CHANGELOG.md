@@ -6,6 +6,7 @@
 - `objectHas`
 - `objectKeys`
 - `objectValues`
+- `primes`
 - `size`
 - `take`
 - `zip`

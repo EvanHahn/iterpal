@@ -382,6 +382,23 @@ objectValues({})
 </details>
 
 <details>
+<summary><code>primes()</code></summary>
+
+Returns an iterable, yielding each prime integer.
+
+```js
+const primes = require('iterpal/primes')
+const take = require('iterpal/take')
+
+primes()
+// => Iterable yielding 2, 3, 5, 7, 11, 13, ...
+
+[...take(primes(), 100)]
+// => [an array of the first 100 prime numbers]
+```
+</details>
+
+<details>
 <summary><code>range(start = 0, finish = Infinity)</code></summary>
 
 Returns an iterable of integers from `start` to `finish`.
