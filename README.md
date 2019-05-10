@@ -42,7 +42,7 @@ Iterpal offers a few benefits:
 ## Recipes
 
 <details>
-<summary>Stop worrying about order</summary>
+<summary>Do things in whatever order</summary>
 
 ```js
 myLargeArray.length
