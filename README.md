@@ -73,7 +73,7 @@ const zip = require('iterpal/zip')
 const map = require('iterpal/map')
 
 function invertMap (toInvert) {
-  return new Map([toInvert.values(), toInvert.keys()])
+  return new Map(zip([toInvert.values(), toInvert.keys()]))
 }
 
 const nameById = new Map([
