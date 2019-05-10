@@ -1,24 +1,30 @@
 module.exports = function map (iterable, fn) {
-  return Object.create(null, {
-    [Symbol.iterator]: {
-      value: function () {
-        const iterator = iterable[Symbol.iterator]()
-        return Object.create(null, {
-          next: {
-            value: function () {
-              const nextIteration = iterator.next()
-              if (nextIteration.done) {
-                return nextIteration
-              } else {
-                return {
-                  done: false,
-                  value: fn(nextIteration.value)
-                }
-              }
-            }
+  return new MapIterable(iterable, fn)
+}
+
+class MapIterable {
+  constructor (iterable, fn) {
+    Object.defineProperties(this, {
+      _iterable: { value: iterable },
+      _fn: { value: fn }
+    })
+  }
+  [Symbol.iterator] () {
+    const iterator = this._iterable[Symbol.iterator]()
+    const fn = this._fn
+
+    return {
+      next () {
+        const nextIteration = iterator.next()
+        if (nextIteration.done) {
+          return nextIteration
+        } else {
+          return {
+            done: false,
+            value: fn(nextIteration.value)
           }
-        })
+        }
       }
     }
-  })
+  }
 }

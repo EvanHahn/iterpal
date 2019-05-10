@@ -1,10 +1,17 @@
 module.exports = function concat (iterables) {
-  return {
-    [Symbol.iterator]: function * () {
-      for (const iterable of iterables) {
-        for (const value of iterable) {
-          yield value
-        }
+  return new ConcatIterable(iterables)
+}
+
+class ConcatIterable {
+  constructor (iterables) {
+    Object.defineProperty(this, '_iterables', {
+      value: iterables
+    })
+  }
+  * [Symbol.iterator] () {
+    for (const iterable of this._iterables) {
+      for (const value of iterable) {
+        yield value
       }
     }
   }
