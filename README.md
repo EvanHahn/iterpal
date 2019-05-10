@@ -42,6 +42,23 @@ Iterpal offers a few benefits:
 ## Recipes
 
 <details>
+<summary>Stop worrying about order</summary>
+
+```js
+myLargeArray.length
+// => 10000000
+
+// One of these native solutions is much faster:
+const nativeFast = myLargeArray.slice(0, 100).map(String)
+const nativeSlow = myLargeArray.map(String).slice(0, 100)
+
+// These are basically the same:
+const iterOne = [...take(map(myLargeArray, String), 100)]
+const iterTwo = [...map(take(myLargeArray, 100), String)]
+```
+</details>
+
+<details>
 <summary>Map over a Map</summary>
 
 ```js
