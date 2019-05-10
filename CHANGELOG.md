@@ -5,6 +5,7 @@
 - `objectHas`
 - `objectKeys`
 - `objectValues`
+- `take`
 - Additional package metadata (homepage, repository, keywords, bugs)
 
 ### Changed

@@ -387,3 +387,19 @@ some([], () => true)
 // => false
 ```
 </details>
+
+<details>
+<summary><code>take(iterable, amount)</code></summary>
+
+Returns a new iterable with `amount` elements taken from the beginning.
+
+```js
+const take = require('iterpal/take')
+
+take(['hello', 'to', 'you!'], 2)
+// Iterable yielding 'hello', 'to'
+
+take(['hello', 'to', 'you!'], 200)
+// Iterable yielding 'hello', 'to', 'you!'
+```
+</details>
