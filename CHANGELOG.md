@@ -3,6 +3,7 @@
 ## Unreleased
 ### Added
 - `drop`
+- `fibonacci`
 - `jsonStringify`
 - `objectHas`
 - `objectKeys`

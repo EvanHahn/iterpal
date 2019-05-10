@@ -192,6 +192,19 @@ every([], () => false)
 </details>
 
 <details>
+<summary><code>fibonacci()</code></summary>
+
+Returns an iterable yielding the Fibonacci sequence, starting with 1.
+
+```js
+const fibonacci = require('iterpal/fibonacci')
+
+fibonacci()
+// => Iterable yielding 1, 1, 2, 3, 5, 8, 13...
+```
+</details>
+
+<details>
 <summary><code>filter(iterable, predicate)</code></summary>
 
 Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.
