@@ -7,6 +7,9 @@
 - `objectValues`
 - Additional package metadata (homepage, repository, keywords, bugs)
 
+### Changed
+- `concat` now takes an iterable of iterables
+
 ## 0.1.0 - 2019-05-07
 ### Added
 - `at`

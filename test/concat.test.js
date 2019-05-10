@@ -3,13 +3,9 @@ import sinon from 'sinon'
 
 import concat from '../concat'
 
-test('returns an empty iterable when called with no arguments', t => {
-  t.deepEqual([...concat()], [])
-})
-
-test("doesn't return the same iterable even when passed 1 argument", t => {
+test("doesn't return the same iterable even when passed 1 iterable", t => {
   const arr = [1, 2, 3]
-  t.not(concat(arr), arr)
+  t.not(concat([arr]), arr)
 })
 
 test('handling empty iterables', t => {
@@ -17,10 +13,10 @@ test('handling empty iterables', t => {
     [Symbol.iterator]: function * () {}
   }
 
-  t.deepEqual([...concat([], [])], [])
-  t.deepEqual([...concat(new Set(), [])], [])
-  t.deepEqual([...concat([], customEmpty)], [])
-  t.deepEqual([...concat([], customEmpty, new Set(), new Map())], [])
+  t.deepEqual([...concat([[], []])], [])
+  t.deepEqual([...concat([new Set(), []])], [])
+  t.deepEqual([...concat([[], customEmpty])], [])
+  t.deepEqual([...concat([[], customEmpty, new Set(), new Map()])], [])
 })
 
 test('concatenates multiple iterables', t => {
@@ -32,7 +28,7 @@ test('concatenates multiple iterables', t => {
     }
   }
 
-  const result = concat([1, 2], new Set([3]), new Map(), everyNumber)
+  const result = concat([[1, 2], new Set([3]), new Map(), everyNumber])
   const iterator = result[Symbol.iterator]()
 
   t.deepEqual(iterator.next(), { value: 1, done: false })
@@ -63,7 +59,7 @@ test("doesn't start the iterable until the last minute", t => {
     })
   }
 
-  const result = concat([1, 2], oneTwoThree)
+  const result = concat([[1, 2], oneTwoThree])
   const iterator = result[Symbol.iterator]()
 
   sinon.assert.notCalled(oneTwoThree[Symbol.iterator])

@@ -1,4 +1,4 @@
-module.exports = function concat (...iterables) {
+module.exports = function concat (iterables) {
   return {
     [Symbol.iterator]: function * () {
       for (const iterable of iterables) {

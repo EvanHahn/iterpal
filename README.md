@@ -61,7 +61,7 @@ at(new Set(['hello', 'world']), 2)
 </details>
 
 <details>
-<summary><code>concat(...iterables)</code></summary>
+<summary><code>concat(iterables)</code></summary>
 
 Concatenates multiple iterables, returning a new iterable.
 
@@ -70,13 +70,19 @@ const concat = require('iterpal/concat')
 
 const myArray = [1, 2, 3]
 const mySet = new Set([4, 5, 6])
-const myMap = new Map([['bing', 'bong']])
+const myMap = new Map([
+  ['bing', 'bong'],
+  ['foo', 'boo']
+])
 
-concat(myArray, mySet, myMap)
-// => Iterable yielding 1, 2, 3, 4, 5, 6, ['bing', 'bong']
+concat([myArray, mySet, myMap])
+// => Iterable yielding 1, 2, 3, 4, 5, 6, ['bing', 'bong'], ['foo', 'boo']
 
-[...concat(myArray, mySet, myMap)]
-// => [1, 2, 3, 4, 5, 6, ['bing', 'bong']]
+concat(myMap)
+// => Iterable yielding 'bing', 'bong', 'foo', 'boo'
+
+[...concat([myArray, mySet, myMap])]
+// => [1, 2, 3, 4, 5, 6, ['bing', 'bong'], ['foo', 'boo']]
 ```
 </details>
 
