@@ -257,6 +257,25 @@ objectHas({ foo: 'bar' }, 'hasOwnProperty')
 </details>
 
 <details>
+<summary><code>objectKeys(obj)</code></summary>
+
+Returns an iterable, yielding each key in the object. An iterable version of `Object.keys`.
+
+```js
+const objectKeys = require('iterpal/objectKeys')
+
+objectKeys({
+  bing: 1,
+  bong: 2
+})
+// => Iterable yielding 'bing', 'bong'
+
+objectKeys({})
+// => Empty iterable
+```
+</details>
+
+<details>
 <summary><code>range(start = 0, finish = Infinity)</code></summary>
 
 Returns an iterable of integers from `start` to `finish`.
