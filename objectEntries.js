@@ -1,12 +1,10 @@
-function has (obj, key) {
-  return Object.prototype.hasOwnProperty.call(obj, key)
-}
+const objectHas = require('./objectHas')
 
 module.exports = function objectEntries (obj) {
   return {
     [Symbol.iterator]: function * () {
       for (const key in obj) {
-        if (has(obj, key)) {
+        if (objectHas(obj, key)) {
           yield [key, obj[key]]
         }
       }

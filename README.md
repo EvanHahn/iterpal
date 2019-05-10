@@ -238,6 +238,25 @@ objectEntries({})
 </details>
 
 <details>
+<summary><code>objectHas(obj, property)</code></summary>
+
+An internal utility method exposed for public use. Returns true if `property` is an own-property of `obj`, false otherwise. You can use this instead of `Object.prototype.hasOwnProperty`.
+
+```js
+const objectHas = require('iterpal/objectHas')
+
+objectHas({ foo: 'bar' }, 'foo')
+// => true
+
+objectHas({ foo: 'bar' }, 'baz')
+// => false
+
+objectHas({ foo: 'bar' }, 'hasOwnProperty')
+// => false
+```
+</details>
+
+<details>
 <summary><code>range(start = 0, finish = Infinity)</code></summary>
 
 Returns an iterable of integers from `start` to `finish`.

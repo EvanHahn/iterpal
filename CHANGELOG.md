@@ -2,6 +2,7 @@
 
 ## Unreleased
 ### Added
+- `objectHas`
 - Additional package metadata (homepage, repository, keywords, bugs)
 
 ## 0.1.0 - 2019-05-07
