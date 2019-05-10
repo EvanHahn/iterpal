@@ -52,7 +52,7 @@ myLargeArray.length
 const nativeFast = myLargeArray.slice(0, 100).map(String)
 const nativeSlow = myLargeArray.map(String).slice(0, 100)
 
-// These are basically the same:
+// These are basically the same, and finish quickly:
 const iterOne = [...take(map(myLargeArray, String), 100)]
 const iterTwo = [...map(take(myLargeArray, 100), String)]
 ```
