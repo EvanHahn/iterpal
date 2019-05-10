@@ -446,6 +446,33 @@ repeat('hi', 5)
 </details>
 
 <details>
+<summary><code>size(iterable)</code></summary>
+
+Returns the size of an iterable. Similar to getting the `length` of an array or the `size` of a `Set`/`Map`, but works on any iterable.
+
+```js
+const size = require('iterpal/size')
+
+const myArray = ['hello', 'world']
+myArray.length === size(myArray)
+// => true
+
+const mySet = new Set(['oh', 'hello', 'there'])
+mySet.size === size(mySet)
+// => true
+
+const myCustomIterable = {
+  [Symbol.iterator]: function * () {
+    yield 'oh'
+    yield 'yeah'
+  }
+}
+size(myCustomIterable)
+// => 2
+```
+</details>
+
+<details>
 <summary><code>some(iterable, predicate)</code></summary>
 
 Returns `true` if `predicate(value)` returns true for any value in `iterable`, and false otherwise. Returns `false` for an empty iterable.

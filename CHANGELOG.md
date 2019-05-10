@@ -6,6 +6,7 @@
 - `objectHas`
 - `objectKeys`
 - `objectValues`
+- `size`
 - `take`
 - `zip`
 - Additional package metadata (homepage, repository, keywords, bugs)
