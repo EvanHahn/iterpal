@@ -87,6 +87,22 @@ concat(myMap)
 </details>
 
 <details>
+<summary><code>drop(iterable, amount)</code></summary>
+
+Returns an iterable with the first `amount` elements removed.
+
+```js
+const drop = require('iterpal/drop')
+
+at(new Set(['hello', 'to', 'the' 'world!']), 2)
+// => Iterable yielding 'the', 'world'
+
+at(new Set(['hello', 'to', 'the' 'world!']), 4)
+// => Empty iterable
+```
+</details>
+
+<details>
 <summary><code>every(iterable, predicate)</code></summary>
 
 Returns `true` if `predicate(value)` returns true for every value in `iterable`, and false otherwise. Returns `true` for an empty iterable.

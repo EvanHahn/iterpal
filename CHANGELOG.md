@@ -2,6 +2,7 @@
 
 ## Unreleased
 ### Added
+- `drop`
 - `objectHas`
 - `objectKeys`
 - `objectValues`
