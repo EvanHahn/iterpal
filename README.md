@@ -282,6 +282,32 @@ join(new Map())
 </details>
 
 <details>
+<summary><code>jsonStringify(value)</code></summary>
+
+Like `JSON.stringify`, but works with iterables, too. `Map`s are handled like objects, and every other iterable (other than strings) is handled like an array.
+
+:warning: Edge cases are untested here—please let me know if you find anything surprising!
+
+```js
+const jsonStringify = require('iterpal/jsonStringify')
+
+jsonStringify(new Set(['hello', 'world']))
+// => '["hello","world"]'
+
+jsonStringify(new Map([[
+  ['name', 'Carlos Santana'],
+  ['stats', new Map([[
+    ['born', 1947],
+  ]])]
+]))
+// => '{"name":"Carlos Santana","stats":{"born":1947}}'
+
+jsonStringify({regular: 'old object'})
+// => '{"regular":"old object"}'
+```
+</details>
+
+<details>
 <summary><code>map(iterable, fn)</code></summary>
 
 Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for each value.

@@ -3,6 +3,7 @@
 ## Unreleased
 ### Added
 - `drop`
+- `jsonStringify`
 - `objectHas`
 - `objectKeys`
 - `objectValues`
