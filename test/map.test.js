@@ -3,7 +3,7 @@ import sinon from 'sinon'
 
 import map from '../map'
 
-test('does nothing to empty iterables', t => {
+test('returns an empty iterable when passed an empty iterable', t => {
   const fn = sinon.fake()
 
   t.deepEqual([...map([], fn)], [])

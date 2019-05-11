@@ -106,6 +106,8 @@ idByName.get('Ernie')
 
 ## API docs
 
+### Synchronous functions
+
 <details>
 <summary><code>at(iterable, index)</code></summary>
 
@@ -593,4 +595,27 @@ zip([smallSet, primes, everyPositiveInteger])
 zip([everyPositiveInteger, smallSet])
 // => Infinite iterable yielding [1, 'hello'], [2, 'world'], [3, undefined], [4, undefined], ...
 ```
+</details>
+
+### Asynchronous functions
+
+<details>
+<summary><code>asyncIterableToArray(asyncIterable)</code></summary>
+
+Turns an asynchronous iterable (such as a stream) into an array.
+
+```js
+const asyncIterableToArray = require('iterpal/asyncIterableToArray')
+const fs = require('fs')
+
+const secretsStream = fs.createReadStream('./secrets.txt', 'utf8')
+await asyncIterableToArray(secretsStream)
+// => [an array of chunks of the the file]
+```
+</details>
+
+<details>
+<summary><code>asyncMap(asyncIterable, fn)</code></summary>
+
+Returns a new asynchronous iterable which iterates over `asyncIterable`, yielding `fn(value)` for each value. If `fn` returns a Promise, it will be awaited.
 </details>

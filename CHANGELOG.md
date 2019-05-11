@@ -2,6 +2,8 @@
 
 ## Unreleased
 ### Added
+- `asyncIterableToArray`
+- `asyncMap`
 - `drop`
 - `fibonacci`
 - `jsonStringify`
