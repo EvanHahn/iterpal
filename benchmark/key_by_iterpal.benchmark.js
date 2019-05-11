@@ -4,7 +4,7 @@ const map = require('../map')
 
 const bigArray = Array(1000000).fill(null).map(() => ({
   a: Math.random(),
-  b: Math.random(),
+  b: Math.random()
 }))
 
 time('iterpal reduce key by', () => {
