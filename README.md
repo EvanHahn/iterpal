@@ -108,6 +108,44 @@ idByName.get('Ernie')
 
 ### Synchronous functions
 
+Iterpal's synchronous functions deal with regular iterables. In JavaScript, a value is an iterable if it contains `Symbol.iterator`. Some common examples of such iterables:
+
+* Strings
+* `Array`s
+* `Set`s
+* `Map`s
+* `TypedArray`s
+* `Buffer`s
+
+```js
+function isIterable (value) {
+  return Boolean(value[Symbol.iterator])
+}
+
+isIterable([1, 2, 3])
+// => true
+
+isIterable(new Set())
+// => true
+
+isIterable('hello!!')
+// => true
+
+isIterable({ foo: 'bar' })
+// => false
+
+const myCustomIterable = {
+  * [Symbol.iterator] () {
+    yield 'my own iterable!!'
+    yield 'i have never felt so free!!'
+  }
+}
+isIterable(myCustomIterable)
+// => true
+```
+
+JavaScript `Object`s are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can use Iterpal's `objectKeys`, `objectValues`, and `objectEntries` to "convert" objects into an iterable if you wish.
+
 <details>
 <summary><code>at(iterable, index)</code></summary>
 
@@ -599,6 +637,30 @@ zip([everyPositiveInteger, smallSet])
 
 ### Asynchronous functions
 
+Iterpal's asynchronous functions deal with asynchronous iterables. In JavaScript, a value is an asynchronous iterable if it contains `Symbol.asyncIterator`. Streams are a common example of asynchronous iterables.
+
+```js
+function isAsyncIterable (value) {
+  return Symbol.asyncIterator in value
+}
+
+isAsyncIterable(fs.createReadStream('./secrets.txt'))
+// => true
+
+isAsyncIterable([1, 2, 3])
+// => false
+
+const myCustomAsyncIterable = {
+  async * [Symbol.asyncIterable] () {
+    yield 'my own custom async iterable??'
+    await someLongOperation()
+    yield 'is there no limit to what I can do??'
+  }
+}
+isIterable(myCustomAsyncIterable)
+// => true
+```
+
 <details>
 <summary><code>asyncIterableToArray(asyncIterable)</code></summary>
 
@@ -618,6 +680,27 @@ await asyncIterableToArray(secretsStream)
 <summary><code>asyncMap(asyncIterable, fn)</code></summary>
 
 Returns a new asynchronous iterable which iterates over `asyncIterable`, yielding `fn(value)` for each value. If `fn` returns a Promise, it will be awaited.
+
+```js
+const asyncMap = require('iterpal/asyncMap')
+
+const someNumbers = {
+  [Symbol.asyncIterator]: async function * () {
+    yield 1
+    yield 2
+    yield 3
+  }
+}
+
+const square = n => n * n
+const doubleAsync = n => Promise.resolve(n + n)
+
+asyncMap(someNumbers, square)
+// => Async iterable yielding 1, 4, 9
+
+asyncMap(someNumbers, doubleAsync)
+// => Async iterable yielding 2, 4, 6
+```
 </details>
 
 <details>
