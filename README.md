@@ -602,7 +602,7 @@ zip([everyPositiveInteger, smallSet])
 <details>
 <summary><code>asyncIterableToArray(asyncIterable)</code></summary>
 
-Turns an asynchronous iterable (such as a stream) into an array.
+Turns an asynchronous iterable (such as a stream) into an array. Returns a `Promise` that resolves to an array.
 
 ```js
 const asyncIterableToArray = require('iterpal/asyncIterableToArray')
@@ -618,4 +618,25 @@ await asyncIterableToArray(secretsStream)
 <summary><code>asyncMap(asyncIterable, fn)</code></summary>
 
 Returns a new asynchronous iterable which iterates over `asyncIterable`, yielding `fn(value)` for each value. If `fn` returns a Promise, it will be awaited.
+</details>
+
+<details>
+<summary><code>asyncReduce(asyncIterable, fn)</code></summary>
+
+Reduces `asyncIterableToArray` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value. If `fn` returns a `Promise`, it is awaited.
+
+Returns a `Promise`.
+
+```js
+const asyncReduce = require('iterpal/asyncReduce')
+const fs = require('fs')
+
+function concatBuffers (a, b) {
+  return Buffer.concat([a, b])
+}
+
+const secretsStream = fs.createReadStream('./secrets.txt')
+await asyncReduce(secretsStream, concatBuffers, Buffer.alloc(0))
+// => <Buffer 12 34 56 ...>
+```
 </details>

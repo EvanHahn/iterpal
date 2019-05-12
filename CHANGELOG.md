@@ -4,6 +4,7 @@
 ### Added
 - `asyncIterableToArray`
 - `asyncMap`
+- `asyncReduce`
 - `drop`
 - `fibonacci`
 - `jsonStringify`
