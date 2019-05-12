@@ -147,6 +147,19 @@ isIterable(myCustomIterable)
 JavaScript `Object`s are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can use Iterpal's `objectKeys`, `objectValues`, and `objectEntries` to "convert" objects into an iterable if you wish.
 
 <details>
+<summary><code>asyncify(iterable)</code></summary>
+
+Converts a synchronous iterable to an asynchronous one.
+
+```js
+const asyncify = require('iterpal/asyncify')
+
+asyncify([1, 2, 3, 4])
+// => Asynchronous iterable yielding 1, 2, 3, 4
+```
+</details>
+
+<details>
 <summary><code>at(iterable, index)</code></summary>
 
 Returns the nth element from an iterable. Returns `undefined` if the index is out of range.

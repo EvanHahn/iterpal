@@ -5,6 +5,7 @@
 - `asyncIterableToArray`
 - `asyncMap`
 - `asyncReduce`
+- `asyncify`
 - `drop`
 - `fibonacci`
 - `jsonStringify`
