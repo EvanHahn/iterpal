@@ -10,7 +10,7 @@ test('returns the empty string for empty iterables', t => {
 
 test('joins iterables with commas by default', t => {
   const values = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       yield 'str'
       yield 1
       yield false
@@ -28,7 +28,7 @@ test('joins iterables with commas by default', t => {
 
 test('can join iterables with other separators', t => {
   const values = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       yield 'str'
       yield 1
       yield false

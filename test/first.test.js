@@ -4,7 +4,7 @@ import first from '../first'
 
 test('returns undefined for empty iterables', t => {
   const customEmpty = {
-    [Symbol.iterator]: function * () {}
+    * [Symbol.iterator] () {}
   }
 
   t.is(first([]), undefined)
@@ -15,7 +15,7 @@ test('returns undefined for empty iterables', t => {
 
 test('returns the first value', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 1; true; i++) {
         yield i
       }

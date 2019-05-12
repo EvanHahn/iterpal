@@ -35,7 +35,7 @@ test('iterating doesn\'t "spend" the iterable', t => {
 
 test('can map over an infinite iterable', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 0; true; i++) {
         yield i
       }

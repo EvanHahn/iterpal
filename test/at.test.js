@@ -11,7 +11,7 @@ test('returns undefined when accessing an out-of-bounds value', t => {
 
 test('returns the value at the nth iteration', t => {
   const everyNumberSquared = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 0; true; i++) {
         yield i * i
       }

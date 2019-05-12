@@ -558,7 +558,7 @@ mySet.size === size(mySet)
 // => true
 
 const myCustomIterable = {
-  [Symbol.iterator]: function * () {
+  * [Symbol.iterator] () {
     yield 'oh'
     yield 'yeah'
   }
@@ -685,7 +685,7 @@ Returns a new asynchronous iterable which iterates over `asyncIterable`, yieldin
 const asyncMap = require('iterpal/asyncMap')
 
 const someNumbers = {
-  [Symbol.asyncIterator]: async function * () {
+  async * [Symbol.asyncIterator] () {
     yield 1
     yield 2
     yield 3

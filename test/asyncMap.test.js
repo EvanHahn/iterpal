@@ -7,7 +7,7 @@ import asyncMap from '../asyncMap'
 test('returns an empty iterable when passed an empty iterable', async (t) => {
   const fn = sinon.fake()
   const empty = {
-    [Symbol.asyncIterator]: async function * () {}
+    async * [Symbol.asyncIterator] () {}
   }
 
   const result = asyncMap(empty, fn)
@@ -20,7 +20,7 @@ test('returns an empty iterable when passed an empty iterable', async (t) => {
 test('returns a new iterator with values mapped, using a synchronous fn', async (t) => {
   const fn = sinon.fake(n => n * n)
   const several = {
-    [Symbol.asyncIterator]: async function * () {
+    async * [Symbol.asyncIterator] () {
       yield 1
       yield 2
       yield 3
@@ -44,7 +44,7 @@ test('returns a new iterator with values mapped, using a synchronous fn', async 
 test('returns a new iterator with values mapped, using an asynchronous fn', async (t) => {
   const fn = sinon.fake(n => Promise.resolve(n * n))
   const several = {
-    [Symbol.asyncIterator]: async function * () {
+    async * [Symbol.asyncIterator] () {
       yield 1
       yield 2
       yield 3

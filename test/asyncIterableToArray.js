@@ -4,10 +4,10 @@ import asyncIterableToArray from '../asyncIterableToArray'
 
 test('converts async iterables to arrays', async (t) => {
   const empty = {
-    [Symbol.asyncIterator]: async function * () {}
+    async * [Symbol.asyncIterator] () {}
   }
   const several = {
-    [Symbol.asyncIterator]: async function * () {
+    async * [Symbol.asyncIterator] () {
       yield 1
       yield 2
       yield 3

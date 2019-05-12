@@ -27,7 +27,7 @@ test('returns a new iterator with values filtered', t => {
 
 test('can filter an infinite iterable', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 1; true; i++) {
         yield i
       }

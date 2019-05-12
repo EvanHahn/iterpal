@@ -4,7 +4,7 @@ import take from '../take'
 
 test('returns the first n elements from an iterable', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 0; true; i++) {
         yield i
       }

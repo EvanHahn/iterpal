@@ -6,7 +6,7 @@ const isTen = n => n === 10
 
 test('finds the first matching element and returns it', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 5; true; i++) {
         yield i
       }

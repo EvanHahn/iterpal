@@ -4,7 +4,7 @@ import jsonStringify from '../jsonStringify'
 
 test('stringifies custom iterables like arrays', t => {
   const myIterable = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       yield 1
       yield 2
       yield 3

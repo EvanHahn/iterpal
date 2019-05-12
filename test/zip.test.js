@@ -4,7 +4,7 @@ import zip from '../zip'
 
 test('zips multiple iterables, stopping when the first is exhausted', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 0; true; i++) {
         yield i
       }

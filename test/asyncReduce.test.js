@@ -6,7 +6,7 @@ import asyncReduce from '../asyncReduce'
 test('returns the accumulator if the iterable is empty', async (t) => {
   const fn = sinon.fake()
   const empty = {
-    [Symbol.asyncIterator]: async function * () {}
+    async * [Symbol.asyncIterator] () {}
   }
 
   t.deepEqual(await asyncReduce(empty, fn, 123), 123)
@@ -16,7 +16,7 @@ test('returns the accumulator if the iterable is empty', async (t) => {
 
 test('reduces an async iterator to a single value using a synchronous function', async (t) => {
   const several = {
-    [Symbol.asyncIterator]: async function * () {
+    async * [Symbol.asyncIterator] () {
       yield 1
       yield 2
       yield 3
@@ -29,7 +29,7 @@ test('reduces an async iterator to a single value using a synchronous function',
 
 test('reduces an async iterator to a single value using an synchronous function', async (t) => {
   const several = {
-    [Symbol.asyncIterator]: async function * () {
+    async * [Symbol.asyncIterator] () {
       yield 1
       yield 2
       yield 3

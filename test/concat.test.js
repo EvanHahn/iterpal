@@ -10,7 +10,7 @@ test("doesn't return the same iterable even when passed 1 iterable", t => {
 
 test('handling empty iterables', t => {
   const customEmpty = {
-    [Symbol.iterator]: function * () {}
+    * [Symbol.iterator] () {}
   }
 
   t.deepEqual([...concat([[], []])], [])
@@ -21,7 +21,7 @@ test('handling empty iterables', t => {
 
 test('concatenates multiple iterables', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 4; true; i++) {
         yield i
       }

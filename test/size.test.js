@@ -4,7 +4,7 @@ import size from '../size'
 
 test('returns the size of an iterable', t => {
   const customIterable = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       yield 'foo'
       yield 'bar'
       yield 'baz'

@@ -11,7 +11,7 @@ test('returns false for empty iterables', t => {
 
 test('returns true if any of the elements return true, stopping after something is found', t => {
   const everyNumber = {
-    [Symbol.iterator]: function * () {
+    * [Symbol.iterator] () {
       for (let i = 0; true; i++) {
         yield i
       }
