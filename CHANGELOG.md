@@ -2,13 +2,15 @@
 
 ## Unreleased
 ### Added
+- `asyncify`
 - `asyncIterableToArray`
 - `asyncMap`
 - `asyncReduce`
-- `asyncify`
 - `drop`
 - `fibonacci`
 - `jsonStringify`
+- `max`
+- `min`
 - `objectHas`
 - `objectKeys`
 - `objectValues`

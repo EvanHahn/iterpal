@@ -396,6 +396,35 @@ map(mySet, square)
 </details>
 
 <details>
+<summary><code>max(numbers)</code></summary>
+
+Returns the largest number in the iterable `numbers`. Returns `undefined` if `numbers` is an empty iterable.
+
+```js
+const max = require('iterpal/max')
+
+max(new Set([9, 3, 1]))
+// => 9
+
+max([Infinity, 1, 2])
+// => Infinity
+```
+</details>
+
+<details>
+<summary><code>min(numbers)</code></summary>
+
+Returns the smallest number in the iterable `numbers`. Returns `undefined` if `numbers` is an empty iterable.
+
+```js
+const min = require('iterpal/min')
+
+min(new Set([9, 3, 1]))
+// => 1
+```
+</details>
+
+<details>
 <summary><code>objectEntries(obj)</code></summary>
 
 Returns an iterable, yielding `[key, value]` for each entry in the object. An iterable version of `Object.entries`.
