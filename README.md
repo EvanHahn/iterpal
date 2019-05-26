@@ -25,8 +25,6 @@ console.log([...squareEvens(myNumbersAsSet)])
 // => [4, 16, 36]
 ```
 
-:warning: This library is [licensed with GPL3](https://github.com/EvanHahn/iterpal/blob/master/LICENSE.txt), so keep that in mind.
-
 :warning: This library is experimental!
 
 ## Why Iterpal?

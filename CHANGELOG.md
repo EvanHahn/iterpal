@@ -22,6 +22,7 @@
 - `concat` now takes an iterable of iterables
 - All functions returning iterables now return class instances
 - Documentation
+- License is now MIT, to be more permissive
 
 ## 0.1.0 - 2019-05-07
 ### Added
