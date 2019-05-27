@@ -210,10 +210,10 @@ Returns an iterable with the first `amount` elements removed.
 ```js
 const drop = require('iterpal/drop')
 
-at(new Set(['hello', 'to', 'the' 'world!']), 2)
+drop(new Set(['hello', 'to', 'the' 'world!']), 2)
 // => Iterable yielding 'the', 'world'
 
-at(new Set(['hello', 'to', 'the' 'world!']), 4)
+drop(new Set(['hello', 'to', 'the' 'world!']), 4)
 // => Empty iterable
 ```
 </details>
