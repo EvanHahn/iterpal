@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 - 2019-05-27
 ### Added
 - `asyncify`
 - `asyncIterableToArray`
