@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+### Removed
+- `jsonStringify`
+
 ## 0.2.0 - 2019-05-27
 ### Added
 - `asyncify`
