@@ -43,9 +43,6 @@ Iterpal offers a few benefits:
 <summary>Do things in whatever order</summary>
 
 ```js
-myLargeArray.length
-// => 10000000
-
 // One of these native solutions is much faster:
 const nativeFast = myLargeArray.slice(0, 100).map(String)
 const nativeSlow = myLargeArray.map(String).slice(0, 100)
@@ -197,7 +194,7 @@ concat([myArray, mySet, myMap])
 concat(myMap)
 // => Iterable yielding 'bing', 'bong', 'foo', 'boo'
 
-[...concat([myArray, mySet, myMap])]
+const asArray = [...concat([myArray, mySet, myMap])]
 // => [1, 2, 3, 4, 5, 6, ['bing', 'bong'], ['foo', 'boo']]
 ```
 </details>
@@ -210,10 +207,10 @@ Returns an iterable with the first `amount` elements removed.
 ```js
 const drop = require('iterpal/drop')
 
-drop(new Set(['hello', 'to', 'the' 'world!']), 2)
+drop(new Set(['hello', 'to', 'the', 'world!']), 2)
 // => Iterable yielding 'the', 'world'
 
-drop(new Set(['hello', 'to', 'the' 'world!']), 4)
+drop(new Set(['hello', 'to', 'the', 'world!']), 4)
 // => Empty iterable
 ```
 </details>
@@ -226,7 +223,7 @@ Returns `true` if `predicate(value)` returns true for every value in `iterable`,
 ```js
 const every = require('iterpal/every')
 
-function isEven(n) {
+function isEven (n) {
   return (n % 2) === 0
 }
 
@@ -265,7 +262,7 @@ The predicate function is invoked with one argument: the current value.
 ```js
 const filter = require('iterpal/filter')
 
-function isEven(n) {
+function isEven (n) {
   return (n % 2) === 0
 }
 
@@ -274,7 +271,7 @@ const mySet = new Set([1, 2, 3, 4, 5, 6])
 filter(mySet, isEven)
 // => Iterable yielding 2, 4, 6
 
-[...filter(mySet, isEven)]
+const asArray = [...filter(mySet, isEven)]
 // => [2, 4, 6]
 ```
 </details>
@@ -287,7 +284,7 @@ Iterates over `iterable`, returning the first element `predicate(value)` returns
 ```js
 const find = require('iterpal/find')
 
-function isEven(n) {
+function isEven (n) {
   return (n % 2) === 0
 }
 
@@ -381,7 +378,7 @@ Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for 
 ```js
 const map = require('iterpal/map')
 
-function square(n) {
+function square (n) {
   return n * n
 }
 
@@ -390,7 +387,7 @@ const mySet = new Set([1, 2, 3])
 map(mySet, square)
 // => Iterable yielding 1, 4, 9
 
-[...map(mySet, square)]
+const asArray = [...map(mySet, square)]
 // => [1, 4, 9]
 ```
 </details>
@@ -512,7 +509,7 @@ const take = require('iterpal/take')
 primes()
 // => Iterable yielding 2, 3, 5, 7, 11, 13, ...
 
-[...take(primes(), 100)]
+const asArray = [...take(primes(), 100)]
 // => [an array of the first 100 prime numbers]
 ```
 </details>
@@ -534,7 +531,7 @@ range(10)
 range(6, 9)
 // => Iterable yielding 6, 7, 8
 
-[...range(6, 9)]
+const asArray = [...range(6, 9)]
 // => [6, 7, 8]
 ```
 </details>
@@ -576,7 +573,7 @@ repeat('foo')
 repeat('hi', 5)
 // => Iterable yielding 'hi', 'hi', 'hi', 'hi', 'hi'
 
-[...repeat('hi', 5)]
+const asArray = [...repeat('hi', 5)]
 // => ['hi', 'hi', 'hi', 'hi', 'hi']
 ```
 </details>
@@ -616,7 +613,7 @@ Returns `true` if `predicate(value)` returns true for any value in `iterable`, a
 ```js
 const some = require('iterpal/some')
 
-function isEven(n) {
+function isEven (n) {
   return (n % 2) === 0
 }
 
@@ -710,9 +707,11 @@ Turns an asynchronous iterable (such as a stream) into an array. Returns a `Prom
 const asyncIterableToArray = require('iterpal/asyncIterableToArray')
 const fs = require('fs')
 
-const secretsStream = fs.createReadStream('./secrets.txt', 'utf8')
-await asyncIterableToArray(secretsStream)
-// => [an array of chunks of the the file]
+async function readSecrets () {
+  const secretsStream = fs.createReadStream('./secrets.txt', 'utf8')
+  await asyncIterableToArray(secretsStream)
+  // => [an array of chunks of the the file]
+}
 ```
 </details>
 
@@ -758,8 +757,10 @@ function concatBuffers (a, b) {
   return Buffer.concat([a, b])
 }
 
-const secretsStream = fs.createReadStream('./secrets.txt')
-await asyncReduce(secretsStream, concatBuffers, Buffer.alloc(0))
-// => <Buffer 12 34 56 ...>
+async function readSecrets () {
+  const secretsStream = fs.createReadStream('./secrets.txt')
+  await asyncReduce(secretsStream, concatBuffers, Buffer.alloc(0))
+  // => <Buffer 12 34 56 ...>
+}
 ```
 </details>

@@ -21,8 +21,10 @@
   },
   "scripts": {
     "pretest": "npm run lint",
-    "lint:readme": "textlint README.md",
-    "lint:code": "standard --fix",
+    "lint:readme:textlint": "textlint README.md",
+    "lint:readme:eslint": "eslint --fix --config .eslintrc-markdown.json --ext md .",
+    "lint:readme": "npm run lint:readme:textlint && npm run lint:readme:eslint",
+    "lint:code": "eslint --fix .",
     "lint": "npm run lint:code && npm run lint:readme",
     "test": "ava"
   },
@@ -38,18 +40,19 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^1.4.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-markdown": "^1.0.0",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
     "sinon": "^7.3.2",
-    "standard": "^12.0.1",
     "textlint": "^11.2.5",
     "textlint-rule-alex": "^1.3.1",
     "textlint-rule-en-capitalization": "^2.0.2",
     "textlint-rule-no-empty-section": "^1.1.0",
     "textlint-rule-spellchecker": "^2.2.1",
     "textlint-rule-stop-words": "^1.0.13"
-  },
-  "standard": {
-    "globals": [
-      "BigInt"
-    ]
   }
 }

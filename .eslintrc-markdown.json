@@ -1,0 +1,10 @@
+{
+  "extends": "standard",
+  "plugins": ["markdown"],
+  "rules": {
+    "no-unused-vars": "off",
+    "no-undef": "off",
+    "no-new": "off",
+    "no-unused-expressions": "off"
+  }
+}
