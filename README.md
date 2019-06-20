@@ -142,7 +142,7 @@ isIterable(myCustomIterable)
 // => true
 ```
 
-JavaScript `Object`s are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can use Iterpal's `objectKeys`, `objectValues`, and `objectEntries` to "convert" objects into an iterable if you wish.
+JavaScript objects are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can use Iterpal's `objectKeys`, `objectValues`, and `objectEntries` to "convert" objects into an iterable if you wish.
 
 <details>
 <summary><code>asyncify(iterable)</code></summary>
@@ -584,7 +584,7 @@ repeat('hi', 5)
 <details>
 <summary><code>size(iterable)</code></summary>
 
-Returns the size of an iterable. Similar to getting the `length` of an array or the `size` of a `Set`/`Map`, but works on any iterable.
+Returns the size of an iterable. If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.
 
 ```js
 const size = require('iterpal/size')

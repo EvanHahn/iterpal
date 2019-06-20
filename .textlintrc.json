@@ -1,0 +1,11 @@
+{
+  "filters": {},
+  "rules": {
+    "alex": true,
+    "no-empty-section": true,
+    "stop-words": {
+      "defaultWords": true
+    },
+    "en-capitalization": true
+  }
+} 
