@@ -8,6 +8,7 @@ class ObjectKeysIterable {
   constructor (obj) {
     Object.defineProperty(this, '_obj', { value: obj })
   }
+
   * [Symbol.iterator] () {
     const obj = this._obj
 

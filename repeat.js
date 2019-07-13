@@ -9,6 +9,7 @@ class RepeatIterator {
       _times: { value: times }
     })
   }
+
   * [Symbol.iterator] () {
     const value = this._value
     const times = this._times

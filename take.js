@@ -9,6 +9,7 @@ class TakeIterator {
       _amount: { value: amount }
     })
   }
+
   [Symbol.iterator] () {
     const iterator = this._iterable[Symbol.iterator]()
     let amount = this._amount

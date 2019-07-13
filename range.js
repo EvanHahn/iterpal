@@ -9,6 +9,7 @@ class RangeIterable {
       _finish: { value: finish }
     })
   }
+
   * [Symbol.iterator] () {
     const start = this._start
     const finish = this._finish

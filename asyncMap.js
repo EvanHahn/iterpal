@@ -9,6 +9,7 @@ class AsyncMapIterable {
       _fn: { value: fn }
     })
   }
+
   [Symbol.asyncIterator] () {
     const iterator = this._iterable[Symbol.asyncIterator]()
     const fn = this._fn

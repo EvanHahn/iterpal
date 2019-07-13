@@ -6,6 +6,7 @@ class AsyncifyIterable {
   constructor (iterable) {
     Object.defineProperty(this, '_iterable', { value: iterable })
   }
+
   [Symbol.asyncIterator] () {
     const iterator = this._iterable[Symbol.iterator]()
     return {

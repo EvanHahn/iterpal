@@ -9,6 +9,7 @@ class FilterIterable {
       _fn: { value: fn }
     })
   }
+
   [Symbol.iterator] () {
     const iterator = this._iterable[Symbol.iterator]()
     const fn = this._fn

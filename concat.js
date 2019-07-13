@@ -8,6 +8,7 @@ class ConcatIterable {
       value: iterables
     })
   }
+
   * [Symbol.iterator] () {
     for (const iterable of this._iterables) {
       for (const value of iterable) {
