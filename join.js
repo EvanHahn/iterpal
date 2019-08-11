@@ -8,8 +8,8 @@ module.exports = function join (iterable, separator = ',') {
       result += separator + stringified
     } else {
       result += stringified
+      hasPlacedFirstElement = true
     }
-    hasPlacedFirstElement = true
   }
 
   return result
