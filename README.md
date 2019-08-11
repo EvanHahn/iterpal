@@ -574,6 +574,22 @@ const asArray = [...repeat('hi', 5)]
 </details>
 
 <details>
+<summary><code>repeatedly(fn)</code></summary>
+
+Returns an iterable that yields `fn(iterationCount)` every time. Useful when "converting" a function to an iterable.
+
+```js
+const repeatedly = require('iterpal/repeatedly')
+
+repeatedly(Math.random)
+// => Iterable yielding random numbers
+
+repeatedly((n) => `Iteration #${n + 1}`)
+// => Iterable yielding 'Iteration 1', 'Iteration 2', 'Iteration 3' ...
+```
+</details>
+
+<details>
 <summary><code>size(iterable)</code></summary>
 
 Returns the size of an iterable. If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.

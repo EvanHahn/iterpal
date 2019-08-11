@@ -3,6 +3,7 @@
 ## Unreleased
 ### Added
 - `last`
+- `repeatedly`
 
 ### Removed
 - `jsonStringify`
