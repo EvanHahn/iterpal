@@ -319,6 +319,22 @@ first(new Map())
 </details>
 
 <details>
+<summary><code>isEmpty(iterable)</code></summary>
+
+Returns `true` if `iterable` has no elements, and `false` otherwise.
+
+```js
+const isEmpty = require('iterpal/isEmpty')
+
+isEmpty(new Set())
+// => true
+
+isEmpty([1, 2, 3])
+// => false
+```
+</details>
+
+<details>
 <summary><code>join(iterable, separator=',')</code></summary>
 
 Converts all elements in `iterable` into a string separated by `separator`.
