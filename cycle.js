@@ -11,19 +11,13 @@ class CycleIterable {
 
   [Symbol.iterator] () {
     const iterable = this._iterable
-    let iterator
+    let iterator = iterable[Symbol.iterator]()
 
     return {
       next () {
-        let nextIteration
+        let nextIteration = iterator.next()
 
-        if (iterator) {
-          nextIteration = iterator.next()
-          if (nextIteration.done) {
-            iterator = iterable[Symbol.iterator]()
-            nextIteration = iterator.next()
-          }
-        } else {
+        if (nextIteration.done) {
           iterator = iterable[Symbol.iterator]()
           nextIteration = iterator.next()
           if (nextIteration.done) {
