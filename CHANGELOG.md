@@ -5,7 +5,6 @@
 - `isEmpty`
 - `last`
 - `repeatedly`
-- `LazySet`
 
 ### Removed
 - `jsonStringify`
