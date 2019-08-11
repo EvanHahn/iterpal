@@ -200,6 +200,19 @@ const asArray = [...concat([myArray, mySet, myMap])]
 </details>
 
 <details>
+<summary><code>cycle(iterable)</code></summary>
+
+Returns an infinite iterable that "cycles" over `iterable`.
+
+```js
+const cycle = require('iterpal/cycle')
+
+cycle([1, 2, 3])
+// => Iterable yielding 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2 ...
+```
+</details>
+
+<details>
 <summary><code>drop(iterable, amount)</code></summary>
 
 Returns an iterable with the first `amount` elements removed.

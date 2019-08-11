@@ -2,6 +2,7 @@
 
 ## Unreleased
 ### Added
+- `cycle`
 - `isEmpty`
 - `last`
 - `repeatedly`
