@@ -343,6 +343,27 @@ join(new Map())
 </details>
 
 <details>
+<summary><code>last(iterable)</code></summary>
+
+Iterates over `iterable`, returning the final value. Returns `undefined` if the iterable is empty.
+
+If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.
+
+```js
+const last = require('iterpal/last')
+
+last(new Set(['hello', 'world']))
+// => 'world'
+
+last([10, 11, 12])
+// => 12
+
+last(new Map())
+// => undefined
+```
+</details>
+
+<details>
 <summary><code>map(iterable, fn)</code></summary>
 
 Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for each value.

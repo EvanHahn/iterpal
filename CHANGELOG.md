@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+### Added
+- `last`
+
 ### Removed
 - `jsonStringify`
 
