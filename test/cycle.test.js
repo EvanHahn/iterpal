@@ -47,9 +47,5 @@ test('effectively does nothing to infinite iterables', t => {
     }
   }
 
-  const iterator = cycle(infinite)[Symbol.iterator]()
-  t.deepEqual(iterator.next(), { value: 5, done: false })
-  t.deepEqual(iterator.next(), { value: 6, done: false })
-  t.deepEqual(iterator.next(), { value: 7, done: false })
-  t.deepEqual(iterator.next(), { value: 8, done: false })
+  t.deepEqual([...take(cycle(infinite), 7)], [5, 6, 7, 8, 9, 10, 11])
 })
