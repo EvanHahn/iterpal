@@ -22,7 +22,7 @@ test.before(async (t) => {
   const projectRootJsFiles = filter(projectRootFiles, filename => (
     path.extname(filename) === '.js'
   ))
-  t.context.expectedFunctions = map(projectRootJsFiles, filename => (
+  t.context.expectedIdentifiers = map(projectRootJsFiles, filename => (
     path.basename(filename, '.js')
   ))
 })
@@ -35,10 +35,10 @@ test('documents all functions', t => {
     /^<summary><code>([^<]+)<\/code><\/summary>$/.exec(line)[1]
   ))
 
-  for (const expectedFunction of t.context.expectedFunctions) {
+  for (const expectedIdentifier of t.context.expectedIdentifiers) {
     t.assert(
-      some(codeInSummary, code => code.startsWith(expectedFunction + '(')),
-      `Expected "${expectedFunction}" to be documented`
+      some(codeInSummary, code => code.includes(expectedIdentifier)),
+      `Expected "${expectedIdentifier}" to be documented`
     )
   }
 })

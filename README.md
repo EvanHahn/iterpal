@@ -791,3 +791,49 @@ async function readSecrets () {
 }
 ```
 </details>
+
+### Classes
+
+<details>
+<summary><code>LazySet</code></summary>
+
+Like `Set`, but only realizes `iterable` as needed.
+
+```js
+const LazySet = require('iterpal/LazySet')
+
+const range = require('iterpal/range')
+
+const firstMillionIntegers = range(1, 1000000)
+
+// This takes a long time and uses a ton of memory:
+new Set(firstMillionIntegers).has(5)
+// => true
+
+// This executes very quickly...
+new LazySet(firstMillionIntegers).has(5)
+// => true
+
+// ...but these are still very slow (because we have to look through
+// the whole iterable until we find it, if ever).
+new LazySet(firstMillionIntegers).has(888888)
+// => true
+
+new LazySet(firstMillionIntegers).has(-1)
+// => false
+```
+
+  <details>
+  <summary><code>new LazySet(iterable = [])</code></summary>
+  
+  Returns a new `LazySet`.
+  </details>
+  
+  <details>
+  <summary><code>LazySet.prototype.has(value)</code></summary>
+  
+  Returns `true` if the value is present in the set, and `false` otherwise.
+  
+  For performance, this only "realizes" the iterable insofar as needed. If the value is not present, the entire iterable will be realized.
+  </details>
+</details>
