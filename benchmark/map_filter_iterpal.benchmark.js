@@ -1,11 +1,11 @@
 const time = require('./time')
-const fs = require('fs')
 
 const map = require('../map')
 const filter = require('../filter')
 
 const bigArray = Array(5000000).fill(null).map(Math.random)
-const devnull = fs.createWriteStream('/dev/null')
+
+function noop () {}
 
 time('using iterpal map and filter', () => {
   const result = map(
@@ -16,6 +16,6 @@ time('using iterpal map and filter', () => {
     String
   )
   for (const value of result) {
-    devnull.write(value)
+    noop(value)
   }
 })

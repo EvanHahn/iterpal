@@ -4,5 +4,6 @@ set -u
 set -o pipefail
 
 for file in *.benchmark.js; do
-  node "$file"
+  /usr/bin/time --format 'used %M kilobytes' node "$file"
+  echo
 done

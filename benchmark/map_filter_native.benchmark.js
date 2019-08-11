@@ -1,8 +1,8 @@
 const time = require('./time')
-const fs = require('fs')
 
 const bigArray = Array(5000000).fill(null).map(Math.random)
-const devnull = fs.createWriteStream('/dev/null')
+
+function noop () {}
 
 time('using native map and filter', () => {
   const result = bigArray
@@ -10,6 +10,6 @@ time('using native map and filter', () => {
     .filter(n => n > 0)
     .map(String)
   for (const value of result) {
-    devnull.write(value)
+    noop(value)
   }
 })
