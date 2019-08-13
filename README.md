@@ -25,8 +25,6 @@ console.log([...squareEvens(myNumbersAsSet)])
 // => [4, 16, 36]
 ```
 
-:warning: This library is experimental!
-
 ## Why Iterpal?
 
 Iterpal offers a few benefits:
