@@ -39,20 +39,20 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "ava": "^2.2.0",
-    "eslint": "^6.0.1",
-    "eslint-config-standard": "^13.0.1",
-    "eslint-plugin-import": "^2.18.0",
+    "ava": "^2.3.0",
+    "eslint": "^6.2.2",
+    "eslint-config-standard": "^14.0.1",
+    "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-markdown": "^1.0.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "sinon": "^7.3.2",
-    "textlint": "^11.3.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "sinon": "^7.4.1",
+    "textlint": "^11.3.1",
     "textlint-rule-alex": "^1.3.1",
     "textlint-rule-en-capitalization": "^2.0.2",
     "textlint-rule-no-empty-section": "^1.1.0",
     "textlint-rule-spellchecker": "^2.2.1",
-    "textlint-rule-stop-words": "^1.0.14"
+    "textlint-rule-stop-words": "^1.0.17"
   }
 }
