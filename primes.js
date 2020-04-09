@@ -1,4 +1,4 @@
-module.exports = function primes () {
+export default function primes () {
   return new PrimesIterable()
 }
 

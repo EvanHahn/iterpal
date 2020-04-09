@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import some from '../some'
+import some from '../some.js'
 
 test('returns false for empty iterables', t => {
   const alwaysTrue = () => true

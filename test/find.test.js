@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import find from '../find'
+import find from '../find.js'
 
 const isTen = n => n === 10
 

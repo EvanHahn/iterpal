@@ -1,4 +1,4 @@
-module.exports = function join (iterable, separator = ',') {
+export default function join (iterable, separator = ',') {
   let hasPlacedFirstElement = false
   let result = ''
 

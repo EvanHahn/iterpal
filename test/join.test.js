@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import join from '../join'
+import join from '../join.js'
 
 test('returns the empty string for empty iterables', t => {
   t.is(join([]), '')

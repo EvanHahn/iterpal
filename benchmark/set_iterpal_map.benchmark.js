@@ -1,6 +1,6 @@
-const time = require('./time')
+import time from './time.js'
 
-const map = require('../map')
+import map from '../map.js'
 
 const bigSet = new Set()
 for (let i = 0; i < 1000000; i++) {

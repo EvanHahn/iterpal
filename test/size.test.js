@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import size from '../size'
+import size from '../size.js'
 
 test('returns the size of an iterable', t => {
   const customIterable = {

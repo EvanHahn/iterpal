@@ -1,4 +1,4 @@
-module.exports = function fibonacci () {
+export default function fibonacci () {
   return new FibonacciIterable()
 }
 

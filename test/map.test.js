@@ -1,7 +1,7 @@
 import test from 'ava'
 import sinon from 'sinon'
 
-import map from '../map'
+import map from '../map.js'
 
 test('returns an empty iterable when passed an empty iterable', t => {
   const fn = sinon.fake()

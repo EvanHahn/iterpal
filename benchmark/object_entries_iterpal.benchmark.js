@@ -1,6 +1,6 @@
-const time = require('./time')
+import time from './time.js'
 
-const objectEntries = require('../objectEntries')
+import objectEntries from '../objectEntries.js'
 
 const bigObject = {}
 for (let i = 0; i < 1000000; i++) {

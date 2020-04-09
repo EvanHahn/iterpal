@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import repeat from '../repeat'
+import repeat from '../repeat.js'
 
 test('returns an infinite iterable if passed just one argument', t => {
   const objForReferenceCheck = {}

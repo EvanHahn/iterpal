@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import objectHas from '../objectHas'
+import objectHas from '../objectHas.js'
 
 test('returns true for own properties, false otherwise', t => {
   const mySymbol = Symbol('hello')

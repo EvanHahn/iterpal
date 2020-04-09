@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import at from '../at'
+import at from '../at.js'
 
 test('returns undefined when accessing an out-of-bounds value', t => {
   t.is(at(['a', 'b', 'c'], 3), undefined)

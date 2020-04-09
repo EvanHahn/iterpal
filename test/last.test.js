@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import last from '../last'
+import last from '../last.js'
 
 test('returns undefined for empty iterables', t => {
   const customEmpty = {

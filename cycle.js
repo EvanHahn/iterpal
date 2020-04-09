@@ -1,4 +1,4 @@
-module.exports = function (iterable) {
+export default function (iterable) {
   return new CycleIterable(iterable)
 }
 

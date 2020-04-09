@@ -1,7 +1,7 @@
-const time = require('./time')
+import time from './time.js'
 
-const size = require('../size')
-const objectKeys = require('../objectKeys')
+import size from '../size.js'
+import objectKeys from '../objectKeys.js'
 
 const bigObject = {}
 for (let i = 0; i < 5000000; i++) {

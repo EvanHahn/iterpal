@@ -1,4 +1,4 @@
-module.exports = function take (iterable, amount) {
+export default function take (iterable, amount) {
   return new TakeIterator(iterable, amount)
 }
 

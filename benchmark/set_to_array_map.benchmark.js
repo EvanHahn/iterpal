@@ -1,4 +1,4 @@
-const time = require('./time')
+import time from './time.js'
 
 const bigSet = new Set()
 for (let i = 0; i < 1000000; i++) {

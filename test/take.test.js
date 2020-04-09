@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import take from '../take'
+import take from '../take.js'
 
 test('returns the first n elements from an iterable', t => {
   const everyNumber = {

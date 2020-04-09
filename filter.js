@@ -1,4 +1,4 @@
-module.exports = function filter (iterable, fn) {
+export default function filter (iterable, fn) {
   return new FilterIterable(iterable, fn)
 }
 

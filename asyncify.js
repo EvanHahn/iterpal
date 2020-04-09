@@ -1,4 +1,4 @@
-module.exports = function asyncify (iterable) {
+export default function asyncify (iterable) {
   return new AsyncifyIterable(iterable)
 }
 

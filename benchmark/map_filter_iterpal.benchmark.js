@@ -1,7 +1,7 @@
-const time = require('./time')
+import time from './time.js'
 
-const map = require('../map')
-const filter = require('../filter')
+import map from '../map.js'
+import filter from '../filter.js'
 
 const bigArray = Array(5000000).fill(null).map(Math.random)
 

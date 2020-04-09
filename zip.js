@@ -1,8 +1,8 @@
-const map = require('./map')
-const first = require('./first')
-const drop = require('./drop')
+import map from './map.js'
+import first from './first.js'
+import drop from './drop.js'
 
-module.exports = function zip (iterables) {
+export default function zip (iterables) {
   const iterable0 = first(iterables)
   // TODO: Can we avoid realizing this?
   const restOfIterators = [...drop(map(iterables, iterator => (

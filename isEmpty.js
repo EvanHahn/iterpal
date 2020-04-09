@@ -1,3 +1,3 @@
-module.exports = function (iterable) {
+export default function (iterable) {
   return iterable[Symbol.iterator]().next().done
 }

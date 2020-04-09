@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import zip from '../zip'
+import zip from '../zip.js'
 
 test('zips multiple iterables, stopping when the first is exhausted', t => {
   const everyNumber = {

@@ -1,4 +1,4 @@
-module.exports = function concat (iterables) {
+export default function concat (iterables) {
   return new ConcatIterable(iterables)
 }
 

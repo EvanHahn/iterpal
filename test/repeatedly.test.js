@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import repeatedly from '../repeatedly'
+import repeatedly from '../repeatedly.js'
 import sinon from 'sinon'
 
 test('calls a function over and over', t => {

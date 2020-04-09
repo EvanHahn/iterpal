@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import drop from '../drop'
+import drop from '../drop.js'
 
 test('drops the first n elements from an iterable', t => {
   t.deepEqual([...drop([1, 2, 3], 0)], [1, 2, 3])

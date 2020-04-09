@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import max from '../max'
+import max from '../max.js'
 
 test('returns undefined with an empty iterable', t => {
   t.is(max([]), undefined)

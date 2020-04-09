@@ -1,6 +1,6 @@
-const objectHas = require('./objectHas')
+import objectHas from './objectHas.js'
 
-module.exports = function objectKeys (obj) {
+export default function objectKeys (obj) {
   return new ObjectKeysIterable(obj)
 }
 

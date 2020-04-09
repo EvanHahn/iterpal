@@ -1,7 +1,7 @@
 import test from 'ava'
-import asyncIterableToArray from '../asyncIterableToArray'
+import asyncIterableToArray from '../asyncIterableToArray.js'
 
-import asyncify from '../asyncify'
+import asyncify from '../asyncify.js'
 
 test('converts an empty sync iterable to an async one', async (t) => {
   const empty = {

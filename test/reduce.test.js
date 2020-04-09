@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import reduce from '../reduce'
+import reduce from '../reduce.js'
 import sinon from 'sinon'
 
 test('returns the accumulator if the iterable is empty', t => {

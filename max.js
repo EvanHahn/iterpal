@@ -1,4 +1,4 @@
-module.exports = function max (numbers) {
+export default function max (numbers) {
   let result
   for (const number of numbers) {
     if ((result === undefined) || (result < number)) {

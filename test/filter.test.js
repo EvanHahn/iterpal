@@ -1,7 +1,7 @@
 import test from 'ava'
 import sinon from 'sinon'
 
-import filter from '../filter'
+import filter from '../filter.js'
 
 test('does nothing to empty iterables', t => {
   const fn = sinon.fake()

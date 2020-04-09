@@ -1,4 +1,4 @@
-module.exports = function at (iterable, desiredIndex) {
+export default function at (iterable, desiredIndex) {
   const iterator = iterable[Symbol.iterator]()
 
   for (let i = 0; i <= desiredIndex; i++) {

@@ -1,6 +1,6 @@
-const time = require('./time')
+import time from './time.js'
 
-const map = require('../map')
+import map from '../map.js'
 
 const bigArray = Array(5000000).fill(null).map(Math.random)
 

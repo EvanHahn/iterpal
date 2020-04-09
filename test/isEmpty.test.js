@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import isEmpty from '../isEmpty'
+import isEmpty from '../isEmpty.js'
 
 test('returns true for empty iterables', t => {
   const customEmpty = {

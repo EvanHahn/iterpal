@@ -3,21 +3,23 @@ import test from 'ava'
 import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
-import map from '../map'
-import filter from '../filter'
-import some from '../some'
+import map from '../map.js'
+import filter from '../filter.js'
+import some from '../some.js'
 
 const readFileAsync = promisify(fs.readFile)
 const readdirAsync = promisify(fs.readdir)
 
 test.before(async (t) => {
-  const readmePath = path.join(__dirname, '..', 'README.md')
+  // TODO: This should use import.meta.url
+  const readmePath = path.join('README.md')
   const readmeData = await readFileAsync(readmePath, 'utf8')
   t.context.readmeLines = readmeData.split('\n').map(line => line.trim())
 })
 
 test.before(async (t) => {
-  const projectRootPath = path.join(__dirname, '..')
+  // TODO: This should use import.meta.url
+  const projectRootPath = path.join('.')
   const projectRootFiles = await readdirAsync(projectRootPath)
   const projectRootJsFiles = filter(projectRootFiles, filename => (
     path.extname(filename) === '.js'

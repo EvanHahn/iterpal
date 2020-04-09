@@ -1,8 +1,8 @@
 import test from 'ava'
 import sinon from 'sinon'
-import asyncIterableToArray from '../asyncIterableToArray'
+import asyncIterableToArray from '../asyncIterableToArray.js'
 
-import asyncMap from '../asyncMap'
+import asyncMap from '../asyncMap.js'
 
 test('returns an empty iterable when passed an empty iterable', async (t) => {
   const fn = sinon.fake()

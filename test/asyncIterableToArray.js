@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import asyncIterableToArray from '../asyncIterableToArray'
+import asyncIterableToArray from '../asyncIterableToArray.js'
 
 test('converts async iterables to arrays', async (t) => {
   const empty = {

@@ -1,4 +1,4 @@
-module.exports = function min (numbers) {
+export default function min (numbers) {
   let result
   for (const number of numbers) {
     if ((result === undefined) || (result > number)) {

@@ -1,7 +1,7 @@
 import test from 'ava'
 
-import cycle from '../cycle'
-import take from '../take'
+import cycle from '../cycle.js'
+import take from '../take.js'
 
 test('throws when calling iterating if the iterable is empty', t => {
   const customEmpty = {

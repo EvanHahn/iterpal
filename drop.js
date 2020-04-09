@@ -1,4 +1,4 @@
-module.exports = function drop (iterable, amount) {
+export default function drop (iterable, amount) {
   return new DropIterable(iterable, amount)
 }
 

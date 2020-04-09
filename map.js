@@ -1,4 +1,4 @@
-module.exports = function map (iterable, fn) {
+export default function map (iterable, fn) {
   return new MapIterable(iterable, fn)
 }
 

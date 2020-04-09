@@ -1,7 +1,7 @@
 import test from 'ava'
 import sinon from 'sinon'
 
-import asyncReduce from '../asyncReduce'
+import asyncReduce from '../asyncReduce.js'
 
 test('returns the accumulator if the iterable is empty', async (t) => {
   const fn = sinon.fake()

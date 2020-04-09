@@ -1,4 +1,4 @@
-module.exports = function repeat (value, times = Infinity) {
+export default function repeat (value, times = Infinity) {
   return new RepeatIterator(value, times)
 }
 

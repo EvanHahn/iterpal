@@ -1,4 +1,4 @@
-module.exports = function range (start = 0, finish = Infinity) {
+export default function range (start = 0, finish = Infinity) {
   return new RangeIterable(start, finish)
 }
 

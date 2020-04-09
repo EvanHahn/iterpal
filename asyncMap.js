@@ -1,4 +1,4 @@
-module.exports = function asyncMap (asyncIterable, fn) {
+export default function asyncMap (asyncIterable, fn) {
   return new AsyncMapIterable(asyncIterable, fn)
 }
 

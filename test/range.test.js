@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import range from '../range'
+import range from '../range.js'
 
 test('returns an infinite range of integers by default', t => {
   const iterator = range()[Symbol.iterator]()

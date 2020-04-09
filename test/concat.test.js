@@ -1,7 +1,7 @@
 import test from 'ava'
 import sinon from 'sinon'
 
-import concat from '../concat'
+import concat from '../concat.js'
 
 test("doesn't return the same iterable even when passed 1 iterable", t => {
   const arr = [1, 2, 3]

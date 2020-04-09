@@ -1,4 +1,4 @@
-module.exports = function time (name, fn) {
+export default function time (name, fn) {
   process.stdout.write(name)
   process.stdout.write('...')
 

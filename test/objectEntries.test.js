@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import objectEntries from '../objectEntries'
+import objectEntries from '../objectEntries.js'
 
 test('returns an iterable of entries', t => {
   function Klass (prop) {

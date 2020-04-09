@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import every from '../every'
+import every from '../every.js'
 
 test('returns true for empty iterables', t => {
   const alwaysFalse = () => false

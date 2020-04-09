@@ -1,4 +1,4 @@
-const time = require('./time')
+import time from './time.js'
 
 const bigObject = {}
 for (let i = 0; i < 5000000; i++) {

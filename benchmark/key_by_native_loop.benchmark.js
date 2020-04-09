@@ -1,4 +1,4 @@
-const time = require('./time')
+import time from './time.js'
 
 const bigArray = Array(1000000).fill(null).map(() => ({
   a: Math.random(),
