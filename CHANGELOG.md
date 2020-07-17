@@ -3,8 +3,10 @@
 ## Unreleased
 ### Added
 - `cycle`
+- `hasSameValues`
 - `isEmpty`
 - `last`
+- `quickSize`
 - `repeatedly`
 
 ### Removed

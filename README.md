@@ -330,6 +330,28 @@ first(new Map())
 </details>
 
 <details>
+<summary><code>hasSameValues(iterableA, iterableB)</code></summary>
+
+If `iterableA` and `iterableB` have the same lengths and values, returns `true`. Otherwise, returns `false`. Equality is determined with `Object.is`.
+
+```js
+const hasSameValues = require('iterpal/hasSameValues')
+
+hasSameValues([9, 8, 7], [7, 8, 9])
+// => true
+
+hasSameValues([9, 8, 7], [9, 10, 11])
+// => false
+
+hasSameValues([9, 8, 7], new Set([7, 9, 8]))
+// => true
+
+hasSameValues([], new Set([]))
+// => true
+```
+</details>
+
+<details>
 <summary><code>isEmpty(iterable)</code></summary>
 
 Returns `true` if `iterable` has no elements, and `false` otherwise.
@@ -533,6 +555,31 @@ primes()
 
 const asArray = [...take(primes(), 100)]
 // => [an array of the first 100 prime numbers]
+```
+</details>
+
+<details>
+<summary><code>quickSize(iterable)</code></summary>
+
+Returns the size of the iterable if its size can be determined without iterating, otherwise returns null. Works for arrays, strings, `Set`s, `Map`s, `TypedArray`s, and `ArrayBuffer`s. Notably, doesn't work for "plain" objects with a `length` property.
+
+```js
+const quickSize = require('iterpal/quickSize')
+
+quickSize([9, 8, 7])
+// => 3
+
+quickSize('hello')
+// => 5
+
+const myCustomIterable = {
+  * [Symbol.iterator] () {
+    yield 'oh'
+    yield 'yeah'
+  }
+}
+quickSize(myCustomIterable)
+// => null
 ```
 </details>
 
