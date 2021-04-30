@@ -1,7 +1,7 @@
-export default async function asyncIterableToArray (asyncIterable) {
-  const result = []
+export default async function asyncIterableToArray(asyncIterable) {
+  const result = [];
   for await (const value of asyncIterable) {
-    result.push(value)
+    result.push(value);
   }
-  return result
+  return result;
 }

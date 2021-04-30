@@ -1,16 +1,16 @@
-import time from './time.js'
+import time from "./time.js";
 
-import objectEntries from '../objectEntries.js'
+import objectEntries from "../objectEntries.js";
 
-const bigObject = {}
+const bigObject = {};
 for (let i = 0; i < 1000000; i++) {
-  bigObject[Math.random()] = i
+  bigObject[Math.random()] = i;
 }
 
-function noop () {}
+function noop() {}
 
-time('iterating over objectEntries', () => {
+time("iterating over objectEntries", () => {
   for (const entry of objectEntries(bigObject)) {
-    noop(entry.toString())
+    noop(entry.toString());
   }
-})
+});

@@ -1,26 +1,23 @@
-export default function quickSize (iterable) {
+export default function quickSize(iterable) {
   if (hasLength(iterable)) {
-    return iterable.length
+    return iterable.length;
   } else if (hasSize(iterable)) {
-    return iterable.size
+    return iterable.size;
   } else if (iterable instanceof ArrayBuffer) {
-    return iterable.byteLength
+    return iterable.byteLength;
   } else {
-    return null
+    return null;
   }
 }
 
-function hasLength (value) {
+function hasLength(value) {
   return (
     Array.isArray(value) ||
-    (typeof value === 'string') ||
+    typeof value === "string" ||
     ArrayBuffer.isView(value)
-  )
+  );
 }
 
-function hasSize (value) {
-  return (
-    (value instanceof Set) ||
-    (value instanceof Map)
-  )
+function hasSize(value) {
+  return value instanceof Set || value instanceof Map;
 }

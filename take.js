@@ -1,29 +1,29 @@
-export default function take (iterable, amount) {
-  return new TakeIterator(iterable, amount)
+export default function take(iterable, amount) {
+  return new TakeIterator(iterable, amount);
 }
 
 class TakeIterator {
-  constructor (iterable, amount) {
+  constructor(iterable, amount) {
     Object.defineProperties(this, {
       _iterable: { value: iterable },
-      _amount: { value: amount }
-    })
+      _amount: { value: amount },
+    });
   }
 
-  [Symbol.iterator] () {
-    const iterator = this._iterable[Symbol.iterator]()
-    let amount = this._amount
+  [Symbol.iterator]() {
+    const iterator = this._iterable[Symbol.iterator]();
+    let amount = this._amount;
 
     return {
-      next () {
-        const nextIteration = iterator.next()
+      next() {
+        const nextIteration = iterator.next();
         if (nextIteration.done || amount === 0) {
-          return { done: true }
+          return { done: true };
         } else {
-          amount--
-          return nextIteration
+          amount--;
+          return nextIteration;
         }
-      }
-    }
+      },
+    };
   }
 }

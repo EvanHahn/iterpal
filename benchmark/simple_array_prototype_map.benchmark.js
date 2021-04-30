@@ -1,11 +1,14 @@
-import time from './time.js'
+import time from "./time.js";
 
-const bigArray = Array(5000000).fill(null).map(Math.random)
+const bigArray = Array(5000000).fill(null).map(Math.random);
 
-function noop () {}
+function noop() {}
 
-time('converting an array of numbers to strings with Array.prototype.map', () => {
-  for (const value of bigArray.map(String)) {
-    noop(value)
+time(
+  "converting an array of numbers to strings with Array.prototype.map",
+  () => {
+    for (const value of bigArray.map(String)) {
+      noop(value);
+    }
   }
-})
+);

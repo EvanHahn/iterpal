@@ -1,3 +1,3 @@
 export default function (iterable) {
-  return iterable[Symbol.iterator]().next().value
+  return iterable[Symbol.iterator]().next().value;
 }

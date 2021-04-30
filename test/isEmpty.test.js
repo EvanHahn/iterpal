@@ -1,29 +1,29 @@
-import test from 'ava'
+import test from "ava";
 
-import isEmpty from '../isEmpty.js'
+import isEmpty from "../isEmpty.js";
 
-test('returns true for empty iterables', t => {
+test("returns true for empty iterables", (t) => {
   const customEmpty = {
-    * [Symbol.iterator] () {}
-  }
+    *[Symbol.iterator]() {},
+  };
 
-  t.true(isEmpty([]))
-  t.true(isEmpty(new Set()))
-  t.true(isEmpty(new Map()))
-  t.true(isEmpty(customEmpty))
-})
+  t.true(isEmpty([]));
+  t.true(isEmpty(new Set()));
+  t.true(isEmpty(new Map()));
+  t.true(isEmpty(customEmpty));
+});
 
-test('returns false for non-empty iterables', t => {
+test("returns false for non-empty iterables", (t) => {
   const everyNumber = {
-    * [Symbol.iterator] () {
+    *[Symbol.iterator]() {
       for (let i = 0; true; i++) {
-        yield i
+        yield i;
       }
-    }
-  }
+    },
+  };
 
-  t.false(isEmpty([1]))
-  t.false(isEmpty(new Set([1])))
-  t.false(isEmpty(new Map([['hi', 5]])))
-  t.false(isEmpty(everyNumber))
-})
+  t.false(isEmpty([1]));
+  t.false(isEmpty(new Set([1])));
+  t.false(isEmpty(new Map([["hi", 5]])));
+  t.false(isEmpty(everyNumber));
+});

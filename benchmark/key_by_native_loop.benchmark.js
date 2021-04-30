@@ -1,14 +1,16 @@
-import time from './time.js'
+import time from "./time.js";
 
-const bigArray = Array(1000000).fill(null).map(() => ({
-  a: Math.random(),
-  b: Math.random()
-}))
+const bigArray = Array(1000000)
+  .fill(null)
+  .map(() => ({
+    a: Math.random(),
+    b: Math.random(),
+  }));
 
-time('native loop key by', () => {
-  const result = {}
+time("native loop key by", () => {
+  const result = {};
   for (const obj of bigArray) {
-    result[obj.a] = obj
+    result[obj.a] = obj;
   }
-  return result
-})
+  return result;
+});

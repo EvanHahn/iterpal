@@ -1,9 +1,9 @@
-export default function max (numbers) {
-  let result
+export default function max(numbers) {
+  let result;
   for (const number of numbers) {
-    if ((result === undefined) || (result < number)) {
-      result = number
+    if (result === undefined || result < number) {
+      result = number;
     }
   }
-  return result
+  return result;
 }

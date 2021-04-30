@@ -1,7 +1,9 @@
 # Changelog
 
 ## Unreleased
+
 ### Added
+
 - `cycle`
 - `hasSameValues`
 - `isEmpty`
@@ -10,10 +12,13 @@
 - `repeatedly`
 
 ### Removed
+
 - `jsonStringify`
 
 ## 0.2.0 - 2019-05-27
+
 ### Added
+
 - `asyncify`
 - `asyncIterableToArray`
 - `asyncMap`
@@ -33,13 +38,16 @@
 - Additional package metadata (homepage, repository, keywords, bugs)
 
 ### Changed
+
 - `concat` now takes an iterable of iterables
 - All functions returning iterables now return class instances
 - Documentation
 - License is now MIT, to be more permissive
 
 ## 0.1.0 - 2019-05-07
+
 ### Added
+
 - `at`
 - `concat`
 - `every`

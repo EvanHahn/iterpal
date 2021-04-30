@@ -1,16 +1,16 @@
-export default function join (iterable, separator = ',') {
-  let hasPlacedFirstElement = false
-  let result = ''
+export default function join(iterable, separator = ",") {
+  let hasPlacedFirstElement = false;
+  let result = "";
 
   for (const value of iterable) {
-    const stringified = value == null ? '' : String(value)
+    const stringified = value == null ? "" : String(value);
     if (hasPlacedFirstElement) {
-      result += separator + stringified
+      result += separator + stringified;
     } else {
-      result += stringified
-      hasPlacedFirstElement = true
+      result += stringified;
+      hasPlacedFirstElement = true;
     }
   }
 
-  return result
+  return result;
 }

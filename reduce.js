@@ -1,7 +1,7 @@
-export default function reduce (iterable, fn, accumulator) {
-  let result = accumulator
+export default function reduce(iterable, fn, accumulator) {
+  let result = accumulator;
   for (const value of iterable) {
-    result = fn(result, value)
+    result = fn(result, value);
   }
-  return result
+  return result;
 }

@@ -1,28 +1,29 @@
-export default function filter (iterable, fn) {
-  return new FilterIterable(iterable, fn)
+export default function filter(iterable, fn) {
+  return new FilterIterable(iterable, fn);
 }
 
 class FilterIterable {
-  constructor (iterable, fn) {
+  constructor(iterable, fn) {
     Object.defineProperties(this, {
       _iterable: { value: iterable },
-      _fn: { value: fn }
-    })
+      _fn: { value: fn },
+    });
   }
 
-  [Symbol.iterator] () {
-    const iterator = this._iterable[Symbol.iterator]()
-    const fn = this._fn
+  [Symbol.iterator]() {
+    const iterator = this._iterable[Symbol.iterator]();
+    const fn = this._fn;
 
     return {
-      next () {
+      next() {
+        // eslint-disable-next-line no-constant-condition
         while (true) {
-          const nextIteration = iterator.next()
+          const nextIteration = iterator.next();
           if (nextIteration.done || fn(nextIteration.value)) {
-            return nextIteration
+            return nextIteration;
           }
         }
-      }
-    }
+      },
+    };
   }
 }

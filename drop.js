@@ -1,30 +1,30 @@
-export default function drop (iterable, amount) {
-  return new DropIterable(iterable, amount)
+export default function drop(iterable, amount) {
+  return new DropIterable(iterable, amount);
 }
 
 class DropIterable {
-  constructor (iterable, amount) {
+  constructor(iterable, amount) {
     Object.defineProperties(this, {
       _iterable: { value: iterable },
-      _amount: { value: amount }
-    })
+      _amount: { value: amount },
+    });
   }
 
-  [Symbol.iterator] () {
-    const iterator = this._iterable[Symbol.iterator]()
-    const amount = this._amount
+  [Symbol.iterator]() {
+    const iterator = this._iterable[Symbol.iterator]();
+    const amount = this._amount;
 
-    let hasDropped = false
+    let hasDropped = false;
     return {
-      next () {
+      next() {
         if (!hasDropped) {
           for (let i = 0; i < amount; i++) {
-            iterator.next()
+            iterator.next();
           }
-          hasDropped = true
+          hasDropped = true;
         }
-        return iterator.next()
-      }
-    }
+        return iterator.next();
+      },
+    };
   }
 }

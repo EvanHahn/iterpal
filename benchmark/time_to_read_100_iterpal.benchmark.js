@@ -1,18 +1,18 @@
-import time from './time.js'
+import time from "./time.js";
 
-import map from '../map.js'
+import map from "../map.js";
 
-const bigArray = Array(5000000).fill(null).map(Math.random)
+const bigArray = Array(5000000).fill(null).map(Math.random);
 
-function noop () {}
+function noop() {}
 
-time('reading the first 100 elements from an iterpal-mapped array', () => {
-  let count = 0
+time("reading the first 100 elements from an iterpal-mapped array", () => {
+  let count = 0;
   for (const value of map(bigArray, String)) {
-    noop(value)
-    count++
+    noop(value);
+    count++;
     if (count === 100) {
-      return
+      return;
     }
   }
-})
+});

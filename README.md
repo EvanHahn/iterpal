@@ -5,23 +5,23 @@ Iterpal is a friendly collection of utilities for iterables in JavaScript. Iterp
 Here's a quick sample:
 
 ```js
-const map = require('iterpal/map')
-const filter = require('iterpal/filter')
+const map = require("iterpal/map");
+const filter = require("iterpal/filter");
 
-function squareEvens (iterable) {
-  let result = iterable
-  result = filter(result, n => (n % 2) === 0)
-  result = map(result, n => n * n)
-  return result
+function squareEvens(iterable) {
+  let result = iterable;
+  result = filter(result, (n) => n % 2 === 0);
+  result = map(result, (n) => n * n);
+  return result;
 }
 
-const myNumbers = [1, 2, 3, 4, 5, 6]
-const myNumbersAsSet = new Set(myNumbers)
+const myNumbers = [1, 2, 3, 4, 5, 6];
+const myNumbersAsSet = new Set(myNumbers);
 
-console.log([...squareEvens(myNumbers)])
+console.log([...squareEvens(myNumbers)]);
 // => [4, 16, 36]
 
-console.log([...squareEvens(myNumbersAsSet)])
+console.log([...squareEvens(myNumbersAsSet)]);
 // => [4, 16, 36]
 ```
 
@@ -42,59 +42,60 @@ Iterpal offers a few benefits:
 
 ```js
 // One of these native solutions is much faster:
-const nativeFast = myLargeArray.slice(0, 100).map(String)
-const nativeSlow = myLargeArray.map(String).slice(0, 100)
+const nativeFast = myLargeArray.slice(0, 100).map(String);
+const nativeSlow = myLargeArray.map(String).slice(0, 100);
 
 // These are basically the same, and both finish quickly:
-const iterOne = [...take(map(myLargeArray, String), 100)]
-const iterTwo = [...map(take(myLargeArray, 100), String)]
+const iterOne = [...take(map(myLargeArray, String), 100)];
+const iterTwo = [...map(take(myLargeArray, 100), String)];
 ```
+
 </details>
 
 <details>
 <summary>Map over a Map</summary>
 
 ```js
-const map = require('iterpal/map')
+const map = require("iterpal/map");
 
 const ages = new Map([
-  ['Esmeralda', 30],
-  ['Carlo', 45],
-  ['Ignacio', 99]
-])
+  ["Esmeralda", 30],
+  ["Carlo", 45],
+  ["Ignacio", 99],
+]);
 
-const agesNextYear = new Map(map(ages, ([name, age]) => (
-  [name, age + 1]
-)))
+const agesNextYear = new Map(map(ages, ([name, age]) => [name, age + 1]));
 
-ages.get('Esmeralda')
+ages.get("Esmeralda");
 // => 30
 
-agesNextYear.get('Esmeralda')
+agesNextYear.get("Esmeralda");
 // => 31
 ```
+
 </details>
 
 <details>
 <summary>Invert a Map</summary>
 
 ```js
-const zip = require('iterpal/zip')
+const zip = require("iterpal/zip");
 
-function invertMap (toInvert) {
-  return new Map(zip([toInvert.values(), toInvert.keys()]))
+function invertMap(toInvert) {
+  return new Map(zip([toInvert.values(), toInvert.keys()]));
 }
 
 const nameById = new Map([
-  [123, 'Burt'],
-  [456, 'Ernie'],
-  [456, 'Big Bird']
-])
-const idByName = invertMap(nameById)
+  [123, "Burt"],
+  [456, "Ernie"],
+  [456, "Big Bird"],
+]);
+const idByName = invertMap(nameById);
 
-idByName.get('Ernie')
+idByName.get("Ernie");
 // => 456
 ```
+
 </details>
 
 ## API docs
@@ -103,37 +104,37 @@ idByName.get('Ernie')
 
 Iterpal's synchronous functions deal with regular iterables. In JavaScript, a value is an iterable if it contains `Symbol.iterator`. Some common examples of such iterables:
 
-* Strings
-* `Array`s
-* `Set`s
-* `Map`s
-* `TypedArray`s
-* `Buffer`s
+- Strings
+- `Array`s
+- `Set`s
+- `Map`s
+- `TypedArray`s
+- `Buffer`s
 
 ```js
-function isIterable (value) {
-  return Boolean(value[Symbol.iterator])
+function isIterable(value) {
+  return Boolean(value[Symbol.iterator]);
 }
 
-isIterable([1, 2, 3])
+isIterable([1, 2, 3]);
 // => true
 
-isIterable(new Set())
+isIterable(new Set());
 // => true
 
-isIterable('hello!!')
+isIterable("hello!!");
 // => true
 
-isIterable({ foo: 'bar' })
+isIterable({ foo: "bar" });
 // => false
 
 const myCustomIterable = {
-  * [Symbol.iterator] () {
-    yield 'my own iterable!!'
-    yield 'i have never felt so free!!'
-  }
-}
-isIterable(myCustomIterable)
+  *[Symbol.iterator]() {
+    yield "my own iterable!!";
+    yield "i have never felt so free!!";
+  },
+};
+isIterable(myCustomIterable);
 // => true
 ```
 
@@ -145,11 +146,12 @@ JavaScript objects are not iterables because their iteration behavior is ambiguo
 Converts a synchronous iterable to an asynchronous one.
 
 ```js
-const asyncify = require('iterpal/asyncify')
+const asyncify = require("iterpal/asyncify");
 
-asyncify([1, 2, 3, 4])
+asyncify([1, 2, 3, 4]);
 // => Asynchronous iterable yielding 1, 2, 3, 4
 ```
+
 </details>
 
 <details>
@@ -158,17 +160,18 @@ asyncify([1, 2, 3, 4])
 Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
 
 ```js
-const at = require('iterpal/at')
+const at = require("iterpal/at");
 
-at(new Set(['hello', 'world']), 0)
+at(new Set(["hello", "world"]), 0);
 // => 'hello'
 
-at(['hello', 'world'], 1)
+at(["hello", "world"], 1);
 // => 'world'
 
-at(new Set(['hello', 'world']), 2)
+at(new Set(["hello", "world"]), 2);
 // => undefined
 ```
+
 </details>
 
 <details>
@@ -177,24 +180,25 @@ at(new Set(['hello', 'world']), 2)
 Concatenates multiple iterables, returning a new iterable.
 
 ```js
-const concat = require('iterpal/concat')
+const concat = require("iterpal/concat");
 
-const myArray = [1, 2, 3]
-const mySet = new Set([4, 5, 6])
+const myArray = [1, 2, 3];
+const mySet = new Set([4, 5, 6]);
 const myMap = new Map([
-  ['bing', 'bong'],
-  ['foo', 'boo']
-])
+  ["bing", "bong"],
+  ["foo", "boo"],
+]);
 
-concat([myArray, mySet, myMap])
+concat([myArray, mySet, myMap]);
 // => Iterable yielding 1, 2, 3, 4, 5, 6, ['bing', 'bong'], ['foo', 'boo']
 
-concat(myMap)
+concat(myMap);
 // => Iterable yielding 'bing', 'bong', 'foo', 'boo'
 
-const asArray = [...concat([myArray, mySet, myMap])]
+const asArray = [...concat([myArray, mySet, myMap])];
 // => [1, 2, 3, 4, 5, 6, ['bing', 'bong'], ['foo', 'boo']]
 ```
+
 </details>
 
 <details>
@@ -203,11 +207,12 @@ const asArray = [...concat([myArray, mySet, myMap])]
 Returns an infinite iterable that "cycles" over `iterable`.
 
 ```js
-const cycle = require('iterpal/cycle')
+const cycle = require("iterpal/cycle");
 
-cycle([1, 2, 3])
+cycle([1, 2, 3]);
 // => Iterable yielding 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2 ...
 ```
+
 </details>
 
 <details>
@@ -216,14 +221,15 @@ cycle([1, 2, 3])
 Returns an iterable with the first `amount` elements removed.
 
 ```js
-const drop = require('iterpal/drop')
+const drop = require("iterpal/drop");
 
-drop(new Set(['hello', 'to', 'the', 'world!']), 2)
+drop(new Set(["hello", "to", "the", "world!"]), 2);
 // => Iterable yielding 'the', 'world'
 
-drop(new Set(['hello', 'to', 'the', 'world!']), 4)
+drop(new Set(["hello", "to", "the", "world!"]), 4);
 // => Empty iterable
 ```
+
 </details>
 
 <details>
@@ -232,22 +238,23 @@ drop(new Set(['hello', 'to', 'the', 'world!']), 4)
 Returns `true` if `predicate(value)` returns true for every value in `iterable`, and false otherwise. Returns `true` for an empty iterable.
 
 ```js
-const every = require('iterpal/every')
+const every = require("iterpal/every");
 
-function isEven (n) {
-  return (n % 2) === 0
+function isEven(n) {
+  return n % 2 === 0;
 }
 
-const mySet = new Set([2, 4, 6, 8])
-every(mySet, isEven)
+const mySet = new Set([2, 4, 6, 8]);
+every(mySet, isEven);
 // => true
 
-every([2, 3, 4], isEven)
+every([2, 3, 4], isEven);
 // => false
 
-every([], () => false)
+every([], () => false);
 // => true
 ```
+
 </details>
 
 <details>
@@ -256,11 +263,12 @@ every([], () => false)
 Returns an iterable yielding the Fibonacci sequence, starting with 1.
 
 ```js
-const fibonacci = require('iterpal/fibonacci')
+const fibonacci = require("iterpal/fibonacci");
 
-fibonacci()
+fibonacci();
 // => Iterable yielding 1, 1, 2, 3, 5, 8, 13...
 ```
+
 </details>
 
 <details>
@@ -271,20 +279,21 @@ Returns a new iterable which iterates over `iterable`, yielding when `predicate(
 The predicate function is invoked with one argument: the current value.
 
 ```js
-const filter = require('iterpal/filter')
+const filter = require("iterpal/filter");
 
-function isEven (n) {
-  return (n % 2) === 0
+function isEven(n) {
+  return n % 2 === 0;
 }
 
-const mySet = new Set([1, 2, 3, 4, 5, 6])
+const mySet = new Set([1, 2, 3, 4, 5, 6]);
 
-filter(mySet, isEven)
+filter(mySet, isEven);
 // => Iterable yielding 2, 4, 6
 
-const asArray = [...filter(mySet, isEven)]
+const asArray = [...filter(mySet, isEven)];
 // => [2, 4, 6]
 ```
+
 </details>
 
 <details>
@@ -293,21 +302,22 @@ const asArray = [...filter(mySet, isEven)]
 Iterates over `iterable`, returning the first element `predicate(value)` returns truthy for. Returns `undefined` if no value is found.
 
 ```js
-const find = require('iterpal/find')
+const find = require("iterpal/find");
 
-function isEven (n) {
-  return (n % 2) === 0
+function isEven(n) {
+  return n % 2 === 0;
 }
 
-find(new Set([1, 3, 4, 5]), isEven)
+find(new Set([1, 3, 4, 5]), isEven);
 // => 4
 
-find([1, 3, 5, 7], isEven)
+find([1, 3, 5, 7], isEven);
 // => undefined
 
-find([], isEven)
+find([], isEven);
 // => undefined
 ```
+
 </details>
 
 <details>
@@ -316,17 +326,18 @@ find([], isEven)
 Returns the first value in an iterable. Returns `undefined` if the iterable is empty.
 
 ```js
-const first = require('iterpal/first')
+const first = require("iterpal/first");
 
-first(new Set(['hello', 'world']))
+first(new Set(["hello", "world"]));
 // => 'hello'
 
-first([10, 11, 12])
+first([10, 11, 12]);
 // => 10
 
-first(new Map())
+first(new Map());
 // => undefined
 ```
+
 </details>
 
 <details>
@@ -335,20 +346,21 @@ first(new Map())
 If `iterableA` and `iterableB` have the same lengths and values, returns `true`. Otherwise, returns `false`. Equality is determined with `Object.is`.
 
 ```js
-const hasSameValues = require('iterpal/hasSameValues')
+const hasSameValues = require("iterpal/hasSameValues");
 
-hasSameValues([9, 8, 7], [7, 8, 9])
+hasSameValues([9, 8, 7], [7, 8, 9]);
 // => true
 
-hasSameValues([9, 8, 7], [9, 10, 11])
+hasSameValues([9, 8, 7], [9, 10, 11]);
 // => false
 
-hasSameValues([9, 8, 7], new Set([7, 9, 8]))
+hasSameValues([9, 8, 7], new Set([7, 9, 8]));
 // => true
 
-hasSameValues([], new Set([]))
+hasSameValues([], new Set([]));
 // => true
 ```
+
 </details>
 
 <details>
@@ -357,14 +369,15 @@ hasSameValues([], new Set([]))
 Returns `true` if `iterable` has no elements, and `false` otherwise.
 
 ```js
-const isEmpty = require('iterpal/isEmpty')
+const isEmpty = require("iterpal/isEmpty");
 
-isEmpty(new Set())
+isEmpty(new Set());
 // => true
 
-isEmpty([1, 2, 3])
+isEmpty([1, 2, 3]);
 // => false
 ```
+
 </details>
 
 <details>
@@ -375,20 +388,21 @@ Converts all elements in `iterable` into a string separated by `separator`.
 Like `Array.prototype.join`, `null` and `undefined` are converted to empty strings.
 
 ```js
-const join = require('iterpal/join')
+const join = require("iterpal/join");
 
-join(new Set(['hello', 'world']))
+join(new Set(["hello", "world"]));
 // => 'hello,world'
 
-join(new Set(['hello', 'world']), ' and ')
+join(new Set(["hello", "world"]), " and ");
 // => 'hello and world'
 
-join([1, undefined, 2, null, 3])
+join([1, undefined, 2, null, 3]);
 // => '1,,2,,3'
 
-join(new Map())
+join(new Map());
 // => ''
 ```
+
 </details>
 
 <details>
@@ -399,17 +413,18 @@ Iterates over `iterable`, returning the final value. Returns `undefined` if the 
 If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.
 
 ```js
-const last = require('iterpal/last')
+const last = require("iterpal/last");
 
-last(new Set(['hello', 'world']))
+last(new Set(["hello", "world"]));
 // => 'world'
 
-last([10, 11, 12])
+last([10, 11, 12]);
 // => 12
 
-last(new Map())
+last(new Map());
 // => undefined
 ```
+
 </details>
 
 <details>
@@ -420,20 +435,21 @@ Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for 
 `fn` is invoked with one argument: the current value.
 
 ```js
-const map = require('iterpal/map')
+const map = require("iterpal/map");
 
-function square (n) {
-  return n * n
+function square(n) {
+  return n * n;
 }
 
-const mySet = new Set([1, 2, 3])
+const mySet = new Set([1, 2, 3]);
 
-map(mySet, square)
+map(mySet, square);
 // => Iterable yielding 1, 4, 9
 
-const asArray = [...map(mySet, square)]
+const asArray = [...map(mySet, square)];
 // => [1, 4, 9]
 ```
+
 </details>
 
 <details>
@@ -442,14 +458,15 @@ const asArray = [...map(mySet, square)]
 Returns the largest number in the iterable `numbers`. Returns `undefined` if `numbers` is an empty iterable.
 
 ```js
-const max = require('iterpal/max')
+const max = require("iterpal/max");
 
-max(new Set([9, 3, 1]))
+max(new Set([9, 3, 1]));
 // => 9
 
-max([Infinity, 1, 2])
+max([Infinity, 1, 2]);
 // => Infinity
 ```
+
 </details>
 
 <details>
@@ -458,11 +475,12 @@ max([Infinity, 1, 2])
 Returns the smallest number in the iterable `numbers`. Returns `undefined` if `numbers` is an empty iterable.
 
 ```js
-const min = require('iterpal/min')
+const min = require("iterpal/min");
 
-min(new Set([9, 3, 1]))
+min(new Set([9, 3, 1]));
 // => 1
 ```
+
 </details>
 
 <details>
@@ -471,17 +489,18 @@ min(new Set([9, 3, 1]))
 Returns an iterable, yielding `[key, value]` for each entry in the object. An iterable version of `Object.entries`.
 
 ```js
-const objectEntries = require('iterpal/objectEntries')
+const objectEntries = require("iterpal/objectEntries");
 
 objectEntries({
-  bing: 'bong',
-  foo: 'boo'
-})
+  bing: "bong",
+  foo: "boo",
+});
 // => Iterable yielding ['bing', 'bong'], ['foo', 'boo']
 
-objectEntries({})
+objectEntries({});
 // => Empty iterable
 ```
+
 </details>
 
 <details>
@@ -490,17 +509,18 @@ objectEntries({})
 An internal utility method exposed for public use. Returns true if `property` is an own-property of `obj`, false otherwise. You can use this instead of `Object.prototype.hasOwnProperty`.
 
 ```js
-const objectHas = require('iterpal/objectHas')
+const objectHas = require("iterpal/objectHas");
 
-objectHas({ foo: 'bar' }, 'foo')
+objectHas({ foo: "bar" }, "foo");
 // => true
 
-objectHas({ foo: 'bar' }, 'baz')
+objectHas({ foo: "bar" }, "baz");
 // => false
 
-objectHas({ foo: 'bar' }, 'hasOwnProperty')
+objectHas({ foo: "bar" }, "hasOwnProperty");
 // => false
 ```
+
 </details>
 
 <details>
@@ -509,17 +529,18 @@ objectHas({ foo: 'bar' }, 'hasOwnProperty')
 Returns an iterable, yielding each key in the object. An iterable version of `Object.keys`.
 
 ```js
-const objectKeys = require('iterpal/objectKeys')
+const objectKeys = require("iterpal/objectKeys");
 
 objectKeys({
   bing: 1,
-  bong: 2
-})
+  bong: 2,
+});
 // => Iterable yielding 'bing', 'bong'
 
-objectKeys({})
+objectKeys({});
 // => Empty iterable
 ```
+
 </details>
 
 <details>
@@ -528,17 +549,18 @@ objectKeys({})
 Returns an iterable, yielding each value in the object. An iterable version of `Object.values`.
 
 ```js
-const objectValues = require('iterpal/objectValues')
+const objectValues = require("iterpal/objectValues");
 
 objectValues({
   bing: 1,
-  bong: 2
-})
+  bong: 2,
+});
 // => Iterable yielding 1, 2
 
-objectValues({})
+objectValues({});
 // => Empty iterable
 ```
+
 </details>
 
 <details>
@@ -547,15 +569,16 @@ objectValues({})
 Returns an iterable, yielding each prime integer.
 
 ```js
-const primes = require('iterpal/primes')
-const take = require('iterpal/take')
+const primes = require("iterpal/primes");
+const take = require("iterpal/take");
 
-primes()
+primes();
 // => Iterable yielding 2, 3, 5, 7, 11, 13, ...
 
-const asArray = [...take(primes(), 100)]
+const asArray = [...take(primes(), 100)];
 // => [an array of the first 100 prime numbers]
 ```
+
 </details>
 
 <details>
@@ -564,23 +587,24 @@ const asArray = [...take(primes(), 100)]
 Returns the size of the iterable if its size can be determined without iterating, otherwise returns null. Works for arrays, strings, `Set`s, `Map`s, `TypedArray`s, and `ArrayBuffer`s. Notably, doesn't work for "plain" objects with a `length` property.
 
 ```js
-const quickSize = require('iterpal/quickSize')
+const quickSize = require("iterpal/quickSize");
 
-quickSize([9, 8, 7])
+quickSize([9, 8, 7]);
 // => 3
 
-quickSize('hello')
+quickSize("hello");
 // => 5
 
 const myCustomIterable = {
-  * [Symbol.iterator] () {
-    yield 'oh'
-    yield 'yeah'
-  }
-}
-quickSize(myCustomIterable)
+  *[Symbol.iterator]() {
+    yield "oh";
+    yield "yeah";
+  },
+};
+quickSize(myCustomIterable);
 // => null
 ```
+
 </details>
 
 <details>
@@ -589,20 +613,21 @@ quickSize(myCustomIterable)
 Returns an iterable of integers from `start` to `finish`.
 
 ```js
-const range = require('iterpal/range')
+const range = require("iterpal/range");
 
-range()
+range();
 // => Iterable yielding 0, 1, 2, 3, 4, 5...
 
-range(10)
+range(10);
 // => Iterable yielding 10, 11, 12, 13, 14, 15...
 
-range(6, 9)
+range(6, 9);
 // => Iterable yielding 6, 7, 8
 
-const asArray = [...range(6, 9)]
+const asArray = [...range(6, 9)];
 // => [6, 7, 8]
 ```
+
 </details>
 
 <details>
@@ -611,21 +636,22 @@ const asArray = [...range(6, 9)]
 Reduces `iterable` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value.
 
 ```js
-const reduce = require('iterpal/reduce')
+const reduce = require("iterpal/reduce");
 
-function add (a, b) {
-  return a + b
+function add(a, b) {
+  return a + b;
 }
 
-reduce(new Set([1, 2, 3]), add, 0)
+reduce(new Set([1, 2, 3]), add, 0);
 // => 6
 
-reduce(new Set([1, 2, 3]), add, 10)
+reduce(new Set([1, 2, 3]), add, 10);
 // => 16
 
-reduce([], add, 123)
+reduce([], add, 123);
 // => 123
 ```
+
 </details>
 
 <details>
@@ -634,17 +660,18 @@ reduce([], add, 123)
 Returns an iterable that yields `value`. If `times` is supplied, the length is boundless. If `times` is not supplied, the iterable is infinite.
 
 ```js
-const repeat = require('iterpal/repeat')
+const repeat = require("iterpal/repeat");
 
-repeat('foo')
+repeat("foo");
 // => Iterable yielding 'foo', 'foo', 'foo', 'foo'...
 
-repeat('hi', 5)
+repeat("hi", 5);
 // => Iterable yielding 'hi', 'hi', 'hi', 'hi', 'hi'
 
-const asArray = [...repeat('hi', 5)]
+const asArray = [...repeat("hi", 5)];
 // => ['hi', 'hi', 'hi', 'hi', 'hi']
 ```
+
 </details>
 
 <details>
@@ -653,14 +680,15 @@ const asArray = [...repeat('hi', 5)]
 Returns an iterable that yields `fn(iterationCount)` every time. Useful when "converting" a function to an iterable.
 
 ```js
-const repeatedly = require('iterpal/repeatedly')
+const repeatedly = require("iterpal/repeatedly");
 
-repeatedly(Math.random)
+repeatedly(Math.random);
 // => Iterable yielding random numbers
 
-repeatedly((n) => `Iteration #${n + 1}`)
+repeatedly((n) => `Iteration #${n + 1}`);
 // => Iterable yielding 'Iteration 1', 'Iteration 2', 'Iteration 3' ...
 ```
+
 </details>
 
 <details>
@@ -669,25 +697,26 @@ repeatedly((n) => `Iteration #${n + 1}`)
 Returns the size of an iterable. If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.
 
 ```js
-const size = require('iterpal/size')
+const size = require("iterpal/size");
 
-const myArray = ['hello', 'world']
-myArray.length === size(myArray)
+const myArray = ["hello", "world"];
+myArray.length === size(myArray);
 // => true
 
-const mySet = new Set(['oh', 'hello', 'there'])
-mySet.size === size(mySet)
+const mySet = new Set(["oh", "hello", "there"]);
+mySet.size === size(mySet);
 // => true
 
 const myCustomIterable = {
-  * [Symbol.iterator] () {
-    yield 'oh'
-    yield 'yeah'
-  }
-}
-size(myCustomIterable)
+  *[Symbol.iterator]() {
+    yield "oh";
+    yield "yeah";
+  },
+};
+size(myCustomIterable);
 // => 2
 ```
+
 </details>
 
 <details>
@@ -696,22 +725,23 @@ size(myCustomIterable)
 Returns `true` if `predicate(value)` returns true for any value in `iterable`, and false otherwise. Returns `false` for an empty iterable.
 
 ```js
-const some = require('iterpal/some')
+const some = require("iterpal/some");
 
-function isEven (n) {
-  return (n % 2) === 0
+function isEven(n) {
+  return n % 2 === 0;
 }
 
-const mySet = new Set([1, 2, 3])
-some(mySet, isEven)
+const mySet = new Set([1, 2, 3]);
+some(mySet, isEven);
 // => true
 
-some([1, 3, 5], isEven)
+some([1, 3, 5], isEven);
 // => false
 
-some([], () => true)
+some([], () => true);
 // => false
 ```
+
 </details>
 
 <details>
@@ -720,14 +750,15 @@ some([], () => true)
 Returns a new iterable with `amount` elements taken from the beginning.
 
 ```js
-const take = require('iterpal/take')
+const take = require("iterpal/take");
 
-take(['hello', 'to', 'you!'], 2)
+take(["hello", "to", "you!"], 2);
 // => Iterable yielding 'hello', 'to'
 
-take(['hello', 'to', 'you!'], 200)
+take(["hello", "to", "you!"], 200);
 // => Iterable yielding 'hello', 'to', 'you!'
 ```
+
 </details>
 
 <details>
@@ -736,25 +767,26 @@ take(['hello', 'to', 'you!'], 200)
 Returns an iterable of arrays. The first array contains the first elements of each of the input iterables, the second contains the second elements of each input iterable, and so on. Useful when constructing `Map`s.
 
 ```js
-const zip = require('iterpal/zip')
-const range = require('iterpal/range')
+const zip = require("iterpal/zip");
+const range = require("iterpal/range");
 
-const everyPositiveInteger = range(1)
-const smallSet = new Set(['hello', 'world'])
-const primes = [2, 3, 5, 7, 11]
+const everyPositiveInteger = range(1);
+const smallSet = new Set(["hello", "world"]);
+const primes = [2, 3, 5, 7, 11];
 
-zip([smallSet, everyPositiveInteger])
+zip([smallSet, everyPositiveInteger]);
 // => Iterable yielding ['hello', 1], ['world', 2]
 
-new Map(zip([smallSet, everyPositiveInteger]))
+new Map(zip([smallSet, everyPositiveInteger]));
 // => Map { 'hello' => 1, 'world' => 2 }
 
-zip([smallSet, primes, everyPositiveInteger])
+zip([smallSet, primes, everyPositiveInteger]);
 // => Iterable yielding ['hello', 2, 1], ['world', 3, 2]
 
-zip([everyPositiveInteger, smallSet])
+zip([everyPositiveInteger, smallSet]);
 // => Infinite iterable yielding [1, 'hello'], [2, 'world'], [3, undefined], [4, undefined], ...
 ```
+
 </details>
 
 ### Asynchronous functions
@@ -762,24 +794,24 @@ zip([everyPositiveInteger, smallSet])
 Iterpal's asynchronous functions deal with asynchronous iterables. In JavaScript, a value is an asynchronous iterable if it contains `Symbol.asyncIterator`. Streams are a common example of asynchronous iterables.
 
 ```js
-function isAsyncIterable (value) {
-  return Symbol.asyncIterator in value
+function isAsyncIterable(value) {
+  return Symbol.asyncIterator in value;
 }
 
-isAsyncIterable(fs.createReadStream('./secrets.txt'))
+isAsyncIterable(fs.createReadStream("./secrets.txt"));
 // => true
 
-isAsyncIterable([1, 2, 3])
+isAsyncIterable([1, 2, 3]);
 // => false
 
 const myCustomAsyncIterable = {
-  async * [Symbol.asyncIterable] () {
-    yield 'my own custom async iterable??'
-    await someLongOperation()
-    yield 'is there no limit to what I can do??'
-  }
-}
-isIterable(myCustomAsyncIterable)
+  async *[Symbol.asyncIterable]() {
+    yield "my own custom async iterable??";
+    await someLongOperation();
+    yield "is there no limit to what I can do??";
+  },
+};
+isIterable(myCustomAsyncIterable);
 // => true
 ```
 
@@ -789,15 +821,16 @@ isIterable(myCustomAsyncIterable)
 Turns an asynchronous iterable (such as a stream) into an array. Returns a `Promise` that resolves to an array.
 
 ```js
-const asyncIterableToArray = require('iterpal/asyncIterableToArray')
-const fs = require('fs')
+const asyncIterableToArray = require("iterpal/asyncIterableToArray");
+const fs = require("fs");
 
-async function readSecrets () {
-  const secretsStream = fs.createReadStream('./secrets.txt', 'utf8')
-  await asyncIterableToArray(secretsStream)
+async function readSecrets() {
+  const secretsStream = fs.createReadStream("./secrets.txt", "utf8");
+  await asyncIterableToArray(secretsStream);
   // => [an array of chunks of the the file]
 }
 ```
+
 </details>
 
 <details>
@@ -806,25 +839,26 @@ async function readSecrets () {
 Returns a new asynchronous iterable which iterates over `asyncIterable`, yielding `fn(value)` for each value. If `fn` returns a Promise, it will be awaited.
 
 ```js
-const asyncMap = require('iterpal/asyncMap')
+const asyncMap = require("iterpal/asyncMap");
 
 const someNumbers = {
-  async * [Symbol.asyncIterator] () {
-    yield 1
-    yield 2
-    yield 3
-  }
-}
+  async *[Symbol.asyncIterator]() {
+    yield 1;
+    yield 2;
+    yield 3;
+  },
+};
 
-const square = n => n * n
-const doubleAsync = n => Promise.resolve(n + n)
+const square = (n) => n * n;
+const doubleAsync = (n) => Promise.resolve(n + n);
 
-asyncMap(someNumbers, square)
+asyncMap(someNumbers, square);
 // => Async iterable yielding 1, 4, 9
 
-asyncMap(someNumbers, doubleAsync)
+asyncMap(someNumbers, doubleAsync);
 // => Async iterable yielding 2, 4, 6
 ```
+
 </details>
 
 <details>
@@ -835,17 +869,18 @@ Reduces `asyncIterableToArray` to a single value. On each iteration, calls `fn` 
 Returns a `Promise`.
 
 ```js
-const asyncReduce = require('iterpal/asyncReduce')
-const fs = require('fs')
+const asyncReduce = require("iterpal/asyncReduce");
+const fs = require("fs");
 
-function concatBuffers (a, b) {
-  return Buffer.concat([a, b])
+function concatBuffers(a, b) {
+  return Buffer.concat([a, b]);
 }
 
-async function readSecrets () {
-  const secretsStream = fs.createReadStream('./secrets.txt')
-  await asyncReduce(secretsStream, concatBuffers, Buffer.alloc(0))
+async function readSecrets() {
+  const secretsStream = fs.createReadStream("./secrets.txt");
+  await asyncReduce(secretsStream, concatBuffers, Buffer.alloc(0));
   // => <Buffer 12 34 56 ...>
 }
 ```
+
 </details>
