@@ -1,102 +1,20 @@
 # [![Iterpal](media/iterpal_logo.png)](https://github.com/EvanHahn/iterpal)
 
-Iterpal is a friendly collection of utilities for iterables in JavaScript. Iterpal can help with arrays, strings, [Sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), [Maps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [TypedArrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), [Buffers](https://nodejs.org/api/buffer.html#buffer_buffer), [Streams](https://nodejs.org/api/stream.html), or [any other iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol). It can also turn objects into iterables.
+Iterpal is a friendly collection of utilities for iterables in JavaScript, inspired by [Lodash](https://lodash.com/).
 
-Here's a quick sample:
-
-```js
-const map = require("iterpal/map");
-const filter = require("iterpal/filter");
-
-function squareEvens(iterable) {
-  let result = iterable;
-  result = filter(result, (n) => n % 2 === 0);
-  result = map(result, (n) => n * n);
-  return result;
-}
-
-const myNumbers = [1, 2, 3, 4, 5, 6];
-const myNumbersAsSet = new Set(myNumbers);
-
-console.log([...squareEvens(myNumbers)]);
-// => [4, 16, 36]
-
-console.log([...squareEvens(myNumbersAsSet)]);
-// => [4, 16, 36]
-```
-
-## Why Iterpal?
-
-Iterpal offers a few benefits:
-
-1. Iterpal lets you **use collection functions with non-arrays like Sets and Maps**. For example, `map` and `filter` and `reduce` are super useful, but `Set`s don't have them built in.
-
-1. Iterpal is often more **performant** than using native methods, depending on what you're doing. Because JavaScript iterables are lazily evaluated, memory usage can go way down for large collections. And if you don't need to "calculate" an entire collection, the time to completion can drop dramatically. Check out the `benchmarks/` folder to see some samples for yourself.
-
-1. Iterpal lets you deal with **huge collections** with ease. For example, you can't express an array of every positive integer—you'd run out of memory. Iterpal's `range()` function returns a lazily-evaluated iterable that yields every positive integer.
-
-## Recipes
-
-<details>
-<summary>Do things in whatever order</summary>
+Iterpal can help with arrays, strings, [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), [maps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), [buffers](https://nodejs.org/api/buffer.html#buffer_buffer), [streams](https://nodejs.org/api/stream.html), or [any other iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol).
 
 ```js
-// One of these native solutions is much faster:
-const nativeFast = myLargeArray.slice(0, 100).map(String);
-const nativeSlow = myLargeArray.map(String).slice(0, 100);
+import { map } from "iterpal";
 
-// These are basically the same, and both finish quickly:
-const iterOne = [...take(map(myLargeArray, String), 100)];
-const iterTwo = [...map(take(myLargeArray, 100), String)];
+const mySet = new Set([1, 2, 3]);
+
+// This doesn't work...
+mySet.map((n) => n * n);
+
+// ...but this does!
+map(mySet, (n) => n * n);
 ```
-
-</details>
-
-<details>
-<summary>Map over a Map</summary>
-
-```js
-const map = require("iterpal/map");
-
-const ages = new Map([
-  ["Esmeralda", 30],
-  ["Carlo", 45],
-  ["Ignacio", 99],
-]);
-
-const agesNextYear = new Map(map(ages, ([name, age]) => [name, age + 1]));
-
-ages.get("Esmeralda");
-// => 30
-
-agesNextYear.get("Esmeralda");
-// => 31
-```
-
-</details>
-
-<details>
-<summary>Invert a Map</summary>
-
-```js
-const zip = require("iterpal/zip");
-
-function invertMap(toInvert) {
-  return new Map(zip([toInvert.values(), toInvert.keys()]));
-}
-
-const nameById = new Map([
-  [123, "Burt"],
-  [456, "Ernie"],
-  [456, "Big Bird"],
-]);
-const idByName = invertMap(nameById);
-
-idByName.get("Ernie");
-// => 456
-```
-
-</details>
 
 ## API docs
 
@@ -111,34 +29,7 @@ Iterpal's synchronous functions deal with regular iterables. In JavaScript, a va
 - `TypedArray`s
 - `Buffer`s
 
-```js
-function isIterable(value) {
-  return Boolean(value[Symbol.iterator]);
-}
-
-isIterable([1, 2, 3]);
-// => true
-
-isIterable(new Set());
-// => true
-
-isIterable("hello!!");
-// => true
-
-isIterable({ foo: "bar" });
-// => false
-
-const myCustomIterable = {
-  *[Symbol.iterator]() {
-    yield "my own iterable!!";
-    yield "i have never felt so free!!";
-  },
-};
-isIterable(myCustomIterable);
-// => true
-```
-
-JavaScript objects are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can use Iterpal's `objectKeys`, `objectValues`, and `objectEntries` to "convert" objects into an iterable if you wish.
+Plain JavaScript objects are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can get an iterable with `Object.keys(obj)`, `Object.values(obj)`, or `Object.entries(obj)`.
 
 <details>
 <summary><code>asyncify(iterable)</code></summary>
