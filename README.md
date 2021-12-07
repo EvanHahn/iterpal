@@ -415,46 +415,6 @@ objectHas({ foo: "bar" }, "hasOwnProperty");
 </details>
 
 <details>
-<summary><code>objectKeys(obj)</code></summary>
-
-Returns an iterable, yielding each key in the object. An iterable version of `Object.keys`.
-
-```js
-const objectKeys = require("iterpal/objectKeys");
-
-objectKeys({
-  bing: 1,
-  bong: 2,
-});
-// => Iterable yielding 'bing', 'bong'
-
-objectKeys({});
-// => Empty iterable
-```
-
-</details>
-
-<details>
-<summary><code>objectValues(obj)</code></summary>
-
-Returns an iterable, yielding each value in the object. An iterable version of `Object.values`.
-
-```js
-const objectValues = require("iterpal/objectValues");
-
-objectValues({
-  bing: 1,
-  bong: 2,
-});
-// => Iterable yielding 1, 2
-
-objectValues({});
-// => Empty iterable
-```
-
-</details>
-
-<details>
 <summary><code>primes()</code></summary>
 
 Returns an iterable, yielding each prime integer.
