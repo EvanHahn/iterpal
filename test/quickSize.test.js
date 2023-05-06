@@ -22,7 +22,6 @@ test("returns the size of common iterables", (t) => {
     Float64Array,
   ];
   for (const Arraylike of arraylikes) {
-    t.log(Arraylike, new Arraylike([9, 8, 7]).length);
     t.is(quickSize(new Arraylike()), 0);
     t.is(quickSize(new Arraylike([9, 8, 7])), 3);
   }
