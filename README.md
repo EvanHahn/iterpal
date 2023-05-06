@@ -678,7 +678,7 @@ const fs = require("fs");
 async function readSecrets() {
   const secretsStream = fs.createReadStream("./secrets.txt", "utf8");
   await asyncIterableToArray(secretsStream);
-  // => [an array of chunks of the the file]
+  // => [an array of chunks of the file]
 }
 ```
 
