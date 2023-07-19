@@ -13,6 +13,7 @@
 
 ### Removed
 
+- **Breaking:** Dropped support for old Node versions. Node 18+ is now required
 - `jsonStringify`
 - `objectEntries`
 - `objectKeys`
