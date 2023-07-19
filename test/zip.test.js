@@ -19,7 +19,7 @@ test("zips multiple iterables, stopping when the first is exhausted", (t) => {
       ["foo", 0],
       ["bar", 1],
       ["baz", 2],
-    ]
+    ],
   );
   t.deepEqual(
     [...zip([smallSet, everyNumber, arr], t)],
@@ -27,7 +27,7 @@ test("zips multiple iterables, stopping when the first is exhausted", (t) => {
       ["foo", 0, 99],
       ["bar", 1, 98],
       ["baz", 2, 97],
-    ]
+    ],
   );
 
   t.deepEqual(
@@ -37,7 +37,7 @@ test("zips multiple iterables, stopping when the first is exhausted", (t) => {
       [98, "bar"],
       [97, "baz"],
       [96, undefined],
-    ]
+    ],
   );
 
   const infiniteZipper = zip([everyNumber, arr])[Symbol.iterator]();

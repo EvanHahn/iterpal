@@ -37,9 +37,9 @@ test("returns the size of common iterables", (t) => {
       new Map([
         ["foo", 1],
         ["bar", 2],
-      ])
+      ]),
     ),
-    2
+    2,
   );
 
   t.is(quickSize(new ArrayBuffer()), 0);

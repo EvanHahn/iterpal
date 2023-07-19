@@ -10,5 +10,5 @@ time(
     for (const value of bigArray.map(String)) {
       noop(value);
     }
-  }
+  },
 );

@@ -8,7 +8,7 @@ export default function zip(iterables) {
   const restOfIterators = [
     ...drop(
       map(iterables, (iterator) => iterator[Symbol.iterator]()),
-      1
+      1,
     ),
   ];
 

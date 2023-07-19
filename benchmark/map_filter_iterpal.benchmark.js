@@ -11,9 +11,9 @@ time("using iterpal map and filter", () => {
   const result = map(
     filter(
       map(bigArray, (n) => n - 0.5),
-      (n) => n > 0
+      (n) => n > 0,
     ),
-    String
+    String,
   );
   for (const value of result) {
     noop(value);

@@ -13,5 +13,5 @@ time(
     for (const value of [...bigSet].map(String)) {
       noop(value);
     }
-  }
+  },
 );

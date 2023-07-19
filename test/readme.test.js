@@ -23,26 +23,26 @@ test.before(async (t) => {
   const projectRootFiles = await readdirAsync(projectRootPath);
   const projectRootJsFiles = filter(
     projectRootFiles,
-    (filename) => path.extname(filename) === ".js"
+    (filename) => path.extname(filename) === ".js",
   );
   t.context.expectedFunctions = map(projectRootJsFiles, (filename) =>
-    path.basename(filename, ".js")
+    path.basename(filename, ".js"),
   );
 });
 
 test("documents all functions", (t) => {
   const summaryLines = filter(t.context.readmeLines, (line) =>
-    /^<summary><code>[^<]+<\/code><\/summary>$/.test(line)
+    /^<summary><code>[^<]+<\/code><\/summary>$/.test(line),
   );
   const codeInSummary = map(
     summaryLines,
-    (line) => /^<summary><code>([^<]+)<\/code><\/summary>$/.exec(line)[1]
+    (line) => /^<summary><code>([^<]+)<\/code><\/summary>$/.exec(line)[1],
   );
 
   for (const expectedFunction of t.context.expectedFunctions) {
     t.assert(
       some(codeInSummary, (code) => code.startsWith(expectedFunction + "(")),
-      `Expected "${expectedFunction}" to be documented`
+      `Expected "${expectedFunction}" to be documented`,
     );
   }
 });
