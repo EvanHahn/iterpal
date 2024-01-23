@@ -1,9 +1,8 @@
 import map from "../map.ts";
 import filter from "../filter.ts";
+import { noop } from "./helpers.ts";
 
 const bigArray = Array(1_000_000).fill(null).map(Math.random);
-
-function noop() {}
 
 Deno.bench("iterpal map and filter", () => {
   const result = map(

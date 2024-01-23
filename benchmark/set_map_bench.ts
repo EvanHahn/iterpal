@@ -1,11 +1,10 @@
 import map from "../map.ts";
+import { noop } from "./helpers.ts";
 
 const bigSet = new Set();
 for (let i = 0; i < 1_000_000; i++) {
   bigSet.add(Math.random());
 }
-
-function noop() {}
 
 Deno.bench("iterpal map over set", () => {
   for (const value of map(bigSet, String)) {

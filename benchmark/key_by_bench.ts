@@ -12,9 +12,8 @@ Deno.bench("iterpal reduce key by", () => {
 });
 
 Deno.bench("native loop key by", () => {
-  const result = {};
+  const result: Record<number, unknown> = {};
   for (const obj of bigArray) {
     result[obj.a] = obj;
   }
-  return result;
 });
