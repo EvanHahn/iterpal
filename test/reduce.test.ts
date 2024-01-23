@@ -1,7 +1,7 @@
 import { assertEquals } from "assert";
 import { assertSpyCall, assertSpyCalls, spy } from "mock";
 
-import reduce from "../reduce.js";
+import reduce from "../reduce.ts";
 
 Deno.test("returns the accumulator if the iterable is empty", () => {
   const fn = spy();
@@ -13,7 +13,7 @@ Deno.test("returns the accumulator if the iterable is empty", () => {
 });
 
 Deno.test("reduces over the iterable, returning a single value", () => {
-  const add = spy((a, b) => a + b);
+  const add = spy((a: number, b: number) => a + b);
 
   assertEquals(reduce([1, 2, 3], add, 0), 6);
   assertSpyCalls(add, 3);
