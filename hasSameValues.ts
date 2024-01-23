@@ -8,7 +8,10 @@ const countValues = <T>(iterable: Iterable<T>): Map<T, number> => {
   return result;
 };
 
-export default <T>(iterableA: Iterable<T>, iterableB: Iterable<T>): boolean => {
+export default function hasSameValues<T>(
+  iterableA: Iterable<T>,
+  iterableB: Iterable<T>,
+): boolean {
   const aSize = quickSize(iterableA);
   const bSize = quickSize(iterableB);
   if (aSize !== null && bSize !== null && aSize !== bSize) {
@@ -29,4 +32,4 @@ export default <T>(iterableA: Iterable<T>, iterableB: Iterable<T>): boolean => {
   }
 
   return true;
-};
+}

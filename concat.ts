@@ -1,5 +1,8 @@
-export default <T>(iterables: Iterable<Iterable<T>>): Iterable<T> =>
-  new ConcatIterable(iterables);
+export default function concat<T>(
+  iterables: Iterable<Iterable<T>>,
+): Iterable<T> {
+  return new ConcatIterable(iterables);
+}
 
 class ConcatIterable<T> implements Iterable<T> {
   #iterables: Iterable<Iterable<T>>;

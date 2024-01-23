@@ -1,5 +1,9 @@
-export default <T>(iterable: Iterable<T>, amount: number): Iterable<T> =>
-  new TakeIterable(iterable, amount);
+export default function <T>(
+  iterable: Iterable<T>,
+  amount: number,
+): Iterable<T> {
+  return new TakeIterable(iterable, amount);
+}
 
 class TakeIterable<T> implements Iterable<T> {
   #iterable: Iterable<T>;

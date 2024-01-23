@@ -1,6 +1,6 @@
 import quickSize from "./_quickSize.ts";
 
-export default (iterable: Iterable<unknown>): number => {
+export default function (iterable: Iterable<unknown>): number {
   const quick = quickSize(iterable);
   if (quick !== null) return quick;
 
@@ -10,4 +10,4 @@ export default (iterable: Iterable<unknown>): number => {
     isDone = iterator.next().done;
   }
   return result;
-};
+}

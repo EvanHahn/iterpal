@@ -1,5 +1,6 @@
-export default <T>(iterable: Iterable<T>): AsyncIterable<T> =>
-  new AsyncifyIterable(iterable);
+export default function asyncify<T>(iterable: Iterable<T>): AsyncIterable<T> {
+  return new AsyncifyIterable(iterable);
+}
 
 class AsyncifyIterable<T> implements AsyncIterable<T> {
   #iterable: Iterable<T>;

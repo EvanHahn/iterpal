@@ -1,5 +1,6 @@
-export default <T>(value: T, times = Infinity): Iterable<T> =>
-  new RepeatIterable(value, times);
+export default function <T>(value: T, times = Infinity): Iterable<T> {
+  return new RepeatIterable(value, times);
+}
 
 class RepeatIterable<T> implements Iterable<T> {
   #value: T;

@@ -1,5 +1,6 @@
-export default <T>(iterable: Iterable<T>): Iterable<T> =>
-  new CycleIterable(iterable);
+export default function cycle<T>(iterable: Iterable<T>): Iterable<T> {
+  return new CycleIterable(iterable);
+}
 
 class CycleIterable<T> implements Iterable<T> {
   #iterable: Iterable<T>;

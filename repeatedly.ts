@@ -1,5 +1,6 @@
-export default <T>(fn: (iterationCount: number) => T): Iterable<T> =>
-  new RepeatedlyIterable(fn);
+export default function <T>(fn: (iterationCount: number) => T): Iterable<T> {
+  return new RepeatedlyIterable(fn);
+}
 
 class RepeatedlyIterable<T> implements Iterable<T> {
   #fn: (iterationCount: number) => T;

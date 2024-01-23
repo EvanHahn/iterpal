@@ -1,9 +1,11 @@
 type MapFn<T, V> = (value: T) => V | Promise<V>;
 
-export default <T, V>(
+export default function asyncMap<T, V>(
   asyncIterable: AsyncIterable<T>,
   fn: MapFn<T, V>,
-): AsyncIterable<V> => new AsyncMapIterable(asyncIterable, fn);
+): AsyncIterable<V> {
+  return new AsyncMapIterable(asyncIterable, fn);
+}
 
 class AsyncMapIterable<T, V> implements AsyncIterable<V> {
   #iterable: AsyncIterable<T>;

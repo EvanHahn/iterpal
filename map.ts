@@ -1,7 +1,9 @@
-export default <T, U>(
+export default function map<T, U>(
   iterable: Iterable<T>,
   fn: (value: T) => U,
-): Iterable<U> => new MapIterable(iterable, fn);
+): Iterable<U> {
+  return new MapIterable(iterable, fn);
+}
 
 class MapIterable<T, U> implements Iterable<U> {
   #iterable: Iterable<T>;
