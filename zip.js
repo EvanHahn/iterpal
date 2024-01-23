@@ -1,5 +1,5 @@
 import map from "./map.js";
-import first from "./first.js";
+import first from "./first.ts";
 import drop from "./drop.ts";
 
 export default function zip(iterables) {
