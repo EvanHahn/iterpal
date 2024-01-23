@@ -1,6 +1,6 @@
 import { assert, assertFalse } from "assert";
 
-import isEmpty from "../isEmpty.js";
+import isEmpty from "../isEmpty.ts";
 
 Deno.test("returns true for empty iterables", () => {
   const customEmpty = {
