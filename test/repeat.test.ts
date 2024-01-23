@@ -1,6 +1,6 @@
 import { assert, assertEquals } from "assert";
 
-import repeat from "../repeat.js";
+import repeat from "../repeat.ts";
 
 Deno.test("returns an infinite iterable if passed just one argument", () => {
   const objForReferenceCheck = {};
