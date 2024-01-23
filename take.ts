@@ -1,3 +1,15 @@
+/**
+ * Returns a new iterable with `amount` elements taken from the beginning. If `amount` exceeds the number of elements, returns a copy of the whole iterable.
+ *
+ * @example
+ * ```typescript
+ * take(["hello", "to", "you!"], 2);
+ * // => Iterable yielding "hello", "to"
+
+ * take(["hello", "to", "you!"], 200);
+ * // => Iterable yielding "hello", "to", "you!"
+ * ```
+ */
 export default function <T>(
   iterable: Iterable<T>,
   amount: number,
