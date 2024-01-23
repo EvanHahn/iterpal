@@ -1,6 +1,14 @@
 import quickSize from "./quickSize.js";
 
-export default function hasSameValues(iterableA, iterableB) {
+const countValues = <T>(iterable: Iterable<T>): Map<T, number> => {
+  const result = new Map<T, number>();
+  for (const value of iterable) {
+    result.set(value, (result.get(value) || 0) + 1);
+  }
+  return result;
+};
+
+export default <T>(iterableA: Iterable<T>, iterableB: Iterable<T>): boolean => {
   const aSize = quickSize(iterableA);
   const bSize = quickSize(iterableB);
   if (aSize !== null && bSize !== null && aSize !== bSize) {
@@ -21,12 +29,4 @@ export default function hasSameValues(iterableA, iterableB) {
   }
 
   return true;
-}
-
-function countValues(iterable) {
-  const result = new Map();
-  for (const value of iterable) {
-    result.set(value, (result.get(value) || 0) + 1);
-  }
-  return result;
-}
+};
