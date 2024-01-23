@@ -1,4 +1,7 @@
-export default function at(iterable, desiredIndex) {
+export default <T>(
+  iterable: Iterable<T>,
+  desiredIndex: number,
+): undefined | T => {
   const iterator = iterable[Symbol.iterator]();
 
   for (let i = 0; i <= desiredIndex; i++) {
@@ -11,4 +14,4 @@ export default function at(iterable, desiredIndex) {
   }
 
   return undefined;
-}
+};

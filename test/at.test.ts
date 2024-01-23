@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import at from "../at.js";
+import at from "../at.ts";
 
 Deno.test("returns undefined when accessing an out-of-bounds value", () => {
   assertEquals(at(["a", "b", "c"], 3), undefined);
@@ -27,18 +27,15 @@ Deno.test("returns the value at the nth iteration", () => {
 
 Deno.test("stops early if the iterator is done", () => {
   let nextCallCount = 0;
-  const firstThree = {
+  const firstThree: Iterable<unknown> = {
     [Symbol.iterator]: () => {
       return {
         next: () => {
           nextCallCount++;
           if (nextCallCount > 2) {
-            return { done: true };
+            return { done: true, value: undefined };
           } else {
-            return {
-              value: nextCallCount,
-              done: false,
-            };
+            return { done: false, value: nextCallCount };
           }
         },
       };
