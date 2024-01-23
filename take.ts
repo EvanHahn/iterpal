@@ -16,8 +16,10 @@ class TakeIterable<T> implements Iterable<T> {
 
     return {
       next() {
+        if (amount === 0) return { done: true } as IteratorResult<T>;
+
         const nextIteration = iterator.next();
-        if (nextIteration.done || amount === 0) {
+        if (nextIteration.done) {
           return { done: true } as IteratorResult<T>;
         } else {
           amount--;
