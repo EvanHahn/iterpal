@@ -1,10 +1,10 @@
 import { assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import repeatedly from "../repeatedly.js";
+import repeatedly from "../repeatedly.ts";
 
 Deno.test("calls a function over and over", () => {
-  const double = spy((n) => n + n);
+  const double = spy((n: number) => n + n);
   const doubleIterable = repeatedly(double);
 
   const iterator1 = doubleIterable[Symbol.iterator]();
