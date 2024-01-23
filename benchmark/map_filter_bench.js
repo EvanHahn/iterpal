@@ -1,5 +1,5 @@
 import map from "../map.js";
-import filter from "../filter.js";
+import filter from "../filter.ts";
 
 const bigArray = Array(1_000_000).fill(null).map(Math.random);
 

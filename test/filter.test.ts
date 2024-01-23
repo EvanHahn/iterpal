@@ -1,10 +1,10 @@
 import { assert, assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import filter from "../filter.js";
+import filter from "../filter.ts";
 
 Deno.test("does nothing to empty iterables", () => {
-  const fn = spy();
+  const fn = spy(() => true);
 
   assertEquals([...filter([], fn)], []);
   assertEquals([...filter(new Set(), fn)], []);
@@ -14,7 +14,7 @@ Deno.test("does nothing to empty iterables", () => {
 });
 
 Deno.test("returns a new iterator with values filtered", () => {
-  const fn = spy((n) => Boolean(n % 2));
+  const fn = spy((n: number) => Boolean(n % 2));
   const result = filter([1, 2, 3, 4, 5], fn);
 
   assertSpyCalls(fn, 0);
@@ -34,7 +34,7 @@ Deno.test("can filter an infinite iterable", () => {
     },
   };
 
-  const fn = (n) => Boolean(n % 2);
+  const fn = (n: number) => Boolean(n % 2);
   const result = filter(everyNumber, fn);
   const iterator = result[Symbol.iterator]();
 
