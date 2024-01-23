@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import quickSize from "../quickSize.ts";
+import quickSize from "../_quickSize.ts";
 
 Deno.test("returns the size of common iterables", () => {
   assertEquals(quickSize([]), 0);

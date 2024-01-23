@@ -1,4 +1,4 @@
-import quickSize from "./quickSize.ts";
+import quickSize from "./_quickSize.ts";
 
 const countValues = <T>(iterable: Iterable<T>): Map<T, number> => {
   const result = new Map<T, number>();

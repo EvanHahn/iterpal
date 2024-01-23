@@ -1,4 +1,4 @@
-import quickSize from "./quickSize.ts";
+import quickSize from "./_quickSize.ts";
 
 export default (iterable: Iterable<unknown>): number => {
   const quick = quickSize(iterable);
