@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import drop from "../drop.js";
+import drop from "../drop.ts";
 
 Deno.test("drops the first n elements from an iterable", () => {
   assertEquals([...drop([1, 2, 3], 0)], [1, 2, 3]);

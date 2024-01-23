@@ -1,6 +1,6 @@
 import map from "./map.js";
 import first from "./first.js";
-import drop from "./drop.js";
+import drop from "./drop.ts";
 
 export default function zip(iterables) {
   const iterable0 = first(iterables);
