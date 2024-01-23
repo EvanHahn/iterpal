@@ -1,15 +1,15 @@
-import test from "ava";
+import { assert, assertFalse } from "assert";
 
 import some from "../some.js";
 
-test("returns false for empty iterables", (t) => {
+Deno.test("returns false for empty iterables", () => {
   const alwaysTrue = () => true;
 
-  t.false(some([], alwaysTrue));
-  t.false(some(new Map(), alwaysTrue));
+  assertFalse(some([], alwaysTrue));
+  assertFalse(some(new Map(), alwaysTrue));
 });
 
-test("returns true if any of the elements return true, stopping after something is found", (t) => {
+Deno.test("returns true if any of the elements return true, stopping after something is found", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 0; true; i++) {
@@ -20,14 +20,14 @@ test("returns true if any of the elements return true, stopping after something 
 
   const isThree = (n) => n === 3;
 
-  t.true(some([1, 2, 3, 4], isThree));
-  t.true(some(new Set([1, 2, 3, 4]), isThree));
-  t.true(some(everyNumber, isThree));
+  assert(some([1, 2, 3, 4], isThree));
+  assert(some(new Set([1, 2, 3, 4]), isThree));
+  assert(some(everyNumber, isThree));
 });
 
-test("returns false if none of the elements return true", (t) => {
+Deno.test("returns false if none of the elements return true", () => {
   const isThree = (n) => n === 3;
 
-  t.false(some([1, 2, 4], isThree));
-  t.false(some(new Set([1, 2, 4]), isThree));
+  assertFalse(some([1, 2, 4], isThree));
+  assertFalse(some(new Set([1, 2, 4]), isThree));
 });

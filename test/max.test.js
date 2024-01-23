@@ -1,17 +1,17 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import max from "../max.js";
 
-test("returns undefined with an empty iterable", (t) => {
-  t.is(max([]), undefined);
-  t.is(max(new Set([])), undefined);
+Deno.test("returns undefined with an empty iterable", () => {
+  assertEquals(max([]), undefined);
+  assertEquals(max(new Set([])), undefined);
 });
 
-test("returns the largest number", (t) => {
-  t.is(max([3, 1, 2]), 3);
-  t.is(max([3, 1, -2]), 3);
-  t.is(max([-3, -1, -2]), -1);
-  t.is(max([Infinity, -Infinity]), Infinity);
+Deno.test("returns the largest number", () => {
+  assertEquals(max([3, 1, 2]), 3);
+  assertEquals(max([3, 1, -2]), 3);
+  assertEquals(max([-3, -1, -2]), -1);
+  assertEquals(max([Infinity, -Infinity]), Infinity);
 
-  t.is(max([10, BigInt(5), 12, BigInt(50)]), BigInt(50));
+  assertEquals(max([10, BigInt(5), 12, BigInt(50)]), BigInt(50));
 });

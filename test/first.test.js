@@ -1,19 +1,19 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import first from "../first.js";
 
-test("returns undefined for empty iterables", (t) => {
+Deno.test("returns undefined for empty iterables", () => {
   const customEmpty = {
     *[Symbol.iterator]() {},
   };
 
-  t.is(first([]), undefined);
-  t.is(first(new Set()), undefined);
-  t.is(first(new Map()), undefined);
-  t.is(first(customEmpty), undefined);
+  assertEquals(first([]), undefined);
+  assertEquals(first(new Set()), undefined);
+  assertEquals(first(new Map()), undefined);
+  assertEquals(first(customEmpty), undefined);
 });
 
-test("returns the first value", (t) => {
+Deno.test("returns the first value", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 1; true; i++) {
@@ -23,6 +23,6 @@ test("returns the first value", (t) => {
   };
   const objToTestReferenceEquality = {};
 
-  t.is(first(everyNumber), 1);
-  t.is(first([objToTestReferenceEquality]), objToTestReferenceEquality);
+  assertEquals(first(everyNumber), 1);
+  assertEquals(first([objToTestReferenceEquality]), objToTestReferenceEquality);
 });

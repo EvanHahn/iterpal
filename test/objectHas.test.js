@@ -1,21 +1,26 @@
-import test from "ava";
+import { assert, assertFalse } from "assert";
 
 import objectHas from "../objectHas.js";
 
-test("returns true for own properties, false otherwise", (t) => {
+Deno.test("returns true for own properties, false otherwise", () => {
   const mySymbol = Symbol("hello");
 
-  function Klass(prop1, prop2) {
-    this.ownProp1 = prop1;
-    this[mySymbol] = prop2;
+  class Klass {
+    constructor(prop1, prop2) {
+      this.ownProp1 = prop1;
+      this[mySymbol] = prop2;
+    }
+
+    prop3() {
+      return true;
+    }
   }
-  Klass.prototype.prop3 = true;
 
   const obj = new Klass("foo", "boo");
 
-  t.true(objectHas(obj, "ownProp1"));
-  t.true(objectHas(obj, mySymbol));
-  t.false(objectHas(obj, "prop3"));
-  t.false(objectHas(obj, "prop4"));
-  t.false(objectHas(obj, Symbol("another")));
+  assert(objectHas(obj, "ownProp1"));
+  assert(objectHas(obj, mySymbol));
+  assertFalse(objectHas(obj, "prop3"));
+  assertFalse(objectHas(obj, "prop4"));
+  assertFalse(objectHas(obj, Symbol("another")));
 });

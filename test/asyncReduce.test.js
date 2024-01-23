@@ -1,20 +1,20 @@
-import test from "ava";
-import sinon from "sinon";
+import { assertEquals } from "assert";
+import { assertSpyCalls, spy } from "mock";
 
 import asyncReduce from "../asyncReduce.js";
 
-test("returns the accumulator if the iterable is empty", async (t) => {
-  const fn = sinon.fake();
+Deno.test("returns the accumulator if the iterable is empty", async () => {
+  const fn = spy();
   const empty = {
     async *[Symbol.asyncIterator]() {},
   };
 
-  t.deepEqual(await asyncReduce(empty, fn, 123), 123);
+  assertEquals(await asyncReduce(empty, fn, 123), 123);
 
-  sinon.assert.notCalled(fn);
+  assertSpyCalls(fn, 0);
 });
 
-test("reduces an async iterator to a single value using a synchronous function", async (t) => {
+Deno.test("reduces an async iterator to a single value using a synchronous function", async () => {
   const several = {
     async *[Symbol.asyncIterator]() {
       yield 1;
@@ -24,10 +24,10 @@ test("reduces an async iterator to a single value using a synchronous function",
   };
   const fn = (a, b) => a + b;
 
-  t.deepEqual(await asyncReduce(several, fn, 10), 16);
+  assertEquals(await asyncReduce(several, fn, 10), 16);
 });
 
-test("reduces an async iterator to a single value using an synchronous function", async (t) => {
+Deno.test("reduces an async iterator to a single value using an synchronous function", async () => {
   const several = {
     async *[Symbol.asyncIterator]() {
       yield 1;
@@ -37,5 +37,5 @@ test("reduces an async iterator to a single value using an synchronous function"
   };
   const fn = (a, b) => Promise.resolve(a + b);
 
-  t.deepEqual(await asyncReduce(several, fn, 10), 16);
+  assertEquals(await asyncReduce(several, fn, 10), 16);
 });

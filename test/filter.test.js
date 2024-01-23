@@ -1,31 +1,31 @@
-import test from "ava";
-import sinon from "sinon";
+import { assert, assertEquals } from "assert";
+import { assertSpyCalls, spy } from "mock";
 
 import filter from "../filter.js";
 
-test("does nothing to empty iterables", (t) => {
-  const fn = sinon.fake();
+Deno.test("does nothing to empty iterables", () => {
+  const fn = spy();
 
-  t.deepEqual([...filter([], fn)], []);
-  t.deepEqual([...filter(new Set(), fn)], []);
-  t.deepEqual([...filter(new Map(), fn)], []);
+  assertEquals([...filter([], fn)], []);
+  assertEquals([...filter(new Set(), fn)], []);
+  assertEquals([...filter(new Map(), fn)], []);
 
-  sinon.assert.notCalled(fn);
+  assertSpyCalls(fn, 0);
 });
 
-test("returns a new iterator with values filtered", (t) => {
-  const fn = sinon.fake((n) => Boolean(n % 2));
+Deno.test("returns a new iterator with values filtered", () => {
+  const fn = spy((n) => Boolean(n % 2));
   const result = filter([1, 2, 3, 4, 5], fn);
 
-  sinon.assert.notCalled(fn);
+  assertSpyCalls(fn, 0);
 
-  t.deepEqual([...result], [1, 3, 5]);
-  t.assert(!(result instanceof Array));
+  assertEquals([...result], [1, 3, 5]);
+  assert(!(result instanceof Array));
 
-  sinon.assert.callCount(fn, 5);
+  assertSpyCalls(fn, 5);
 });
 
-test("can filter an infinite iterable", (t) => {
+Deno.test("can filter an infinite iterable", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 1; true; i++) {
@@ -34,12 +34,12 @@ test("can filter an infinite iterable", (t) => {
     },
   };
 
-  const fn = sinon.fake((n) => Boolean(n % 2));
+  const fn = (n) => Boolean(n % 2);
   const result = filter(everyNumber, fn);
   const iterator = result[Symbol.iterator]();
 
-  t.deepEqual(iterator.next(), { value: 1, done: false });
-  t.deepEqual(iterator.next(), { value: 3, done: false });
-  t.deepEqual(iterator.next(), { value: 5, done: false });
-  t.deepEqual(iterator.next(), { value: 7, done: false });
+  assertEquals(iterator.next(), { value: 1, done: false });
+  assertEquals(iterator.next(), { value: 3, done: false });
+  assertEquals(iterator.next(), { value: 5, done: false });
+  assertEquals(iterator.next(), { value: 7, done: false });
 });

@@ -1,33 +1,33 @@
-import test from "ava";
+import { assertEquals, assertThrows } from "assert";
 
 import cycle from "../cycle.js";
 import take from "../take.js";
 
-test("throws when calling iterating if the iterable is empty", (t) => {
+Deno.test("throws when calling iterating if the iterable is empty", () => {
   const customEmpty = {
     *[Symbol.iterator]() {},
   };
 
   for (const iterable of [[], new Set(), customEmpty]) {
     const iterator = cycle(iterable)[Symbol.iterator]();
-    t.throws(() => {
+    assertThrows(() => {
       iterator.next();
     });
   }
 });
 
-test("repeats a one-element iterable", (t) => {
+Deno.test("repeats a one-element iterable", () => {
   const justOne = {
     *[Symbol.iterator]() {
       yield "hi";
     },
   };
 
-  t.deepEqual([...take(cycle([1]), 5)], [1, 1, 1, 1, 1]);
-  t.deepEqual([...take(cycle(justOne), 5)], ["hi", "hi", "hi", "hi", "hi"]);
+  assertEquals([...take(cycle([1]), 5)], [1, 1, 1, 1, 1]);
+  assertEquals([...take(cycle(justOne), 5)], ["hi", "hi", "hi", "hi", "hi"]);
 });
 
-test("repeats iterables", (t) => {
+Deno.test("repeats iterables", () => {
   const abc = {
     *[Symbol.iterator]() {
       yield "a";
@@ -36,11 +36,11 @@ test("repeats iterables", (t) => {
     },
   };
 
-  t.deepEqual([...take(cycle([1, 2, 3]), 7)], [1, 2, 3, 1, 2, 3, 1]);
-  t.deepEqual([...take(cycle(abc), 5)], ["a", "b", "c", "a", "b"]);
+  assertEquals([...take(cycle([1, 2, 3]), 7)], [1, 2, 3, 1, 2, 3, 1]);
+  assertEquals([...take(cycle(abc), 5)], ["a", "b", "c", "a", "b"]);
 });
 
-test("effectively does nothing to infinite iterables", (t) => {
+Deno.test("effectively does nothing to infinite iterables", () => {
   const infinite = {
     *[Symbol.iterator]() {
       for (let i = 5; true; i++) {
@@ -49,5 +49,5 @@ test("effectively does nothing to infinite iterables", (t) => {
     },
   };
 
-  t.deepEqual([...take(cycle(infinite), 7)], [5, 6, 7, 8, 9, 10, 11]);
+  assertEquals([...take(cycle(infinite), 7)], [5, 6, 7, 8, 9, 10, 11]);
 });

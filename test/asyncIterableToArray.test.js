@@ -1,8 +1,8 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import asyncIterableToArray from "../asyncIterableToArray.js";
 
-test("converts async iterables to arrays", async (t) => {
+Deno.test("converts async iterables to arrays", async () => {
   const empty = {
     async *[Symbol.asyncIterator]() {},
   };
@@ -14,6 +14,6 @@ test("converts async iterables to arrays", async (t) => {
     },
   };
 
-  t.deepEqual(await asyncIterableToArray(empty), []);
-  t.deepEqual(await asyncIterableToArray(several), [1, 2, 3]);
+  assertEquals(await asyncIterableToArray(empty), []);
+  assertEquals(await asyncIterableToArray(several), [1, 2, 3]);
 });

@@ -1,19 +1,19 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import last from "../last.js";
 
-test("returns undefined for empty iterables", (t) => {
+Deno.test("returns undefined for empty iterables", () => {
   const customEmpty = {
     *[Symbol.iterator]() {},
   };
 
-  t.is(last([]), undefined);
-  t.is(last(new Set()), undefined);
-  t.is(last(new Map()), undefined);
-  t.is(last(customEmpty), undefined);
+  assertEquals(last([]), undefined);
+  assertEquals(last(new Set()), undefined);
+  assertEquals(last(new Map()), undefined);
+  assertEquals(last(customEmpty), undefined);
 });
 
-test("returns the last value", (t) => {
+Deno.test("returns the last value", () => {
   const customIterable = {
     *[Symbol.iterator]() {
       yield 1;
@@ -22,7 +22,7 @@ test("returns the last value", (t) => {
     },
   };
 
-  t.is(last([1]), 1);
-  t.is(last(new Set([1, 2, 3])), 3);
-  t.is(last(customIterable), 3);
+  assertEquals(last([1]), 1);
+  assertEquals(last(new Set([1, 2, 3])), 3);
+  assertEquals(last(customIterable), 3);
 });

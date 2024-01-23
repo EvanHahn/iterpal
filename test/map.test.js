@@ -1,39 +1,39 @@
-import test from "ava";
-import sinon from "sinon";
+import { assert, assertEquals } from "assert";
+import { assertSpyCalls, spy } from "mock";
 
 import map from "../map.js";
 
-test("returns an empty iterable when passed an empty iterable", (t) => {
-  const fn = sinon.fake();
+Deno.test("returns an empty iterable when passed an empty iterable", () => {
+  const fn = spy();
 
-  t.deepEqual([...map([], fn)], []);
-  t.deepEqual([...map(new Set(), fn)], []);
-  t.deepEqual([...map(new Map(), fn)], []);
+  assertEquals([...map([], fn)], []);
+  assertEquals([...map(new Set(), fn)], []);
+  assertEquals([...map(new Map(), fn)], []);
 
-  sinon.assert.notCalled(fn);
+  assertSpyCalls(fn, 0);
 });
 
-test("returns a new iterator with values mapped", (t) => {
-  const fn = sinon.fake((n) => n * n);
+Deno.test("returns a new iterator with values mapped", () => {
+  const fn = spy((n) => n * n);
   const result = map([1, 2, 3], fn);
 
-  sinon.assert.notCalled(fn);
+  assertSpyCalls(fn, 0);
 
-  t.deepEqual([...result], [1, 4, 9]);
-  t.assert(!(result instanceof Array));
+  assertEquals([...result], [1, 4, 9]);
+  assert(!(result instanceof Array));
 
-  sinon.assert.calledThrice(fn);
+  assertSpyCalls(fn, 3);
 });
 
-test('iterating doesn\'t "spend" the iterable', (t) => {
+Deno.test('iterating doesn\'t "spend" the iterable', () => {
   const result = map([1, 2, 3], (n) => n * n);
 
-  t.deepEqual([...result], [1, 4, 9]);
-  t.deepEqual([...result], [1, 4, 9]);
-  t.deepEqual([...result], [1, 4, 9]);
+  assertEquals([...result], [1, 4, 9]);
+  assertEquals([...result], [1, 4, 9]);
+  assertEquals([...result], [1, 4, 9]);
 });
 
-test("can map over an infinite iterable", (t) => {
+Deno.test("can map over an infinite iterable", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 0; true; i++) {
@@ -42,12 +42,11 @@ test("can map over an infinite iterable", (t) => {
     },
   };
 
-  const fn = sinon.fake((n) => n * n);
-  const result = map(everyNumber, fn);
+  const result = map(everyNumber, (n) => n * n);
   const iterator = result[Symbol.iterator]();
 
-  t.deepEqual(iterator.next(), { value: 0, done: false });
-  t.deepEqual(iterator.next(), { value: 1, done: false });
-  t.deepEqual(iterator.next(), { value: 4, done: false });
-  t.deepEqual(iterator.next(), { value: 9, done: false });
+  assertEquals(iterator.next(), { value: 0, done: false });
+  assertEquals(iterator.next(), { value: 1, done: false });
+  assertEquals(iterator.next(), { value: 4, done: false });
+  assertEquals(iterator.next(), { value: 9, done: false });
 });

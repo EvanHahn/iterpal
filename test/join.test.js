@@ -1,14 +1,14 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import join from "../join.js";
 
-test("returns the empty string for empty iterables", (t) => {
-  t.is(join([]), "");
-  t.is(join([], "~"), "");
-  t.is(join(new Set(), "~"), "");
+Deno.test("returns the empty string for empty iterables", () => {
+  assertEquals(join([]), "");
+  assertEquals(join([], "~"), "");
+  assertEquals(join(new Set(), "~"), "");
 });
 
-test("joins iterables with commas by default", (t) => {
+Deno.test("joins iterables with commas by default", () => {
   const values = {
     *[Symbol.iterator]() {
       yield "str";
@@ -25,10 +25,10 @@ test("joins iterables with commas by default", (t) => {
     },
   };
 
-  t.is(join(values), "str,1,false,,,NaN,foo");
+  assertEquals(join(values), "str,1,false,,,NaN,foo");
 });
 
-test("can join iterables with other separators", (t) => {
+Deno.test("can join iterables with other separators", () => {
   const values = {
     *[Symbol.iterator]() {
       yield "str";
@@ -45,6 +45,9 @@ test("can join iterables with other separators", (t) => {
     },
   };
 
-  t.is(join(values, "~"), "str~1~false~~~NaN~foo");
-  t.is(join(values, " and "), "str and 1 and false and  and  and NaN and foo");
+  assertEquals(join(values, "~"), "str~1~false~~~NaN~foo");
+  assertEquals(
+    join(values, " and "),
+    "str and 1 and false and  and  and NaN and foo",
+  );
 });

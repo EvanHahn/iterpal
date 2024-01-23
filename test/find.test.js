@@ -1,10 +1,10 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import find from "../find.js";
 
 const isTen = (n) => n === 10;
 
-test("finds the first matching element and returns it", (t) => {
+Deno.test("finds the first matching element and returns it", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 5; true; i++) {
@@ -13,10 +13,10 @@ test("finds the first matching element and returns it", (t) => {
     },
   };
 
-  t.is(find(everyNumber, isTen), 10);
+  assertEquals(find(everyNumber, isTen), 10);
 });
 
-test("returns undefined if the value is not found", (t) => {
-  t.is(find([], isTen), undefined);
-  t.is(find([1, 2, 3], isTen), undefined);
+Deno.test("returns undefined if the value is not found", () => {
+  assertEquals(find([], isTen), undefined);
+  assertEquals(find([1, 2, 3], isTen), undefined);
 });

@@ -1,8 +1,8 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import size from "../size.js";
 
-test("returns the size of an iterable", (t) => {
+Deno.test("returns the size of an iterable", () => {
   const customIterable = {
     *[Symbol.iterator]() {
       yield "foo";
@@ -11,15 +11,15 @@ test("returns the size of an iterable", (t) => {
     },
   };
 
-  t.is(size([]), 0);
-  t.is(size(""), 0);
-  t.is(size(new Set()), 0);
-  t.is(size(new Map()), 0);
+  assertEquals(size([]), 0);
+  assertEquals(size(""), 0);
+  assertEquals(size(new Set()), 0);
+  assertEquals(size(new Map()), 0);
 
-  t.is(size(["a"]), 1);
-  t.is(size("a"), 1);
-  t.is(size(new Set(["a"])), 1);
-  t.is(size(new Map([["a", "b"]])), 1);
+  assertEquals(size(["a"]), 1);
+  assertEquals(size("a"), 1);
+  assertEquals(size(new Set(["a"])), 1);
+  assertEquals(size(new Map([["a", "b"]])), 1);
 
-  t.is(size(customIterable), 3);
+  assertEquals(size(customIterable), 3);
 });

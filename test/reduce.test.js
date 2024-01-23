@@ -1,22 +1,23 @@
-import test from "ava";
+import { assertEquals } from "assert";
+import { assertSpyCall, assertSpyCalls, spy } from "mock";
 
 import reduce from "../reduce.js";
-import sinon from "sinon";
 
-test("returns the accumulator if the iterable is empty", (t) => {
-  const fn = sinon.fake();
+Deno.test("returns the accumulator if the iterable is empty", () => {
+  const fn = spy();
 
-  t.is(reduce([], fn, 0), 0);
-  t.is(reduce(new Map(), fn, 100), 100);
+  assertEquals(reduce([], fn, 0), 0);
+  assertEquals(reduce(new Map(), fn, 100), 100);
 
-  sinon.assert.notCalled(fn);
+  assertSpyCalls(fn, 0);
 });
 
-test("reduces over the iterable, returning a single value", (t) => {
-  const add = sinon.fake((a, b) => a + b);
-  t.is(reduce([1, 2, 3], add, 0), 6);
-  sinon.assert.calledThrice(add);
-  sinon.assert.calledWithExactly(add.getCall(0), 0, 1);
-  sinon.assert.calledWithExactly(add.getCall(1), 1, 2);
-  sinon.assert.calledWithExactly(add.getCall(2), 3, 3);
+Deno.test("reduces over the iterable, returning a single value", () => {
+  const add = spy((a, b) => a + b);
+
+  assertEquals(reduce([1, 2, 3], add, 0), 6);
+  assertSpyCalls(add, 3);
+  assertSpyCall(add, 0, { args: [0, 1] });
+  assertSpyCall(add, 1, { args: [1, 2] });
+  assertSpyCall(add, 2, { args: [3, 3] });
 });

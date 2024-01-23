@@ -1,25 +1,25 @@
-import test from "ava";
-import sinon from "sinon";
+import { assertEquals, assertNotStrictEquals } from "assert";
+import { assertSpyCalls, spy } from "mock";
 
 import concat from "../concat.js";
 
-test("doesn't return the same iterable even when passed 1 iterable", (t) => {
+Deno.test("doesn't return the same iterable even when passed 1 iterable", () => {
   const arr = [1, 2, 3];
-  t.not(concat([arr]), arr);
+  assertNotStrictEquals(concat([arr]), arr);
 });
 
-test("handling empty iterables", (t) => {
+Deno.test("handling empty iterables", () => {
   const customEmpty = {
     *[Symbol.iterator]() {},
   };
 
-  t.deepEqual([...concat([[], []])], []);
-  t.deepEqual([...concat([new Set(), []])], []);
-  t.deepEqual([...concat([[], customEmpty])], []);
-  t.deepEqual([...concat([[], customEmpty, new Set(), new Map()])], []);
+  assertEquals([...concat([[], []])], []);
+  assertEquals([...concat([new Set(), []])], []);
+  assertEquals([...concat([[], customEmpty])], []);
+  assertEquals([...concat([[], customEmpty, new Set(), new Map()])], []);
 });
 
-test("concatenates multiple iterables", (t) => {
+Deno.test("concatenates multiple iterables", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 4; true; i++) {
@@ -31,20 +31,18 @@ test("concatenates multiple iterables", (t) => {
   const result = concat([[1, 2], new Set([3]), new Map(), everyNumber]);
   const iterator = result[Symbol.iterator]();
 
-  t.deepEqual(iterator.next(), { value: 1, done: false });
-  t.deepEqual(iterator.next(), { value: 2, done: false });
-  t.deepEqual(iterator.next(), { value: 3, done: false });
-  t.deepEqual(iterator.next(), { value: 4, done: false });
-  t.deepEqual(iterator.next(), { value: 5, done: false });
-  t.deepEqual(iterator.next(), { value: 6, done: false });
-  t.deepEqual(iterator.next(), { value: 7, done: false });
+  assertEquals(iterator.next(), { value: 1, done: false });
+  assertEquals(iterator.next(), { value: 2, done: false });
+  assertEquals(iterator.next(), { value: 3, done: false });
+  assertEquals(iterator.next(), { value: 4, done: false });
+  assertEquals(iterator.next(), { value: 5, done: false });
+  assertEquals(iterator.next(), { value: 6, done: false });
+  assertEquals(iterator.next(), { value: 7, done: false });
 });
 
-test("doesn't start the iterable until the last minute", (t) => {
-  t.plan(0);
-
+Deno.test("doesn't start the iterable until the last minute", () => {
   const oneTwoThree = {
-    [Symbol.iterator]: sinon.fake(() => {
+    [Symbol.iterator]: spy(() => {
       let n = 0;
       return {
         next() {
@@ -62,16 +60,13 @@ test("doesn't start the iterable until the last minute", (t) => {
   const result = concat([[1, 2], oneTwoThree]);
   const iterator = result[Symbol.iterator]();
 
-  sinon.assert.notCalled(oneTwoThree[Symbol.iterator]);
+  iterator.next();
+  iterator.next();
+  assertSpyCalls(oneTwoThree[Symbol.iterator], 0);
 
   iterator.next();
-  sinon.assert.notCalled(oneTwoThree[Symbol.iterator]);
-  iterator.next();
-  sinon.assert.notCalled(oneTwoThree[Symbol.iterator]);
+  assertSpyCalls(oneTwoThree[Symbol.iterator], 1);
 
   iterator.next();
-  sinon.assert.calledOnce(oneTwoThree[Symbol.iterator]);
-
-  iterator.next();
-  sinon.assert.calledOnce(oneTwoThree[Symbol.iterator]);
+  assertSpyCalls(oneTwoThree[Symbol.iterator], 1);
 });

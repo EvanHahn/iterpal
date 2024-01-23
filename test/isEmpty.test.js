@@ -1,19 +1,19 @@
-import test from "ava";
+import { assert, assertFalse } from "assert";
 
 import isEmpty from "../isEmpty.js";
 
-test("returns true for empty iterables", (t) => {
+Deno.test("returns true for empty iterables", () => {
   const customEmpty = {
     *[Symbol.iterator]() {},
   };
 
-  t.true(isEmpty([]));
-  t.true(isEmpty(new Set()));
-  t.true(isEmpty(new Map()));
-  t.true(isEmpty(customEmpty));
+  assert(isEmpty([]));
+  assert(isEmpty(new Set()));
+  assert(isEmpty(new Map()));
+  assert(isEmpty(customEmpty));
 });
 
-test("returns false for non-empty iterables", (t) => {
+Deno.test("returns false for non-empty iterables", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 0; true; i++) {
@@ -22,8 +22,8 @@ test("returns false for non-empty iterables", (t) => {
     },
   };
 
-  t.false(isEmpty([1]));
-  t.false(isEmpty(new Set([1])));
-  t.false(isEmpty(new Map([["hi", 5]])));
-  t.false(isEmpty(everyNumber));
+  assertFalse(isEmpty([1]));
+  assertFalse(isEmpty(new Set([1])));
+  assertFalse(isEmpty(new Map([["hi", 5]])));
+  assertFalse(isEmpty(everyNumber));
 });

@@ -1,15 +1,15 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import at from "../at.js";
 
-test("returns undefined when accessing an out-of-bounds value", (t) => {
-  t.is(at(["a", "b", "c"], 3), undefined);
-  t.is(at(["a", "b", "c"], 4), undefined);
-  t.is(at(["a", "b", "c"], 100), undefined);
-  t.is(at("abc", 3), undefined);
+Deno.test("returns undefined when accessing an out-of-bounds value", () => {
+  assertEquals(at(["a", "b", "c"], 3), undefined);
+  assertEquals(at(["a", "b", "c"], 4), undefined);
+  assertEquals(at(["a", "b", "c"], 100), undefined);
+  assertEquals(at("abc", 3), undefined);
 });
 
-test("returns the value at the nth iteration", (t) => {
+Deno.test("returns the value at the nth iteration", () => {
   const everyNumberSquared = {
     *[Symbol.iterator]() {
       for (let i = 0; true; i++) {
@@ -18,14 +18,14 @@ test("returns the value at the nth iteration", (t) => {
     },
   };
 
-  t.is(at("abcdef", 0), "a");
-  t.is(at("abcdef", 3), "d");
-  t.is(at(everyNumberSquared, 0), 0);
-  t.is(at(everyNumberSquared, 1), 1);
-  t.is(at(everyNumberSquared, 100), 100 * 100);
+  assertEquals(at("abcdef", 0), "a");
+  assertEquals(at("abcdef", 3), "d");
+  assertEquals(at(everyNumberSquared, 0), 0);
+  assertEquals(at(everyNumberSquared, 1), 1);
+  assertEquals(at(everyNumberSquared, 100), 100 * 100);
 });
 
-test("stops early if the iterator is done", (t) => {
+Deno.test("stops early if the iterator is done", () => {
   let nextCallCount = 0;
   const firstThree = {
     [Symbol.iterator]: () => {
@@ -46,5 +46,5 @@ test("stops early if the iterator is done", (t) => {
   };
 
   at(firstThree, 1000);
-  t.is(nextCallCount, 3);
+  assertEquals(nextCallCount, 3);
 });

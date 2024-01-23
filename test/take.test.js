@@ -1,8 +1,8 @@
-import test from "ava";
+import { assertEquals } from "assert";
 
 import take from "../take.js";
 
-test("returns the first n elements from an iterable", (t) => {
+Deno.test("returns the first n elements from an iterable", () => {
   const everyNumber = {
     *[Symbol.iterator]() {
       for (let i = 0; true; i++) {
@@ -11,15 +11,15 @@ test("returns the first n elements from an iterable", (t) => {
     },
   };
 
-  t.deepEqual([...take(everyNumber, 0)], []);
-  t.deepEqual([...take(everyNumber, 1)], [0]);
-  t.deepEqual([...take(everyNumber, 7)], [0, 1, 2, 3, 4, 5, 6]);
+  assertEquals([...take(everyNumber, 0)], []);
+  assertEquals([...take(everyNumber, 1)], [0]);
+  assertEquals([...take(everyNumber, 7)], [0, 1, 2, 3, 4, 5, 6]);
 });
 
-test("stops after the iterable has been exhausted", (t) => {
+Deno.test("stops after the iterable has been exhausted", () => {
   const set = new Set([1, 2, 3]);
 
-  t.deepEqual([...take(set, 3)], [1, 2, 3]);
-  t.deepEqual([...take(set, 4)], [1, 2, 3]);
-  t.deepEqual([...take(set, 10000)], [1, 2, 3]);
+  assertEquals([...take(set, 3)], [1, 2, 3]);
+  assertEquals([...take(set, 4)], [1, 2, 3]);
+  assertEquals([...take(set, 10000)], [1, 2, 3]);
 });

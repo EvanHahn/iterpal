@@ -1,24 +1,24 @@
-import test from "ava";
+import { assert, assertFalse } from "assert";
 
 import every from "../every.js";
 
-test("returns true for empty iterables", (t) => {
+Deno.test("returns true for empty iterables", () => {
   const alwaysFalse = () => false;
-  t.true(every([], alwaysFalse));
-  t.true(every(new Map(), alwaysFalse));
+  assert(every([], alwaysFalse));
+  assert(every(new Map(), alwaysFalse));
 });
 
-test("returns true if all of the elements return true", (t) => {
+Deno.test("returns true if all of the elements return true", () => {
   const isThree = (n) => n === 3;
 
-  t.true(every([3], isThree));
-  t.true(every(new Set([3, 3]), isThree));
-  t.true(every([3, 3, 3], isThree));
+  assert(every([3], isThree));
+  assert(every(new Set([3, 3]), isThree));
+  assert(every([3, 3, 3], isThree));
 });
 
-test("returns false if every of the elements return false", (t) => {
+Deno.test("returns false if every of the elements return false", () => {
   const isThree = (n) => n === 3;
 
-  t.false(every([1, 2, 3, 4], isThree));
-  t.false(every(new Set([1, 2, 3, 4]), isThree));
+  assertFalse(every([1, 2, 3, 4], isThree));
+  assertFalse(every(new Set([1, 2, 3, 4]), isThree));
 });
