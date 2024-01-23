@@ -1,8 +1,8 @@
 import { assertEquals } from "assert";
 
-import find from "../find.js";
+import find from "../find.ts";
 
-const isTen = (n) => n === 10;
+const isTen = (n: number) => n === 10;
 
 Deno.test("finds the first matching element and returns it", () => {
   const everyNumber = {
