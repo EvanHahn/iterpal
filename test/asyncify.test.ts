@@ -1,5 +1,5 @@
 import { assertEquals } from "assert";
-import asyncIterableToArray from "../asyncIterableToArray.js";
+import asyncIterableToArray from "../asyncIterableToArray.ts";
 
 import asyncify from "../asyncify.ts";
 

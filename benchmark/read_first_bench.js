@@ -20,7 +20,7 @@ Deno.bench("iterpal read first 100", () => {
   let count = 0;
   for (const value of map(bigArray, String)) {
     count++;
-    noop(value)
+    noop(value);
     if (count === 100) break;
     noop(value);
   }

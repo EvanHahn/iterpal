@@ -9,9 +9,9 @@ Deno.bench("iterpal map and filter", () => {
   const result = map(
     filter(
       map(bigArray, (n) => n - 0.5),
-      (n) => n > 0
+      (n) => n > 0,
     ),
-    String
+    String,
   );
   for (const value of result) {
     noop(value);
@@ -22,9 +22,9 @@ Deno.bench("native map and filter", () => {
   const result = map(
     filter(
       map(bigArray, (n) => n - 0.5),
-      (n) => n > 0
+      (n) => n > 0,
     ),
-    String
+    String,
   );
   for (const value of result) {
     noop(value);

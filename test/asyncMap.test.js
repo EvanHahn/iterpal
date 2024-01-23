@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
-import asyncIterableToArray from "../asyncIterableToArray.js";
+import asyncIterableToArray from "../asyncIterableToArray.ts";
 
 import asyncMap from "../asyncMap.js";
 

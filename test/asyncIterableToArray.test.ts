@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import asyncIterableToArray from "../asyncIterableToArray.js";
+import asyncIterableToArray from "../asyncIterableToArray.ts";
 
 Deno.test("converts async iterables to arrays", async () => {
   const empty = {
