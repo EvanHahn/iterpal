@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import size from "../size.js";
+import size from "../size.ts";
 
 Deno.test("returns the size of an iterable", () => {
   const customIterable = {
