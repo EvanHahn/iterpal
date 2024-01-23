@@ -1,4 +1,4 @@
-export default function join(iterable, separator = ",") {
+export default <T>(iterable: Iterable<T>, separator = ","): string => {
   let hasPlacedFirstElement = false;
   let result = "";
 
@@ -13,4 +13,4 @@ export default function join(iterable, separator = ",") {
   }
 
   return result;
-}
+};

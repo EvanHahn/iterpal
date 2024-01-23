@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import join from "../join.js";
+import join from "../join.ts";
 
 Deno.test("returns the empty string for empty iterables", () => {
   assertEquals(join([]), "");
