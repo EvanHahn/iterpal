@@ -1,16 +1,15 @@
-export default function (iterable) {
-  return new CycleIterable(iterable);
-}
+export default <T>(iterable: Iterable<T>): Iterable<T> =>
+  new CycleIterable(iterable);
 
-class CycleIterable {
-  constructor(iterable) {
-    Object.defineProperty(this, "_iterable", {
-      value: iterable,
-    });
+class CycleIterable<T> implements Iterable<T> {
+  #iterable: Iterable<T>;
+
+  constructor(iterable: Iterable<T>) {
+    this.#iterable = iterable;
   }
 
   [Symbol.iterator]() {
-    const iterable = this._iterable;
+    const iterable = this.#iterable;
     let iterator = iterable[Symbol.iterator]();
 
     return {
