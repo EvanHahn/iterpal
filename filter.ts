@@ -1,6 +1,6 @@
 export default <T>(
   iterable: Iterable<T>,
-  fn: (value: T) => boolean
+  fn: (value: T) => boolean,
 ): Iterable<T> => new FilterIterable(iterable, fn);
 
 class FilterIterable<T> implements Iterable<T> {

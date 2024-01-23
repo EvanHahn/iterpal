@@ -1,4 +1,4 @@
-import map from "../map.js";
+import map from "../map.ts";
 
 const bigArray = Array(1_000_000)
   .fill(null)

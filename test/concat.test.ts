@@ -8,7 +8,7 @@ Deno.test(
   () => {
     const arr = [1, 2, 3];
     assertNotStrictEquals(concat([arr]), arr);
-  }
+  },
 );
 
 Deno.test("handling empty iterables", () => {
@@ -17,7 +17,7 @@ Deno.test("handling empty iterables", () => {
   };
 
   assertEquals([...concat([[], []])], []);
-  assertEquals([...concat([new Set(), []])], []);
+  assertEquals([...concat([new Set<never>(), []])], []);
   assertEquals([...concat([[], customEmpty])], []);
   assertEquals([...concat([[], customEmpty, new Set(), new Map()])], []);
 });

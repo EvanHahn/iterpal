@@ -1,4 +1,4 @@
-import map from "./map.js";
+import map from "./map.ts";
 import first from "./first.ts";
 import drop from "./drop.ts";
 

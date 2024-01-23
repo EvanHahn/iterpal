@@ -1,7 +1,7 @@
 import { assert, assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import map from "../map.js";
+import map from "../map.ts";
 
 Deno.test("returns an empty iterable when passed an empty iterable", () => {
   const fn = spy();
@@ -14,7 +14,7 @@ Deno.test("returns an empty iterable when passed an empty iterable", () => {
 });
 
 Deno.test("returns a new iterator with values mapped", () => {
-  const fn = spy((n) => n * n);
+  const fn = spy((n: number) => n * n);
   const result = map([1, 2, 3], fn);
 
   assertSpyCalls(fn, 0);

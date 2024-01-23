@@ -1,4 +1,4 @@
-import map from "../map.js";
+import map from "../map.ts";
 
 const bigSet = new Set();
 for (let i = 0; i < 1_000_000; i++) {
