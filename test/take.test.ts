@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import take from "../take.js";
+import take from "../take.ts";
 
 Deno.test("returns the first n elements from an iterable", () => {
   const everyNumber = {

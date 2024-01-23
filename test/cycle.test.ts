@@ -1,7 +1,7 @@
 import { assertEquals, assertThrows } from "assert";
 
 import cycle from "../cycle.ts";
-import take from "../take.js";
+import take from "../take.ts";
 
 Deno.test("throws when calling iterating if the iterable is empty", () => {
   const customEmpty = {
