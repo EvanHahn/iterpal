@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import last from "../last.js";
+import last from "../last.ts";
 
 Deno.test("returns undefined for empty iterables", () => {
   const customEmpty = {
