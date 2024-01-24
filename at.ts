@@ -1,3 +1,18 @@
+/**
+ * Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
+ *
+ * @example
+ * ```typescript
+ * at(new Set(["hello", "world"]), 0);
+ * // => "hello"
+ *
+ * at(["hello", "world"], 1);
+ * // => "world"
+ *
+ * at(new Set(["hello", "world"]), 2);
+ * // => undefined
+ * ```
+ */
 export default function at<T>(
   iterable: Iterable<T>,
   desiredIndex: number,
