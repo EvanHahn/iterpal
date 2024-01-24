@@ -18,6 +18,7 @@ Deno.test("returns the size of an iterable", () => {
 
   assertEquals(size(["a"]), 1);
   assertEquals(size("a"), 1);
+  assertEquals(size("🌍"), 1);
   assertEquals(size(new Set(["a"])), 1);
   assertEquals(size(new Map([["a", "b"]])), 1);
 

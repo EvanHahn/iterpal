@@ -32,6 +32,7 @@ export default function hasSameValues<T>(
   iterableA: Iterable<T>,
   iterableB: Iterable<T>,
 ): boolean {
+  // This is an optimization.
   const aSize = quickSize(iterableA);
   const bSize = quickSize(iterableB);
   if (aSize !== null && bSize !== null && aSize !== bSize) {

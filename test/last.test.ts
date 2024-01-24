@@ -23,6 +23,7 @@ Deno.test("returns the last value", () => {
   };
 
   assertEquals(last([1]), 1);
+  assertEquals(last("🌎🌍🌍"), "🌍");
   assertEquals(last(new Set([1, 2, 3])), 3);
   assertEquals(last(customIterable), 3);
 });
