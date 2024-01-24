@@ -1,3 +1,18 @@
+/**
+ * Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.
+ *
+ * The predicate function is invoked with one argument: the current value.
+ *
+ * @example
+ * ```typescript
+ * const isEven = (n) => n % 2 === 0;
+ *
+ * const mySet = new Set([1, 2, 3, 4, 5, 6]);
+ *
+ * filter(mySet, isEven);
+ * // => Iterable yielding 2, 4, 6
+ * ```
+ */
 export default function filter<T>(
   iterable: Iterable<T>,
   fn: (value: T) => boolean,

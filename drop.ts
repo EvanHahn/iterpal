@@ -1,5 +1,21 @@
-export default <T>(iterable: Iterable<T>, amount: number): Iterable<T> =>
-  new DropIterable(iterable, amount);
+/**
+ * Returns an iterable with the first `amount` elements removed.
+ *
+ * @example
+ * ```typescript
+ * drop(new Set(["hello", "to", "the", "world!"]), 2);
+ * // => Iterable yielding 'the', 'world'
+ *
+ * drop(new Set(["hello", "to", "the", "world!"]), 4);
+ * // => Empty iterable
+ * ```
+ */
+export default function drop<T>(
+  iterable: Iterable<T>,
+  amount: number,
+): Iterable<T> {
+  return new DropIterable(iterable, amount);
+}
 
 class DropIterable<T> implements Iterable<T> {
   #iterable: Iterable<T>;

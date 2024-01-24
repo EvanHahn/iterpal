@@ -1,3 +1,12 @@
+/**
+ * Returns an infinite iterable that "cycles" over `iterable`.
+ *
+ * @example
+ * ```typescript
+ * cycle([1, 2, 3]);
+ * // => Iterable yielding 1, 2, 3, 1, 2, 3, 1, 2, 3 ...
+ * ```
+ */
 export default function cycle<T>(iterable: Iterable<T>): Iterable<T> {
   return new CycleIterable(iterable);
 }

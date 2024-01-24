@@ -8,6 +8,26 @@ const countValues = <T>(iterable: Iterable<T>): Map<T, number> => {
   return result;
 };
 
+/**
+ * If `iterableA` and `iterableB` have the same lengths and values, returns `true` (order is irrelevant). Otherwise, returns `false`. Equality is determined with `Object.is`.
+ *
+ * @example
+ * ```typescript
+ * const hasSameValues = require("iterpal/hasSameValues");
+ *
+ * hasSameValues([9, 8, 7], [7, 8, 9]);
+ * // => true
+ *
+ * hasSameValues([9, 8, 7], [9, 10, 11]);
+ * // => false
+ *
+ * hasSameValues([9, 8, 7], new Set([7, 9, 8]));
+ * // => true
+ *
+ * hasSameValues([], new Set([]));
+ * // => true
+ * ```
+ */
 export default function hasSameValues<T>(
   iterableA: Iterable<T>,
   iterableB: Iterable<T>,

@@ -1,3 +1,20 @@
+/**
+ * Converts all elements in `iterable` into a string separated by `separator`.
+ *
+ * Like `Array.prototype.join`, `null` and `undefined` are converted to empty strings.
+ *
+ * @example
+ * ```typescript
+ * join(new Set(["hello", "world"]));
+ * // => 'hello,world'
+ *
+ * join(new Set(["hello", "world"]), " and ");
+ * // => 'hello and world'
+ *
+ * join([1, undefined, 2, null, 3]);
+ * // => '1,,2,,3'
+ * ```
+ */
 export default function join<T>(
   iterable: Iterable<T>,
   separator = ",",
