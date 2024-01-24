@@ -1,4 +1,16 @@
-export default function <T>(value: T, times = Infinity): Iterable<T> {
+/**
+ * Returns an iterable that yields `value` `times` times. `times` is infinite by default.
+ *
+ * @example
+ * ```typescript
+ * repeat("foo");
+ * // => Iterable yielding 'foo', 'foo', 'foo', 'foo'...
+ *
+ * repeat("hi", 3);
+ * // => Iterable yielding 'hi', 'hi', 'hi'
+ * ```
+ */
+export default function repeat<T>(value: T, times = Infinity): Iterable<T> {
   return new RepeatIterable(value, times);
 }
 

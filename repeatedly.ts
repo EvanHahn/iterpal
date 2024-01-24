@@ -1,3 +1,16 @@
+/**
+ * Returns an iterable that yields `fn(iterationCount)` every time. Useful when
+ * "converting" a function to an iterable.
+ *
+ * @example
+ * ```typescript
+ * repeatedly(Math.random);
+ * // => Iterable yielding random numbers
+ *
+ * repeatedly((n) => `Iteration #${n + 1}`);
+ * // => Iterable yielding "Iteration 1", "Iteration 2", "Iteration 3" ...
+ * ```
+ */
 export default function <T>(fn: (iterationCount: number) => T): Iterable<T> {
   return new RepeatedlyIterable(fn);
 }
