@@ -1,5 +1,7 @@
 /**
- * Reduces `asyncIterableToArray` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value. If `fn` returns a `Promise`, it is awaited.
+ * Reduces `asyncIterable` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value. If `fn` returns a `Promise`, it is awaited.
+ *
+ * Similar to `Array.prototype.reduce`.
  *
  * @example
  * ```javascript
