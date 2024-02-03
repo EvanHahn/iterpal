@@ -1,4 +1,4 @@
-import map from "../map.ts";
+import { map } from "../mod.ts";
 import { noop } from "./helpers.ts";
 
 const bigArray = Array(1_000_000).fill(null).map(Math.random);

@@ -1,4 +1,4 @@
-import map from "../map.ts";
+import { map } from "../mod.ts";
 import { noop } from "./helpers.ts";
 
 const bigSet = new Set();
