@@ -19,10 +19,38 @@ const bigintRange = (start: bigint, finish: bigint, step: bigint) => {
   return new RangeIterable(start, finish, step);
 };
 
+/** @ignored */
 function range(finish: number): Iterable<number>;
+/** @ignored */
 function range(finish: bigint): Iterable<number>;
+/** @ignored */
 function range(start: number, finish: number, step?: number): Iterable<number>;
+/** @ignored */
 function range(start: bigint, finish: bigint, step?: bigint): Iterable<bigint>;
+
+/**
+ * Counts between `start` and `finish` by `step`. All values must be integers.
+ *
+ * Similar to Python's `range` function.
+ *
+ * @example
+ * ```typescript
+ * [...range(3)];
+ * // => [0, 1, 2]
+ *
+ * [...range(1, 3)];
+ * // => [1, 2]
+ *
+ * [...range(1n, 3n)];
+ * // => [1n, 2n]
+ *
+ * [...range(1, 3, 3)];
+ * // => [1, 4, 7]
+ *
+ * [...range(7, 1, -2)];
+ * // => [7, 5, 3]
+ * ```
+ */
 function range(
   startOrFinish: number | bigint,
   finish?: number | bigint,

@@ -23,7 +23,7 @@
  */
 export default function asyncMap<T, V>(
   asyncIterable: AsyncIterable<T>,
-  fn: MapFn<T, V>,
+  fn: (value: T) => V | Promise<V>,
 ): AsyncIterable<V> {
   return new AsyncMapIterable(asyncIterable, fn);
 }
