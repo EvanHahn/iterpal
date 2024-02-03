@@ -7,6 +7,7 @@
 - TypeScript type definitions
 - Deno support
 - Documentation
+- `asyncFilter`
 - `cycle`
 - `hasSameValues`
 - `isEmpty`
