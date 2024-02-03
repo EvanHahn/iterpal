@@ -1,3 +1,14 @@
+/**
+ * Creates an iterable of values by running each element in `iterable` through `fn`.
+ *
+ * Similar to `Array.prototype.map`.
+ *
+ * @example
+ * ```javascript
+ * map(numbers, (n) => n * n);
+ * // => Iterable yielding 1, 4, 9, 16, ...
+ * ```
+ */
 export default function map<T, U>(
   iterable: Iterable<T>,
   fn: (value: T) => U,
