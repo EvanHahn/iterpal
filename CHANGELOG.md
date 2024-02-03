@@ -16,6 +16,7 @@
 ### Changed
 
 - Asyncify now takes either sync or async iterables
+- **Breaking:** `range` now works like Python's `range`
 - **Breaking:** `zip` now stops after the shortest iterable
 
 ### Removed
