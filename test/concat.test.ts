@@ -1,7 +1,7 @@
 import { assertEquals, assertNotStrictEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import concat from "../concat.ts";
+import { concat } from "../mod.ts";
 
 Deno.test(
   "doesn't return the same iterable even when passed 1 iterable",

@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import max from "../max.ts";
+import { max } from "../mod.ts";
 
 Deno.test("returns undefined with an empty iterable", () => {
   assertEquals(max([]), undefined);

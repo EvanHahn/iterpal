@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import min from "../min.ts";
+import { min } from "../mod.ts";
 
 Deno.test("returns undefined with an empty iterable", () => {
   assertEquals(min([]), undefined);

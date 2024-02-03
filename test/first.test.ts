@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import first from "../first.ts";
+import { first } from "../mod.ts";
 
 Deno.test("returns undefined for empty iterables", () => {
   const customEmpty = {

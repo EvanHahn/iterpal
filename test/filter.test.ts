@@ -1,7 +1,7 @@
 import { assert, assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import filter from "../filter.ts";
+import { filter } from "../mod.ts";
 
 Deno.test("does nothing to empty iterables", () => {
   const fn = spy(() => true);

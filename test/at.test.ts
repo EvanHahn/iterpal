@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import at from "../at.ts";
+import { at } from "../mod.ts";
 
 Deno.test("returns undefined when accessing an out-of-bounds value", () => {
   assertEquals(at(["a", "b", "c"], 3), undefined);

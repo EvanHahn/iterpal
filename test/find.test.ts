@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import find from "../find.ts";
+import { find } from "../mod.ts";
 
 const isTen = (n: number) => n === 10;
 

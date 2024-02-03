@@ -1,7 +1,6 @@
 import { assertEquals } from "assert";
-import take from "../take.ts";
 
-import zip from "../zip.ts";
+import { take, zip } from "../mod.ts";
 
 Deno.test("zipping no iterables", () => {
   assertEquals([...zip()], []);

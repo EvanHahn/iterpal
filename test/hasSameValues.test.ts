@@ -1,6 +1,6 @@
 import { assertEquals } from "assert";
 
-import hasSameValues from "../hasSameValues.ts";
+import { hasSameValues } from "../mod.ts";
 
 const customIterable = {
   *[Symbol.iterator]() {

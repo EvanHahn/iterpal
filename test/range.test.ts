@@ -1,6 +1,6 @@
 import { assertEquals, assertThrows } from "assert";
 
-import range from "../range.ts";
+import { range } from "../mod.ts";
 
 Deno.test('returns a range from 0 to "end" if one argument is passed', () => {
   assertEquals([...range(0)], []);

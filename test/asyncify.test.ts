@@ -1,7 +1,5 @@
 import { assertEquals, assertNotStrictEquals } from "assert";
-import asyncIterableToArray from "../asyncIterableToArray.ts";
-
-import asyncify from "../asyncify.ts";
+import { asyncify, asyncIterableToArray } from "../mod.ts";
 
 Deno.test("converts an empty sync iterable to an async one", async () => {
   const empty = {
@@ -43,19 +41,22 @@ Deno.test("copies async iterables", async () => {
   assertEquals(await asyncIterableToArray(result), [1, 2, 3]);
 });
 
-Deno.test('if object is both kinds of iterable, "prefers" async iterables when making copy', async () => {
-  const both = {
-    [Symbol.iterator]() {
-      throw new Error("This should never be called");
-    },
-    *[Symbol.asyncIterator]() {
-      yield 1;
-      yield 2;
-      yield 3;
-    },
-  };
+Deno.test(
+  'if object is both kinds of iterable, "prefers" async iterables when making copy',
+  async () => {
+    const both = {
+      [Symbol.iterator]() {
+        throw new Error("This should never be called");
+      },
+      *[Symbol.asyncIterator]() {
+        yield 1;
+        yield 2;
+        yield 3;
+      },
+    };
 
-  const result = asyncify(both);
+    const result = asyncify(both);
 
-  assertEquals(await asyncIterableToArray(result), [1, 2, 3]);
-});
+    assertEquals(await asyncIterableToArray(result), [1, 2, 3]);
+  },
+);

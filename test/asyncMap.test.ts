@@ -1,8 +1,6 @@
 import { assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
-import asyncIterableToArray from "../asyncIterableToArray.ts";
-
-import asyncMap from "../asyncMap.ts";
+import { asyncIterableToArray, asyncMap } from "../mod.ts";
 
 Deno.test(
   "returns an empty iterable when passed an empty iterable",

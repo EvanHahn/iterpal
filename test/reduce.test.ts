@@ -1,7 +1,7 @@
 import { assertEquals } from "assert";
 import { assertSpyCall, assertSpyCalls, spy } from "mock";
 
-import reduce from "../reduce.ts";
+import { reduce } from "../mod.ts";
 
 Deno.test("returns the accumulator if the iterable is empty", () => {
   const fn = spy();

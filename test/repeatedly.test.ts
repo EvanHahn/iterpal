@@ -1,7 +1,7 @@
 import { assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import repeatedly from "../repeatedly.ts";
+import { repeatedly } from "../mod.ts";
 
 Deno.test("calls a function over and over", () => {
   const double = spy((n: number) => n + n);

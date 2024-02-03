@@ -1,6 +1,6 @@
 import { assert, assertFalse } from "assert";
 
-import every from "../every.ts";
+import { every } from "../mod.ts";
 
 const isThree = (n: number) => n === 3;
 
