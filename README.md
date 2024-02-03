@@ -1,8 +1,15 @@
 # [![Iterpal](media/iterpal_logo.png)](https://github.com/EvanHahn/iterpal)
 
-Iterpal is a friendly collection of utilities for iterables in JavaScript, inspired by [Lodash](https://lodash.com/).
+Iterpal is a friendly collection of utilities for iterables in JavaScript,
+inspired by [Lodash](https://lodash.com/).
 
-Iterpal can help with arrays, strings, [sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set), [maps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map), [typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray), [buffers](https://nodejs.org/api/buffer.html#buffer_buffer), [streams](https://nodejs.org/api/stream.html), or [any other iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol).
+Iterpal can help with arrays, strings,
+[sets](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set),
+[maps](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map),
+[typed arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray),
+[buffers](https://nodejs.org/api/buffer.html#buffer_buffer),
+[streams](https://nodejs.org/api/stream.html), or
+[any other iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#The_iterable_protocol).
 
 ```js
 import { map } from "iterpal";
@@ -20,7 +27,9 @@ map(mySet, (n) => n * n);
 
 ### Synchronous functions
 
-Iterpal's synchronous functions deal with regular iterables. In JavaScript, a value is an iterable if it contains `Symbol.iterator`. Some common examples of such iterables:
+Iterpal's synchronous functions deal with regular iterables. In JavaScript, a
+value is an iterable if it contains `Symbol.iterator`. Some common examples of
+such iterables:
 
 - Strings
 - `Array`s
@@ -29,7 +38,10 @@ Iterpal's synchronous functions deal with regular iterables. In JavaScript, a va
 - `TypedArray`s
 - `Buffer`s
 
-Plain JavaScript objects are not iterables because their iteration behavior is ambiguous—do you want to iterate over the keys, values, or both? You can get an iterable with `Object.keys(obj)`, `Object.values(obj)`, or `Object.entries(obj)`.
+Plain JavaScript objects are not iterables because their iteration behavior is
+ambiguous—do you want to iterate over the keys, values, or both? You can get an
+iterable with `Object.keys(obj)`, `Object.values(obj)`, or
+`Object.entries(obj)`.
 
 <details>
 <summary><code>asyncify(iterable)</code></summary>
@@ -48,7 +60,8 @@ asyncify([1, 2, 3, 4]);
 <details>
 <summary><code>at(iterable, index)</code></summary>
 
-Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
+Returns the nth element from an iterable. Returns `undefined` if the index is
+out of range.
 
 ```js
 const at = require("iterpal/at");
@@ -126,7 +139,8 @@ drop(new Set(["hello", "to", "the", "world!"]), 4);
 <details>
 <summary><code>every(iterable, predicate)</code></summary>
 
-Returns `true` if `predicate(value)` returns true for every value in `iterable`, and false otherwise. Returns `true` for an empty iterable.
+Returns `true` if `predicate(value)` returns true for every value in `iterable`,
+and false otherwise. Returns `true` for an empty iterable.
 
 ```js
 const every = require("iterpal/every");
@@ -165,7 +179,8 @@ fibonacci();
 <details>
 <summary><code>filter(iterable, predicate)</code></summary>
 
-Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.
+Returns a new iterable which iterates over `iterable`, yielding when
+`predicate(value)` returns a truthy value.
 
 The predicate function is invoked with one argument: the current value.
 
@@ -190,7 +205,8 @@ const asArray = [...filter(mySet, isEven)];
 <details>
 <summary><code>find(iterable, predicate)</code></summary>
 
-Iterates over `iterable`, returning the first element `predicate(value)` returns truthy for. Returns `undefined` if no value is found.
+Iterates over `iterable`, returning the first element `predicate(value)` returns
+truthy for. Returns `undefined` if no value is found.
 
 ```js
 const find = require("iterpal/find");
@@ -214,7 +230,8 @@ find([], isEven);
 <details>
 <summary><code>first(iterable)</code></summary>
 
-Returns the first value in an iterable. Returns `undefined` if the iterable is empty.
+Returns the first value in an iterable. Returns `undefined` if the iterable is
+empty.
 
 ```js
 const first = require("iterpal/first");
@@ -234,7 +251,8 @@ first(new Map());
 <details>
 <summary><code>hasSameValues(iterableA, iterableB)</code></summary>
 
-If `iterableA` and `iterableB` have the same lengths and values, returns `true`. Otherwise, returns `false`. Equality is determined with `Object.is`.
+If `iterableA` and `iterableB` have the same lengths and values, returns `true`.
+Otherwise, returns `false`. Equality is determined with `Object.is`.
 
 ```js
 const hasSameValues = require("iterpal/hasSameValues");
@@ -276,7 +294,8 @@ isEmpty([1, 2, 3]);
 
 Converts all elements in `iterable` into a string separated by `separator`.
 
-Like `Array.prototype.join`, `null` and `undefined` are converted to empty strings.
+Like `Array.prototype.join`, `null` and `undefined` are converted to empty
+strings.
 
 ```js
 const join = require("iterpal/join");
@@ -299,9 +318,11 @@ join(new Map());
 <details>
 <summary><code>last(iterable)</code></summary>
 
-Iterates over `iterable`, returning the final value. Returns `undefined` if the iterable is empty.
+Iterates over `iterable`, returning the final value. Returns `undefined` if the
+iterable is empty.
 
-If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.
+If you know the type of `iterable` and it has a `length` or `size` property, you
+should use that instead because it is faster.
 
 ```js
 const last = require("iterpal/last");
@@ -321,7 +342,8 @@ last(new Map());
 <details>
 <summary><code>map(iterable, fn)</code></summary>
 
-Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for each value.
+Returns a new iterable which iterates over `iterable`, yielding `fn(value)` for
+each value.
 
 `fn` is invoked with one argument: the current value.
 
@@ -346,7 +368,8 @@ const asArray = [...map(mySet, square)];
 <details>
 <summary><code>max(numbers)</code></summary>
 
-Returns the largest number in the iterable `numbers`. Returns `undefined` if `numbers` is an empty iterable.
+Returns the largest number in the iterable `numbers`. Returns `undefined` if
+`numbers` is an empty iterable.
 
 ```js
 const max = require("iterpal/max");
@@ -363,7 +386,8 @@ max([Infinity, 1, 2]);
 <details>
 <summary><code>min(numbers)</code></summary>
 
-Returns the smallest number in the iterable `numbers`. Returns `undefined` if `numbers` is an empty iterable.
+Returns the smallest number in the iterable `numbers`. Returns `undefined` if
+`numbers` is an empty iterable.
 
 ```js
 const min = require("iterpal/min");
@@ -377,7 +401,8 @@ min(new Set([9, 3, 1]));
 <details>
 <summary><code>objectEntries(obj)</code></summary>
 
-Returns an iterable, yielding `[key, value]` for each entry in the object. An iterable version of `Object.entries`.
+Returns an iterable, yielding `[key, value]` for each entry in the object. An
+iterable version of `Object.entries`.
 
 ```js
 const objectEntries = require("iterpal/objectEntries");
@@ -397,7 +422,9 @@ objectEntries({});
 <details>
 <summary><code>objectHas(obj, property)</code></summary>
 
-An internal utility method exposed for public use. Returns true if `property` is an own-property of `obj`, false otherwise. You can use this instead of `Object.prototype.hasOwnProperty`.
+An internal utility method exposed for public use. Returns true if `property` is
+an own-property of `obj`, false otherwise. You can use this instead of
+`Object.prototype.hasOwnProperty`.
 
 ```js
 const objectHas = require("iterpal/objectHas");
@@ -435,7 +462,10 @@ const asArray = [...take(primes(), 100)];
 <details>
 <summary><code>quickSize(iterable)</code></summary>
 
-Returns the size of the iterable if its size can be determined without iterating, otherwise returns null. Works for arrays, strings, `Set`s, `Map`s, `TypedArray`s, and `ArrayBuffer`s. Notably, doesn't work for "plain" objects with a `length` property.
+Returns the size of the iterable if its size can be determined without
+iterating, otherwise returns null. Works for arrays, strings, `Set`s, `Map`s,
+`TypedArray`s, and `ArrayBuffer`s. Notably, doesn't work for "plain" objects
+with a `length` property.
 
 ```js
 const quickSize = require("iterpal/quickSize");
@@ -484,7 +514,8 @@ const asArray = [...range(6, 9)];
 <details>
 <summary><code>reduce(iterable, fn, accumulator)</code></summary>
 
-Reduces `iterable` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value.
+Reduces `iterable` to a single value. On each iteration, calls `fn` with the
+result so far (starting at `accumulator`) and the current value.
 
 ```js
 const reduce = require("iterpal/reduce");
@@ -508,7 +539,8 @@ reduce([], add, 123);
 <details>
 <summary><code>repeat(value, times = Infinity)</code></summary>
 
-Returns an iterable that yields `value`. If `times` is supplied, the length is boundless. If `times` is not supplied, the iterable is infinite.
+Returns an iterable that yields `value`. If `times` is supplied, the length is
+boundless. If `times` is not supplied, the iterable is infinite.
 
 ```js
 const repeat = require("iterpal/repeat");
@@ -528,7 +560,8 @@ const asArray = [...repeat("hi", 5)];
 <details>
 <summary><code>repeatedly(fn)</code></summary>
 
-Returns an iterable that yields `fn(iterationCount)` every time. Useful when "converting" a function to an iterable.
+Returns an iterable that yields `fn(iterationCount)` every time. Useful when
+"converting" a function to an iterable.
 
 ```js
 const repeatedly = require("iterpal/repeatedly");
@@ -545,7 +578,8 @@ repeatedly((n) => `Iteration #${n + 1}`);
 <details>
 <summary><code>size(iterable)</code></summary>
 
-Returns the size of an iterable. If you know the type of `iterable` and it has a `length` or `size` property, you should use that instead because it is faster.
+Returns the size of an iterable. If you know the type of `iterable` and it has a
+`length` or `size` property, you should use that instead because it is faster.
 
 ```js
 const size = require("iterpal/size");
@@ -573,7 +607,8 @@ size(myCustomIterable);
 <details>
 <summary><code>some(iterable, predicate)</code></summary>
 
-Returns `true` if `predicate(value)` returns true for any value in `iterable`, and false otherwise. Returns `false` for an empty iterable.
+Returns `true` if `predicate(value)` returns true for any value in `iterable`,
+and false otherwise. Returns `false` for an empty iterable.
 
 ```js
 const some = require("iterpal/some");
@@ -615,7 +650,9 @@ take(["hello", "to", "you!"], 200);
 <details>
 <summary><code>zip(iterables)</code></summary>
 
-Returns an iterable of arrays. The first array contains the first elements of each of the input iterables, the second contains the second elements of each input iterable, and so on. Useful when constructing `Map`s.
+Returns an iterable of arrays. The first array contains the first elements of
+each of the input iterables, the second contains the second elements of each
+input iterable, and so on. Useful when constructing `Map`s.
 
 ```js
 const zip = require("iterpal/zip");
@@ -642,7 +679,9 @@ zip([everyPositiveInteger, smallSet]);
 
 ### Asynchronous functions
 
-Iterpal's asynchronous functions deal with asynchronous iterables. In JavaScript, a value is an asynchronous iterable if it contains `Symbol.asyncIterator`. Streams are a common example of asynchronous iterables.
+Iterpal's asynchronous functions deal with asynchronous iterables. In
+JavaScript, a value is an asynchronous iterable if it contains
+`Symbol.asyncIterator`. Streams are a common example of asynchronous iterables.
 
 ```js
 function isAsyncIterable(value) {
@@ -669,7 +708,8 @@ isIterable(myCustomAsyncIterable);
 <details>
 <summary><code>asyncIterableToArray(asyncIterable)</code></summary>
 
-Turns an asynchronous iterable (such as a stream) into an array. Returns a `Promise` that resolves to an array.
+Turns an asynchronous iterable (such as a stream) into an array. Returns a
+`Promise` that resolves to an array.
 
 ```js
 const asyncIterableToArray = require("iterpal/asyncIterableToArray");
@@ -687,7 +727,9 @@ async function readSecrets() {
 <details>
 <summary><code>asyncMap(asyncIterable, fn)</code></summary>
 
-Returns a new asynchronous iterable which iterates over `asyncIterable`, yielding `fn(value)` for each value. If `fn` returns a Promise, it will be awaited.
+Returns a new asynchronous iterable which iterates over `asyncIterable`,
+yielding `fn(value)` for each value. If `fn` returns a Promise, it will be
+awaited.
 
 ```js
 const asyncMap = require("iterpal/asyncMap");
@@ -715,7 +757,9 @@ asyncMap(someNumbers, doubleAsync);
 <details>
 <summary><code>asyncReduce(asyncIterable, fn)</code></summary>
 
-Reduces `asyncIterableToArray` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value. If `fn` returns a `Promise`, it is awaited.
+Reduces `asyncIterableToArray` to a single value. On each iteration, calls `fn`
+with the result so far (starting at `accumulator`) and the current value. If
+`fn` returns a `Promise`, it is awaited.
 
 Returns a `Promise`.
 

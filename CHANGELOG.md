@@ -4,20 +4,30 @@
 
 ### Added
 
+- TypeScript type definitions
+- Deno support
+- Documentation
 - `cycle`
 - `hasSameValues`
 - `isEmpty`
 - `last`
-- `quickSize`
 - `repeatedly`
+
+### Changed
+
+- Asyncify now takes either sync or async iterables
+- **Breaking:** `range` now works like Python's `range`
+- **Breaking:** `zip` now stops after the shortest iterable
 
 ### Removed
 
 - **Breaking:** Dropped support for old Node versions. Node 18+ is now required
-- `jsonStringify`
-- `objectEntries`
-- `objectKeys`
-- `objectValues`
+- **Breaking:** `jsonStringify`
+- **Breaking:** `objectEntries`
+- **Breaking:** `objectKeys`
+- **Breaking:** `objectValues`
+- **Breaking:** `fibonacci`
+- **Breaking:** `objectHas`
 
 ## 0.2.0 - 2019-05-27
 
