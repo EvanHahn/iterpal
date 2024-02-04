@@ -22,4 +22,5 @@ export default function find<T>(
   for (const value of iterable) {
     if (predicate(value)) return value;
   }
+  return;
 }

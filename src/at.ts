@@ -27,4 +27,6 @@ export default function at<T>(
       break;
     }
   }
+
+  return;
 }
