@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "test": "deno task test:fmt && deno task test:lint && deno task test:docs && deno task test:types",
+    "test": "deno task test:fmt && deno task test:lint && deno task test:docs && deno task test:types && deno test",
     "test:fmt": "deno fmt --check",
     "test:lint": "deno lint",
     "test:docs": "deno doc --lint mod.ts",
