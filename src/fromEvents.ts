@@ -67,16 +67,16 @@ function fromEventTargetEvents(
   target: EventTargetLike,
   type: string,
 ): AsyncIterable<Event> {
-  const pipe = new AsyncQueue<Event>();
+  const queue = new AsyncQueue<Event>();
 
   const listener: EventListener = (event) => {
-    pipe.push(event);
+    queue.push(event);
   };
 
   target.addEventListener(type, listener);
 
   // Hide the queue from the user.
-  const result = asyncify(pipe);
+  const result = asyncify(queue);
 
   registry.register(result, () => {
     target.addEventListener(type, listener);
@@ -89,16 +89,16 @@ function fromEventEmitterEvents(
   emitter: EventEmitterLike,
   eventName: string | symbol,
 ): AsyncIterable<unknown[]> {
-  const pipe = new AsyncQueue<unknown[]>();
+  const queue = new AsyncQueue<unknown[]>();
 
   const listener = (...args: unknown[]) => {
-    pipe.push(args);
+    queue.push(args);
   };
 
   emitter.on(eventName, listener);
 
   // Hide the queue from the user.
-  const result = asyncify(pipe);
+  const result = asyncify(queue);
 
   registry.register(result, () => {
     emitter.on(eventName, listener);
