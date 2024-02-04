@@ -1,5 +1,5 @@
 import AsyncQueue from "./_asyncQueue.ts";
-import asyncIteratorToIterable from "./_asyncIteratorToIterable.ts";
+import asyncify from "./asyncify.ts";
 
 export default fromEvents;
 
@@ -75,7 +75,8 @@ function fromEventTargetEvents(
 
   target.addEventListener(type, listener);
 
-  const result = asyncIteratorToIterable<Event>(pipe);
+  // Hide the queue from the user.
+  const result = asyncify(pipe);
 
   registry.register(result, () => {
     target.addEventListener(type, listener);
@@ -96,7 +97,8 @@ function fromEventEmitterEvents(
 
   emitter.on(eventName, listener);
 
-  const result = asyncIteratorToIterable<unknown[]>(pipe);
+  // Hide the queue from the user.
+  const result = asyncify(pipe);
 
   registry.register(result, () => {
     emitter.on(eventName, listener);
