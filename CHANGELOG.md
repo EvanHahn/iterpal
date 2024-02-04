@@ -22,7 +22,8 @@
 
 ### Changed
 
-- Asyncify now takes either sync or async iterables
+- `asyncify` now takes either sync or async iterables
+- `at` should now be slightly faster for some types
 - **Breaking:** `range` now works like Python's `range`
 - **Breaking:** `zip` now stops after the shortest iterable
 

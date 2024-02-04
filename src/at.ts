@@ -1,3 +1,5 @@
+import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
+
 /**
  * Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
  *
@@ -17,6 +19,10 @@ export default function at<T>(
   iterable: Iterable<T>,
   desiredIndex: number,
 ): undefined | T {
+  if (isArrayOrTypedArray(iterable)) {
+    return (iterable as Record<number, T>)[desiredIndex];
+  }
+
   const iterator = iterable[Symbol.iterator]();
 
   for (let i = 0; i <= desiredIndex; i++) {
