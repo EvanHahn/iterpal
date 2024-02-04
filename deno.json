@@ -7,6 +7,7 @@
     "test:types": "deno check **/*.ts"
   },
   "compilerOptions": {
+    "noFallthroughCasesInSwitch": true,
     "noUncheckedIndexedAccess": true
   },
   "imports": {
