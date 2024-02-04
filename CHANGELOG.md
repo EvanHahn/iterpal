@@ -9,6 +9,7 @@
 - Deno-style API documentation
 - `asyncAt`
 - `asyncFilter`
+- `asyncFirst`
 - `asyncQueue`
 - `asyncTake`
 - `cycle`
