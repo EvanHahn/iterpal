@@ -11,7 +11,8 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noUncheckedIndexedAccess": true
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true
   },
   "imports": {
     "assert": "https://deno.land/std@0.212.0/assert/mod.ts",
