@@ -1,7 +1,11 @@
+import type { EitherIterable } from "./_eitherIterable.ts";
+
 /**
- * Returns a new async iterable which iterates over `asyncIterable`, yielding when `predicate(value)` resolves to (or returns) a truthy value.
+ * Returns a new async iterable which iterates over `iterable`, yielding when `predicate(value)` resolves to (or returns) a truthy value.
  *
  * The predicate function is invoked with one argument: the current value.
+ *
+ * Accepts sync or async iterables.
  *
  * @example
  * ```typescript
@@ -18,18 +22,18 @@
  * ```
  */
 export default function asyncFilter<T>(
-  asyncIterable: AsyncIterable<T>,
+  iterable: Iterable<T> | AsyncIterable<T>,
   fn: (value: T) => boolean | Promise<boolean>,
 ): AsyncIterable<T> {
-  return new AsyncFilterIterable(asyncIterable, fn);
+  return new AsyncFilterIterable(iterable, fn);
 }
 
 class AsyncFilterIterable<T> implements AsyncIterable<T> {
-  #iterable: AsyncIterable<T>;
+  #iterable: EitherIterable<T>;
   #fn: (value: T) => boolean | Promise<boolean>;
 
   constructor(
-    iterable: AsyncIterable<T>,
+    iterable: EitherIterable<T>,
     fn: (value: T) => boolean | Promise<boolean>,
   ) {
     this.#iterable = iterable;

@@ -46,3 +46,11 @@ Deno.test("can filter an infinite iterable", async () => {
   assertEquals(await iterator.next(), { value: 5, done: false });
   assertEquals(await iterator.next(), { value: 7, done: false });
 });
+
+Deno.test("works with sync iterables", async () => {
+  const isOdd = (n: number) => Boolean(n % 2);
+  const result = asyncFilter([1, 2, 3, 4, 5], isOdd);
+
+  const asArray = await asyncIterableToArray(result);
+  assertEquals(asArray, [1, 3, 5]);
+});
