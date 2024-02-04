@@ -6,9 +6,10 @@
 
 - TypeScript type definitions
 - Deno support
-- Documentation
+- Deno-style API documentation
 - `asyncFilter`
 - `cycle`
+- `fromEvents`
 - `hasSameValues`
 - `isEmpty`
 - `last`
