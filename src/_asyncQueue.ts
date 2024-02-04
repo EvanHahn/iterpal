@@ -1,4 +1,4 @@
-export default class AsyncQueue<T> implements AsyncIterator<T> {
+export default class AsyncQueue<T> implements AsyncIterableIterator<T> {
   #queue: Array<{
     promise: Promise<T>;
     resolve: (value: T) => unknown;
@@ -35,6 +35,10 @@ export default class AsyncQueue<T> implements AsyncIterator<T> {
     this.#cleanQueue();
 
     return { done: false, value };
+  }
+
+  [Symbol.asyncIterator](): this {
+    return this;
   }
 
   #fillQueue(toSize: number) {

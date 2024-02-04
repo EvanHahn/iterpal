@@ -16,6 +16,7 @@
   },
   "imports": {
     "assert": "https://deno.land/std@0.214.0/assert/mod.ts",
-    "mock": "https://deno.land/std@0.214.0/testing/mock.ts"
+    "mock": "https://deno.land/std@0.214.0/testing/mock.ts",
+    "time": "https://deno.land/std@0.214.0/testing/time.ts"
   }
 }

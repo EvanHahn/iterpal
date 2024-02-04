@@ -12,6 +12,7 @@
 - `cycle`
 - `emptyAsyncIterable`
 - `fromEvents`
+- `fromInterval`
 - `hasSameValues`
 - `isEmpty`
 - `last`
