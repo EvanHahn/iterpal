@@ -10,6 +10,7 @@
 - `asyncFilter`
 - `asyncTake`
 - `cycle`
+- `emptyAsyncIterable`
 - `fromEvents`
 - `hasSameValues`
 - `isEmpty`

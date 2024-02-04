@@ -8,6 +8,7 @@ export { default as at } from "./src/at.ts";
 export { default as concat } from "./src/concat.ts";
 export { default as cycle } from "./src/cycle.ts";
 export { default as drop } from "./src/drop.ts";
+export { default as emptyAsyncIterable } from "./src/emptyAsyncIterable.ts";
 export { default as every } from "./src/every.ts";
 export { default as filter } from "./src/filter.ts";
 export { default as find } from "./src/find.ts";
