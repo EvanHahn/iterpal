@@ -6,6 +6,9 @@
     "test:docs": "deno doc --lint mod.ts",
     "test:types": "deno check **/*.ts"
   },
+  "compilerOptions": {
+    "noUncheckedIndexedAccess": true
+  },
   "imports": {
     "assert": "https://deno.land/std@0.212.0/assert/mod.ts",
     "mock": "https://deno.land/std@0.212.0/testing/mock.ts"
