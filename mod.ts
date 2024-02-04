@@ -1,3 +1,4 @@
+export { default as asyncAt } from "./src/asyncAt.ts";
 export { default as asyncFilter } from "./src/asyncFilter.ts";
 export { default as asyncIterableToArray } from "./src/asyncIterableToArray.ts";
 export { default as asyncMap } from "./src/asyncMap.ts";
