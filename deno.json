@@ -9,6 +9,7 @@
   "compilerOptions": {
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
+    "noUnusedLocals": true,
     "noUncheckedIndexedAccess": true
   },
   "imports": {
