@@ -27,6 +27,10 @@ Deno.test("returns the value at the nth iteration", async () => {
   assertEquals(await asyncAt(everyNumberSquared, 100), 100 * 100);
 });
 
+Deno.test("works with sync iterables", async () => {
+  assertEquals(await asyncAt([1, 2, 3], 1), 2);
+});
+
 Deno.test("stops early if the iterator is done", async () => {
   let nextCallCount = 0;
   const firstThree: AsyncIterable<unknown> = {
