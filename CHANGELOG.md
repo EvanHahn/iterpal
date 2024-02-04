@@ -8,6 +8,7 @@
 - Deno support
 - Deno-style API documentation
 - `asyncFilter`
+- `asyncTake`
 - `cycle`
 - `fromEvents`
 - `hasSameValues`
