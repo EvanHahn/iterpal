@@ -1,6 +1,7 @@
 export { default as asyncFilter } from "./src/asyncFilter.ts";
 export { default as asyncIterableToArray } from "./src/asyncIterableToArray.ts";
 export { default as asyncMap } from "./src/asyncMap.ts";
+export { AsyncQueue, default as asyncQueue } from "./src/asyncQueue.ts";
 export { default as asyncReduce } from "./src/asyncReduce.ts";
 export { default as asyncTake } from "./src/asyncTake.ts";
 export { default as asyncify } from "./src/asyncify.ts";

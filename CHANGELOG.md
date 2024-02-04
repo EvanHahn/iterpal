@@ -8,6 +8,7 @@
 - Deno support
 - Deno-style API documentation
 - `asyncFilter`
+- `asyncQueue`
 - `asyncTake`
 - `cycle`
 - `emptyAsyncIterable`

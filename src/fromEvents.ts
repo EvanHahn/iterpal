@@ -1,4 +1,4 @@
-import AsyncQueue from "./_asyncQueue.ts";
+import asyncQueue from "./asyncQueue.ts";
 import asyncify from "./asyncify.ts";
 
 export default fromEvents;
@@ -67,7 +67,7 @@ function fromEventTargetEvents(
   target: EventTargetLike,
   type: string,
 ): AsyncIterable<Event> {
-  const queue = new AsyncQueue<Event>();
+  const queue = asyncQueue<Event>();
 
   const listener: EventListener = (event) => {
     queue.push(event);
@@ -89,7 +89,7 @@ function fromEventEmitterEvents(
   emitter: EventEmitterLike,
   eventName: string | symbol,
 ): AsyncIterable<unknown[]> {
-  const queue = new AsyncQueue<unknown[]>();
+  const queue = asyncQueue<unknown[]>();
 
   const listener = (...args: unknown[]) => {
     queue.push(args);

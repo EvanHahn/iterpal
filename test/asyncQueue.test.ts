@@ -1,9 +1,9 @@
 import { assertEquals } from "assert";
 
-import AsyncQueue from "../src/_asyncQueue.ts";
+import asyncQueue from "../src/asyncQueue.ts";
 
 Deno.test("async queue: pushing, then pulling", async () => {
-  const queue = new AsyncQueue<number>();
+  const queue = asyncQueue<number>();
   const pull = async () => (await queue.next()).value;
 
   queue.push(1);
@@ -15,7 +15,7 @@ Deno.test("async queue: pushing, then pulling", async () => {
 });
 
 Deno.test("async queue: pulling, then pushing", async () => {
-  const queue = new AsyncQueue<number>();
+  const queue = asyncQueue<number>();
   const pull = async () => (await queue.next()).value;
 
   const pullA = pull();

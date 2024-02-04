@@ -1,4 +1,4 @@
-import AsyncQueue from "./_asyncQueue.ts";
+import asyncQueue from "./asyncQueue.ts";
 import asyncify from "./asyncify.ts";
 
 type Interval = ReturnType<typeof setInterval>;
@@ -19,7 +19,7 @@ const registry = new FinalizationRegistry((interval: Interval) => {
  * ```
  */
 export default function fromInterval(delay: number): AsyncIterable<number> {
-  const queue = new AsyncQueue<number>();
+  const queue = asyncQueue<number>();
 
   let n = 0;
   const interval = setInterval(() => {
