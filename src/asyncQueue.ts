@@ -51,7 +51,7 @@ export class AsyncQueue<T> implements AsyncIterableIterator<T> {
   /**
    * Pull a value off of the queue in the iterator style.
    */
-  async next(): Promise<IteratorResult<T>> {
+  async next(): Promise<IteratorResult<T, void>> {
     this.#fillQueue(this.#pullPointer + 1);
 
     const queueItem = this.#queue[this.#pullPointer];

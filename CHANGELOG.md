@@ -19,6 +19,7 @@
 - `hasSameValues`
 - `isEmpty`
 - `last`
+- `promiseAsyncAll`
 - `repeatedly`
 
 ### Changed
