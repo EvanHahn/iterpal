@@ -18,6 +18,7 @@
 - `promiseAll`
 - `repeatedly`
 - `reverse`
+- `takeWhile`
 
 ### Changed
 

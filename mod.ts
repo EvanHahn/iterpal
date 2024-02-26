@@ -33,4 +33,5 @@ export { default as reverse } from "./src/reverse.ts";
 export { default as size } from "./src/size.ts";
 export { default as some } from "./src/some.ts";
 export { default as take } from "./src/take.ts";
+export { default as takeWhile } from "./src/takeWhile.ts";
 export { default as zip } from "./src/zip.ts";
