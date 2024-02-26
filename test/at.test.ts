@@ -14,7 +14,7 @@ Deno.test(
     assertEquals(await at(asyncIterable, 3), undefined);
     assertEquals(await at(asyncIterable, 4), undefined);
     assertEquals(await at(asyncIterable, 100), undefined);
-  }
+  },
 );
 
 Deno.test("returns the value at the nth iteration", async () => {

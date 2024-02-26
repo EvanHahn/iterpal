@@ -4,7 +4,6 @@
  * @module
  */
 export { AsyncQueue, default as asyncQueue } from "./src/asyncQueue.ts";
-export { default as asyncFilter } from "./src/asyncFilter.ts";
 export { default as asyncFirst } from "./src/asyncFirst.ts";
 export { default as asyncIterableToArray } from "./src/asyncIterableToArray.ts";
 export { default as asyncMap } from "./src/asyncMap.ts";

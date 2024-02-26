@@ -7,7 +7,6 @@
 - TypeScript type definitions
 - Deno support
 - Deno-style API documentation
-- `asyncFilter`
 - `asyncFirst`
 - `asyncQueue`
 - `asyncTake`

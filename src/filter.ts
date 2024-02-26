@@ -1,7 +1,23 @@
+import isSync from "./_isSync.ts";
+
+/** @ignored */
+export default function filter<T>(
+  iterable: Iterable<T>,
+  fn: (value: T) => boolean,
+): Iterable<T>;
+
+/** @ignored */
+export default function filter<T>(
+  iterable: AsyncIterable<T>,
+  fn: (value: T) => boolean,
+): AsyncIterable<T>;
+
 /**
  * Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.
  *
  * The predicate function is invoked with one argument: the current value.
+ *
+ * Works with sync and async iterables.
  *
  * @example
  * ```typescript
@@ -14,10 +30,12 @@
  * ```
  */
 export default function filter<T>(
-  iterable: Iterable<T>,
+  iterable: Iterable<T> | AsyncIterable<T>,
   fn: (value: T) => boolean,
-): Iterable<T> {
-  return new FilterIterable(iterable, fn);
+): Iterable<T> | AsyncIterable<T> {
+  return isSync(iterable)
+    ? new FilterIterable(iterable, fn)
+    : new FilterAsyncIterable(iterable, fn);
 }
 
 class FilterIterable<T> implements Iterable<T> {
@@ -37,6 +55,32 @@ class FilterIterable<T> implements Iterable<T> {
       next() {
         while (true) {
           const nextIteration = iterator.next();
+          if (nextIteration.done || fn(nextIteration.value)) {
+            return nextIteration;
+          }
+        }
+      },
+    };
+  }
+}
+
+class FilterAsyncIterable<T> implements AsyncIterable<T> {
+  #iterable: AsyncIterable<T>;
+  #fn: (value: T) => boolean;
+
+  constructor(iterable: AsyncIterable<T>, fn: (value: T) => boolean) {
+    this.#iterable = iterable;
+    this.#fn = fn;
+  }
+
+  [Symbol.asyncIterator]() {
+    const iterator = this.#iterable[Symbol.asyncIterator]();
+    const fn = this.#fn;
+
+    return {
+      async next() {
+        while (true) {
+          const nextIteration = await iterator.next();
           if (nextIteration.done || fn(nextIteration.value)) {
             return nextIteration;
           }

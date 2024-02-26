@@ -1,10 +1,22 @@
 import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
 import isSync from "./_isSync.ts";
 
+/** @ignored */
+export default function at<T>(
+  iterable: Iterable<T>,
+  desiredIndex: number,
+): undefined | T;
+
+/** @ignored */
+export default function at<T>(
+  iterable: AsyncIterable<T>,
+  desiredIndex: number,
+): Promise<undefined | T>;
+
 /**
  * Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
  *
- * Works with sync and async iterables.
+ * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * @example
  * ```typescript
@@ -18,20 +30,9 @@ import isSync from "./_isSync.ts";
  * // => undefined
  * ```
  */
-
-export default function at<T>(
-  iterable: Iterable<T>,
-  desiredIndex: number
-): undefined | T;
-
-export default function at<T>(
-  iterable: AsyncIterable<T>,
-  desiredIndex: number
-): Promise<undefined | T>;
-
 export default function at<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
-  desiredIndex: number
+  desiredIndex: number,
 ): undefined | T | Promise<undefined | T> {
   if (isArrayOrTypedArray(iterable)) {
     return (iterable as Record<number, T>)[desiredIndex];
@@ -53,7 +54,7 @@ function atSync<T>(iterable: Iterable<T>, desiredIndex: number): undefined | T {
 
 async function atAsync<T>(
   iterable: AsyncIterable<T>,
-  desiredIndex: number
+  desiredIndex: number,
 ): Promise<undefined | T> {
   const iterator = iterable[Symbol.asyncIterator]();
   for (let i = 0; i <= desiredIndex; i++) {
