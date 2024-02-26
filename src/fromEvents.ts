@@ -79,7 +79,7 @@ function fromEventTargetEvents(
   const result = asyncify(queue);
 
   registry.register(result, () => {
-    target.addEventListener(type, listener);
+    target.removeEventListener(type, listener);
   });
 
   return result;
@@ -101,7 +101,7 @@ function fromEventEmitterEvents(
   const result = asyncify(queue);
 
   registry.register(result, () => {
-    emitter.on(eventName, listener);
+    emitter.off(eventName, listener);
   });
 
   return result;
