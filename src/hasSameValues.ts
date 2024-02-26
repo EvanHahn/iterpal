@@ -13,7 +13,7 @@ const countValues = <T>(iterable: Iterable<T>): Map<T, number> => {
  *
  * @example
  * ```typescript
- * const hasSameValues = require("iterpal/hasSameValues");
+ * import { hasSameValues } from "iterpal";
  *
  * hasSameValues([9, 8, 7], [7, 8, 9]);
  * // => true
