@@ -8,7 +8,6 @@
 - Deno support
 - Deno-style API documentation
 - `asyncQueue`
-- `asyncTake`
 - `cycle`
 - `emptyAsyncIterable`
 - `fromEvents`
