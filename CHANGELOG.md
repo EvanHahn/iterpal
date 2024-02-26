@@ -15,7 +15,7 @@
 - `hasSameValues`
 - `isEmpty`
 - `last`
-- `promiseAsyncAll`
+- `promiseAll`
 - `repeatedly`
 - `reverse`
 

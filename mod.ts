@@ -24,7 +24,7 @@ export { default as last } from "./src/last.ts";
 export { default as map } from "./src/map.ts";
 export { default as max } from "./src/max.ts";
 export { default as min } from "./src/min.ts";
-export { default as promiseAsyncAll } from "./src/promiseAsyncAll.ts";
+export { default as promiseAll } from "./src/promiseAll.ts";
 export { default as range } from "./src/range.ts";
 export { default as reduce } from "./src/reduce.ts";
 export { default as repeat } from "./src/repeat.ts";

@@ -1,10 +1,10 @@
 import { assert, assertEquals, assertRejects } from "assert";
 
-import { asyncify, promiseAsyncAll } from "../mod.ts";
+import { asyncify, promiseAll } from "../mod.ts";
 
 Deno.test("resolves with an empty array with empty iterables", async () => {
-  assertEquals(await promiseAsyncAll([]), []);
-  assertEquals(await promiseAsyncAll(asyncify([])), []);
+  assertEquals(await promiseAll([]), []);
+  assertEquals(await promiseAll(asyncify([])), []);
 });
 
 Deno.test("resolves with the result of all the promises", async () => {
@@ -13,7 +13,7 @@ Deno.test("resolves with the result of all the promises", async () => {
     const rawArgs = [Promise.resolve(1), 2, promise];
     const args = isAsync ? asyncify(rawArgs) : rawArgs;
 
-    const resultPromise = promiseAsyncAll(args);
+    const resultPromise = promiseAll(args);
     resolve(3);
 
     assertEquals(await resultPromise, [1, 2, 3]);
@@ -30,7 +30,7 @@ Deno.test(
       throw new Error("This should never be called");
     })();
 
-    const err = await assertRejects(() => promiseAsyncAll(args));
+    const err = await assertRejects(() => promiseAll(args));
     assert(err instanceof Error && err.message === "uh oh");
   },
 );

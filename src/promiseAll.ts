@@ -5,7 +5,7 @@ import isSync from "./_isSync.ts";
  *
  * If a sync iterable is provided, `Promise.all` will be used under the hood.
  */
-export default function promiseAsyncAll<T>(
+export default function promiseAll<T>(
   iterable: Iterable<T | PromiseLike<T>> | AsyncIterable<T | PromiseLike<T>>,
 ): Promise<Array<T>> {
   return isSync(iterable) ? Promise.all(iterable) : asyncAll(iterable);
