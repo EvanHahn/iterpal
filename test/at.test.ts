@@ -8,12 +8,14 @@ Deno.test(
     assertEquals(at(["a", "b", "c"], 3), undefined);
     assertEquals(at(["a", "b", "c"], 4), undefined);
     assertEquals(at(["a", "b", "c"], 100), undefined);
+    assertEquals(at(["a", "b", "c"], -4), undefined);
     assertEquals(at("abc", 3), undefined);
 
     const asyncIterable = asyncify(["a", "b", "c"]);
     assertEquals(await at(asyncIterable, 3), undefined);
     assertEquals(await at(asyncIterable, 4), undefined);
     assertEquals(await at(asyncIterable, 100), undefined);
+    assertEquals(await at(asyncIterable, -4), undefined);
   },
 );
 
@@ -37,6 +39,16 @@ Deno.test("returns the value at the nth iteration", async () => {
   assertEquals(await at(squaresAsync, 1), 1);
   assertEquals(await at(squaresAsync, 2), 4);
   assertEquals(await at(squaresAsync, 100), 100 * 100);
+});
+
+Deno.test("negative lookups", async () => {
+  assertEquals(at("abc", -1), "c");
+  assertEquals(at("abc", -2), "b");
+  assertEquals(at("abc", -3), "a");
+
+  const asyncNumbers = asyncify([1, 2]);
+  assertEquals(await at(asyncNumbers, -1), 2);
+  assertEquals(await at(asyncNumbers, -2), 1);
 });
 
 Deno.test("stops early if the iterator is done", async () => {

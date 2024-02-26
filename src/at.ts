@@ -1,5 +1,6 @@
 import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
 import isSync from "./_isSync.ts";
+import asyncIterableToArray from "./asyncIterableToArray.ts";
 
 /** @ignored */
 export default function at<T>(
@@ -16,6 +17,8 @@ export default function at<T>(
 /**
  * Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
  *
+ * If the index is negative, it will count from the end of the iterable. This usually requires materializing the entire iterable.
+ *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * @example
@@ -26,6 +29,9 @@ export default function at<T>(
  * at(["hello", "world"], 1);
  * // => "world"
  *
+ * at("abc", -2);
+ * // => "b"
+ *
  * at(new Set(["hello", "world"]), 2);
  * // => undefined
  * ```
@@ -35,7 +41,7 @@ export default function at<T>(
   desiredIndex: number,
 ): undefined | T | Promise<undefined | T> {
   if (isArrayOrTypedArray(iterable)) {
-    return (iterable as Record<number, T>)[desiredIndex];
+    return (iterable as Array<T>).at(desiredIndex);
   }
   return isSync(iterable)
     ? atSync(iterable, desiredIndex)
@@ -43,6 +49,8 @@ export default function at<T>(
 }
 
 function atSync<T>(iterable: Iterable<T>, desiredIndex: number): undefined | T {
+  if (desiredIndex < 0) return at(Array.from(iterable), desiredIndex);
+
   const iterator = iterable[Symbol.iterator]();
   for (let i = 0; i <= desiredIndex; i++) {
     const iteration = iterator.next();
@@ -56,6 +64,10 @@ async function atAsync<T>(
   iterable: AsyncIterable<T>,
   desiredIndex: number,
 ): Promise<undefined | T> {
+  if (desiredIndex < 0) {
+    return at(await asyncIterableToArray(iterable), desiredIndex);
+  }
+
   const iterator = iterable[Symbol.asyncIterator]();
   for (let i = 0; i <= desiredIndex; i++) {
     const iteration = await iterator.next();
