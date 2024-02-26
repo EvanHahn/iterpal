@@ -7,7 +7,6 @@
 - TypeScript type definitions
 - Deno support
 - Deno-style API documentation
-- `asyncFirst`
 - `asyncQueue`
 - `asyncTake`
 - `cycle`
@@ -31,12 +30,13 @@
 ### Removed
 
 - **Breaking:** Dropped support for old Node versions. Node 18+ is now required
+- **Breaking:** `asyncMap`
+- **Breaking:** `fibonacci`
 - **Breaking:** `jsonStringify`
 - **Breaking:** `objectEntries`
+- **Breaking:** `objectHas`
 - **Breaking:** `objectKeys`
 - **Breaking:** `objectValues`
-- **Breaking:** `fibonacci`
-- **Breaking:** `objectHas`
 
 ## 0.2.0 - 2019-05-27
 
