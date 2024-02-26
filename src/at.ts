@@ -1,6 +1,6 @@
 import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
 import isSync from "./_isSync.ts";
-import asyncIterableToArray from "./asyncIterableToArray.ts";
+import arrayFrom from "./arrayFrom.ts";
 
 /** @ignored */
 export default function at<T>(
@@ -65,7 +65,7 @@ async function atAsync<T>(
   desiredIndex: number,
 ): Promise<undefined | T> {
   if (desiredIndex < 0) {
-    return at(await asyncIterableToArray(iterable), desiredIndex);
+    return at(await arrayFrom(iterable), desiredIndex);
   }
 
   const iterator = iterable[Symbol.asyncIterator]();

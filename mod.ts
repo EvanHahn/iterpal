@@ -4,7 +4,7 @@
  * @module
  */
 export { AsyncQueue, default as asyncQueue } from "./src/asyncQueue.ts";
-export { default as asyncIterableToArray } from "./src/asyncIterableToArray.ts";
+export { default as arrayFrom } from "./src/arrayFrom.ts";
 export { default as asyncify } from "./src/asyncify.ts";
 export { default as at } from "./src/at.ts";
 export { default as concat } from "./src/concat.ts";

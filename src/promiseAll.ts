@@ -1,5 +1,5 @@
 import isSync from "./_isSync.ts";
-import asyncIterableToArray from "./asyncIterableToArray.ts";
+import arrayFrom from "./arrayFrom.ts";
 
 /**
  * Like `Promise.all`, but works with async iterables as well.
@@ -15,5 +15,5 @@ export default function promiseAll<T>(
 async function asyncAll<T>(
   iterable: AsyncIterable<T | PromiseLike<T>>,
 ): Promise<Array<T>> {
-  return Promise.all(await asyncIterableToArray(iterable));
+  return Promise.all(await arrayFrom(iterable));
 }

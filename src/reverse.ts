@@ -1,6 +1,6 @@
 import isSync from "./_isSync.ts";
 import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
-import asyncIterableToArray from "./asyncIterableToArray.ts";
+import arrayFrom from "./arrayFrom.ts";
 
 /** @ignored */
 export default function reverse<T>(iterable: Iterable<T>): Iterable<T>;
@@ -38,6 +38,6 @@ function reverseSync<T>(iterable: Iterable<T>): Iterable<T> {
 }
 
 async function* reverseAsync<T>(iterable: AsyncIterable<T>): AsyncIterable<T> {
-  const materialized = await asyncIterableToArray(iterable);
+  const materialized = await arrayFrom(iterable);
   yield* reverse(materialized);
 }

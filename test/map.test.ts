@@ -1,12 +1,7 @@
 import { assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import {
-  asyncify,
-  asyncIterableToArray,
-  emptyAsyncIterable,
-  map,
-} from "../mod.ts";
+import { arrayFrom, asyncify, emptyAsyncIterable, map } from "../mod.ts";
 
 Deno.test(
   "returns an empty iterable when passed an empty iterable",
@@ -17,7 +12,7 @@ Deno.test(
     assertEquals([...map(new Set(), fn)], []);
     assertEquals([...map(new Map(), fn)], []);
 
-    assertEquals(await asyncIterableToArray(map(emptyAsyncIterable, fn)), []);
+    assertEquals(await arrayFrom(map(emptyAsyncIterable, fn)), []);
 
     assertSpyCalls(fn, 0);
   },
@@ -33,14 +28,14 @@ Deno.test("returns a new iterator with values mapped", async () => {
 
   const resultAsync = map(asyncify([1, 2, 3]), fn);
   assertSpyCalls(fn, 3);
-  assertEquals(await asyncIterableToArray(resultAsync), [1, 4, 9]);
+  assertEquals(await arrayFrom(resultAsync), [1, 4, 9]);
   assertSpyCalls(fn, 6);
 
   const resultAsync2 = map(
     asyncify([1, 2, 3]),
     (n) => Promise.resolve(n * n * n),
   );
-  assertEquals(await asyncIterableToArray(resultAsync2), [1, 8, 27]);
+  assertEquals(await arrayFrom(resultAsync2), [1, 8, 27]);
 });
 
 Deno.test('iterating doesn\'t "spend" the iterable', () => {

@@ -1,12 +1,7 @@
 import { assertEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import {
-  asyncify,
-  asyncIterableToArray,
-  emptyAsyncIterable,
-  filter,
-} from "../mod.ts";
+import { arrayFrom, asyncify, emptyAsyncIterable, filter } from "../mod.ts";
 
 Deno.test("does nothing to empty iterables", async () => {
   const fn = spy(() => true);
@@ -15,7 +10,10 @@ Deno.test("does nothing to empty iterables", async () => {
   assertEquals([...filter(new Set(), fn)], []);
   assertEquals([...filter(new Map(), fn)], []);
 
-  assertEquals(await asyncIterableToArray(filter(emptyAsyncIterable, fn)), []);
+  assertEquals(
+    await arrayFrom(filter(emptyAsyncIterable, fn)),
+    [],
+  );
 
   assertSpyCalls(fn, 0);
 });
@@ -30,7 +28,7 @@ Deno.test("returns a new iterator with values filtered", async () => {
 
   const resultAsync = filter(asyncify([1, 2, 3, 4, 5]), fn);
   assertSpyCalls(fn, 5);
-  assertEquals(await asyncIterableToArray(resultAsync), [1, 3, 5]);
+  assertEquals(await arrayFrom(resultAsync), [1, 3, 5]);
   assertSpyCalls(fn, 10);
 });
 

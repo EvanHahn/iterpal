@@ -1,12 +1,7 @@
 import { assertEquals, assertNotStrictEquals } from "assert";
 import { assertSpyCalls, spy } from "mock";
 
-import {
-  asyncify,
-  asyncIterableToArray,
-  concat,
-  emptyAsyncIterable,
-} from "../mod.ts";
+import { arrayFrom, asyncify, concat, emptyAsyncIterable } from "../mod.ts";
 
 Deno.test(
   "doesn't return the same iterable even when passed 1 iterable",
@@ -29,11 +24,19 @@ Deno.test("handling empty iterables", async () => {
   assertEquals([...concat([], customEmptySync, new Set(), new Map())], []);
 
   assertEquals(
-    await asyncIterableToArray(concat(emptyAsyncIterable, emptyAsyncIterable)),
+    await arrayFrom(
+      concat(emptyAsyncIterable, emptyAsyncIterable),
+    ),
     [],
   );
-  assertEquals(await asyncIterableToArray(concat(emptyAsyncIterable, [])), []);
-  assertEquals(await asyncIterableToArray(concat([], emptyAsyncIterable)), []);
+  assertEquals(
+    await arrayFrom(concat(emptyAsyncIterable, [])),
+    [],
+  );
+  assertEquals(
+    await arrayFrom(concat([], emptyAsyncIterable)),
+    [],
+  );
 });
 
 Deno.test("concatenates multiple iterables", async () => {

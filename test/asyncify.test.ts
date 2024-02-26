@@ -1,17 +1,17 @@
 import { assertEquals, assertNotStrictEquals } from "assert";
-import { asyncify, asyncIterableToArray } from "../mod.ts";
+import { arrayFrom, asyncify } from "../mod.ts";
 
 Deno.test("converts an empty sync iterable to an async one", async () => {
   const empty = {
     *[Symbol.iterator]() {},
   };
   const emptyAsync = asyncify(empty);
-  assertEquals(await asyncIterableToArray(emptyAsync), []);
+  assertEquals(await arrayFrom(emptyAsync), []);
 });
 
 Deno.test("converts a non-empty sync iterable to an async one", async () => {
   const result = asyncify([1, 2, 3]);
-  assertEquals(await asyncIterableToArray(result), [1, 2, 3]);
+  assertEquals(await arrayFrom(result), [1, 2, 3]);
 });
 
 Deno.test("converts a sync infinite iterable to an async one", async () => {
@@ -38,7 +38,7 @@ Deno.test("copies async iterables", async () => {
 
   assertNotStrictEquals(result, input);
 
-  assertEquals(await asyncIterableToArray(result), [1, 2, 3]);
+  assertEquals(await arrayFrom(result), [1, 2, 3]);
 });
 
 Deno.test(
@@ -57,6 +57,6 @@ Deno.test(
 
     const result = asyncify(both);
 
-    assertEquals(await asyncIterableToArray(result), [1, 2, 3]);
+    assertEquals(await arrayFrom(result), [1, 2, 3]);
   },
 );
