@@ -35,6 +35,7 @@ export { default as range } from "./src/range.ts";
 export { default as reduce } from "./src/reduce.ts";
 export { default as repeat } from "./src/repeat.ts";
 export { default as repeatedly } from "./src/repeatedly.ts";
+export { default as reverse } from "./src/reverse.ts";
 export { default as size } from "./src/size.ts";
 export { default as some } from "./src/some.ts";
 export { default as take } from "./src/take.ts";

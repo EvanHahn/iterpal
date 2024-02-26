@@ -21,6 +21,7 @@
 - `last`
 - `promiseAsyncAll`
 - `repeatedly`
+- `reverse`
 
 ### Changed
 
