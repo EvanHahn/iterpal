@@ -1,3 +1,8 @@
+/**
+ * Iterable tools for JavaScript.
+ *
+ * @module
+ */
 export { AsyncQueue, default as asyncQueue } from "./src/asyncQueue.ts";
 export { default as asyncAt } from "./src/asyncAt.ts";
 export { default as asyncFilter } from "./src/asyncFilter.ts";
