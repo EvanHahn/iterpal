@@ -1,10 +1,10 @@
 {
   "tasks": {
-    "test": "deno task test:fmt && deno task test:lint && deno task test:docs && deno task test:types && deno test",
+    "npm": "deno run -A scripts/npm.ts",
+    "test": "deno task test:fmt && deno task test:lint && deno task test:docs && deno test",
     "test:fmt": "deno fmt --check",
     "test:lint": "deno lint",
-    "test:docs": "deno doc --lint mod.ts",
-    "test:types": "deno check **/*.ts"
+    "test:docs": "deno doc --lint mod.ts"
   },
   "compilerOptions": {
     "noFallthroughCasesInSwitch": true,
@@ -14,9 +14,16 @@
     "noUncheckedIndexedAccess": true,
     "useUnknownInCatchVariables": true
   },
+  "lint": {
+    "exclude": ["dist/"]
+  },
+  "fmt": {
+    "exclude": ["dist/"]
+  },
   "imports": {
     "assert": "https://deno.land/std@0.214.0/assert/mod.ts",
     "mock": "https://deno.land/std@0.214.0/testing/mock.ts",
-    "time": "https://deno.land/std@0.214.0/testing/time.ts"
+    "time": "https://deno.land/std@0.214.0/testing/time.ts",
+    "dnt": "https://deno.land/x/dnt@0.40.0/mod.ts"
   }
 }

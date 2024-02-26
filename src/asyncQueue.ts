@@ -1,3 +1,5 @@
+import promiseWithResolvers from "./_promiseWithResolvers.ts";
+
 /**
  * An async queue. You shouldn't construct this directly and should instead use `asyncQueue`.
  *
@@ -78,7 +80,7 @@ export class AsyncQueue<T> implements AsyncIterableIterator<T> {
 
   #fillQueue(toSize: number) {
     while (this.#queue.length < toSize) {
-      this.#queue.push({ ...Promise.withResolvers<T>(), isResolved: false });
+      this.#queue.push({ ...promiseWithResolvers<T>(), isResolved: false });
     }
   }
 

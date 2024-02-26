@@ -69,7 +69,7 @@ function fromEventTargetEvents(
 ): AsyncIterable<Event> {
   const queue = asyncQueue<Event>();
 
-  const listener: EventListener = (event) => {
+  const listener = (event: Event) => {
     queue.push(event);
   };
 
