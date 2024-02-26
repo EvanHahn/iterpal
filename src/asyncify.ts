@@ -1,3 +1,5 @@
+import isAsync from "./_isAsync.ts";
+
 /**
  * Make an iterable async.
  *
@@ -14,7 +16,7 @@
 export default function asyncify<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
 ): AsyncIterable<T> {
-  return (Symbol.asyncIterator in iterable)
+  return isAsync(iterable)
     ? new CopyAsyncIterable(iterable)
     : new AsyncifyIterable(iterable);
 }
