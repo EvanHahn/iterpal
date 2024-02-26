@@ -1,3 +1,5 @@
+import isSync from "./_isSync.ts";
+
 /**
  * Like `Promise.all`, but works with async iterables as well.
  *
@@ -6,9 +8,7 @@
 export default function promiseAsyncAll<T>(
   iterable: Iterable<T | PromiseLike<T>> | AsyncIterable<T | PromiseLike<T>>,
 ): Promise<Array<T>> {
-  return Symbol.iterator in iterable
-    ? Promise.all(iterable)
-    : asyncAll(iterable);
+  return isSync(iterable) ? Promise.all(iterable) : asyncAll(iterable);
 }
 
 async function asyncAll<T>(
