@@ -30,7 +30,8 @@
 ### Removed
 
 - **Breaking:** Dropped support for old Node versions. Node 18+ is now required
-- **Breaking:** `asyncMap`
+- **Breaking:** `asyncMap` (folded into `map`)
+- **Breaking:** `asyncReduce` (folded into `reduce`)
 - **Breaking:** `fibonacci`
 - **Breaking:** `jsonStringify`
 - **Breaking:** `objectEntries`
