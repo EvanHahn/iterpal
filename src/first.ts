@@ -1,5 +1,19 @@
+import isSync from "./_isSync.ts";
+
+/** @ignored */
+export default function first<T>(
+  iterable: Iterable<T> | AsyncIterable<T>,
+): undefined | T;
+
+/** @ignored */
+export default function first<T>(
+  iterable: AsyncIterable<T>,
+): Promise<undefined | T>;
+
 /**
  * Returns the first value in an iterable. Returns `undefined` if the iterable is empty.
+ *
+ * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * @example
  * ```typescript
@@ -13,6 +27,12 @@
  * // => undefined
  * ```
  */
-export default function first<T>(iterable: Iterable<T>): undefined | T {
-  return iterable[Symbol.iterator]().next().value;
+export default function first<T>(
+  iterable: Iterable<T> | AsyncIterable<T>,
+): undefined | T | Promise<undefined | T> {
+  return isSync(iterable)
+    ? iterable[Symbol.iterator]().next().value
+    : iterable[Symbol.asyncIterator]()
+      .next()
+      .then((result) => result.value);
 }

@@ -1,20 +1,21 @@
 import { assertEquals } from "assert";
 
-import { first } from "../mod.ts";
+import { asyncify, emptyAsyncIterable, first } from "../mod.ts";
 
-Deno.test("returns undefined for empty iterables", () => {
-  const customEmpty = {
+Deno.test("returns undefined for empty iterables", async () => {
+  const customEmptySync = {
     *[Symbol.iterator]() {},
   };
-
   assertEquals(first([]), undefined);
   assertEquals(first(new Set()), undefined);
   assertEquals(first(new Map()), undefined);
-  assertEquals(first(customEmpty), undefined);
+  assertEquals(first(customEmptySync), undefined);
+
+  assertEquals(await first(emptyAsyncIterable), undefined);
 });
 
-Deno.test("returns the first value", () => {
-  const everyNumber = {
+Deno.test("returns the first value", async () => {
+  const everyNumberSync = {
     *[Symbol.iterator]() {
       for (let i = 1; true; i++) {
         yield i;
@@ -22,7 +23,9 @@ Deno.test("returns the first value", () => {
     },
   };
   const objToTestReferenceEquality = {};
-
-  assertEquals(first(everyNumber), 1);
+  assertEquals(first(everyNumberSync), 1);
   assertEquals(first([objToTestReferenceEquality]), objToTestReferenceEquality);
+
+  const everyNumberAsync = asyncify(everyNumberSync);
+  assertEquals(await first(everyNumberAsync), 1);
 });
