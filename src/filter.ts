@@ -1,13 +1,15 @@
 import isSync from "./_isSync.ts";
 
+export default filter;
+
 /** @ignored */
-export default function filter<T>(
+function filter<T>(
   iterable: Iterable<T>,
   fn: (value: T) => boolean,
 ): Iterable<T>;
 
 /** @ignored */
-export default function filter<T>(
+function filter<T>(
   iterable: AsyncIterable<T>,
   fn: (value: T) => boolean,
 ): AsyncIterable<T>;
@@ -29,7 +31,7 @@ export default function filter<T>(
  * // => Iterable yielding 2, 4, 6
  * ```
  */
-export default function filter<T>(
+function filter<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
   fn: (value: T) => boolean,
 ): Iterable<T> | AsyncIterable<T> {

@@ -2,11 +2,13 @@ import isSync from "./_isSync.ts";
 import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
 import arrayFrom from "./arrayFrom.ts";
 
-/** @ignored */
-export default function reverse<T>(iterable: Iterable<T>): Iterable<T>;
+export default reverse;
 
 /** @ignored */
-export default function reverse<T>(
+function reverse<T>(iterable: Iterable<T>): Iterable<T>;
+
+/** @ignored */
+function reverse<T>(
   iterable: AsyncIterable<T>,
 ): AsyncIterable<T>;
 
@@ -25,7 +27,7 @@ export default function reverse<T>(
  * // => Iterable yielding 3, 2, 1
  * ```
  */
-export default function reverse<T>(
+function reverse<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
 ): Iterable<T> | AsyncIterable<T> {
   return isSync(iterable) ? reverseSync(iterable) : reverseAsync(iterable);

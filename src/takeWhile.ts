@@ -1,13 +1,15 @@
 import isSync from "./_isSync.ts";
 
+export default takeWhile;
+
 /** @ignored */
-export default function takeWhile<T>(
+function takeWhile<T>(
   iterable: Iterable<T>,
   fn: (value: T) => boolean,
 ): Iterable<T>;
 
 /** @ignored */
-export default function takeWhile<T>(
+function takeWhile<T>(
   iterable: AsyncIterable<T>,
   fn: (value: T) => boolean,
 ): AsyncIterable<T>;
@@ -25,7 +27,7 @@ export default function takeWhile<T>(
  * // => Iterable yielding 1, 2, 3
  * ```
  */
-export default function takeWhile<T>(
+function takeWhile<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
   fn: (value: T) => boolean,
 ): Iterable<T> | AsyncIterable<T> {

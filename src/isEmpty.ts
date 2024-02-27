@@ -1,10 +1,12 @@
 import isSync from "./_isSync.ts";
 
-/** @ignored */
-export default function isEmpty(iterable: Iterable<unknown>): boolean;
+export default isEmpty;
 
 /** @ignored */
-export default function isEmpty(
+function isEmpty(iterable: Iterable<unknown>): boolean;
+
+/** @ignored */
+function isEmpty(
   iterable: AsyncIterable<unknown>,
 ): Promise<boolean>;
 
@@ -22,7 +24,7 @@ export default function isEmpty(
  * // => false
  * ```
  */
-export default function isEmpty(
+function isEmpty(
   iterable: Iterable<unknown> | AsyncIterable<unknown>,
 ): boolean | Promise<boolean> {
   return isSync(iterable)

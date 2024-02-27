@@ -2,14 +2,16 @@ import isArrayOrTypedArray from "./_isArrayOrTypedArray.ts";
 import isSync from "./_isSync.ts";
 import arrayFrom from "./arrayFrom.ts";
 
+export default at;
+
 /** @ignored */
-export default function at<T>(
+function at<T>(
   iterable: Iterable<T>,
   desiredIndex: number,
 ): undefined | T;
 
 /** @ignored */
-export default function at<T>(
+function at<T>(
   iterable: AsyncIterable<T>,
   desiredIndex: number,
 ): Promise<undefined | T>;
@@ -36,7 +38,7 @@ export default function at<T>(
  * // => undefined
  * ```
  */
-export default function at<T>(
+function at<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
   desiredIndex: number,
 ): undefined | T | Promise<undefined | T> {

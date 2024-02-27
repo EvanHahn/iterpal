@@ -1,14 +1,16 @@
 import isSync from "./_isSync.ts";
 
+export default reduce;
+
 /** @ignored */
-export default function reduce<T, U>(
+function reduce<T, U>(
   iterable: Iterable<T>,
   fn: (previousValue: U, currentValue: T) => U,
   accumulator: U,
 ): U;
 
 /** @ignored */
-export default function reduce<T, U>(
+function reduce<T, U>(
   iterable: AsyncIterable<T>,
   fn: (previousValue: U, currentValue: T) => U | Promise<U>,
   accumulator: U,
@@ -25,7 +27,7 @@ export default function reduce<T, U>(
  * // => 1234
  * ```
  */
-export default function reduce<T, U>(
+function reduce<T, U>(
   iterable: Iterable<T> | AsyncIterable<T>,
   fn: (previousValue: U, currentValue: T) => U | Promise<U>,
   accumulator: U,

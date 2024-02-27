@@ -1,12 +1,14 @@
 import isSync from "./_isSync.ts";
 
+export default concat;
+
 /** @ignored */
-export default function concat<T>(
+function concat<T>(
   ...iterables: ReadonlyArray<Iterable<T>>
 ): Iterable<T>;
 
 /** @ignored */
-export default function concat<T>(
+function concat<T>(
   ...iterables: ReadonlyArray<Iterable<T> | AsyncIterable<T>>
 ): AsyncIterable<T>;
 
@@ -24,7 +26,7 @@ export default function concat<T>(
  * // => Iterable yielding 1, 2, 3, 4, 5, 6
  * ```
  */
-export default function concat<T>(
+function concat<T>(
   ...iterables: ReadonlyArray<Iterable<T> | AsyncIterable<T>>
 ): Iterable<T> | AsyncIterable<T> {
   return iterables.every(isSync)

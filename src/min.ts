@@ -1,12 +1,14 @@
 import isSync from "./_isSync.ts";
 
+export default min;
+
 /** @ignored */
-export default function min<T extends number | bigint>(
+function min<T extends number | bigint>(
   numbers: Iterable<T>,
 ): undefined | T;
 
 /** @ignored */
-export default function min<T extends number | bigint>(
+function min<T extends number | bigint>(
   numbers: AsyncIterable<T>,
 ): Promise<undefined | T>;
 
@@ -24,7 +26,7 @@ export default function min<T extends number | bigint>(
  * // => -Infinity
  * ```
  */
-export default function min<T extends number | bigint>(
+function min<T extends number | bigint>(
   numbers: Iterable<T> | AsyncIterable<T>,
 ): undefined | T | Promise<undefined | T> {
   return isSync(numbers) ? minSync(numbers) : minAsync(numbers);

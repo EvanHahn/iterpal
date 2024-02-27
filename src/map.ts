@@ -1,13 +1,15 @@
 import isSync from "./_isSync.ts";
 
+export default map;
+
 /** @ignored */
-export default function map<T, U>(
+function map<T, U>(
   iterable: Iterable<T>,
   fn: (value: T) => U,
 ): Iterable<U>;
 
 /** @ignored */
-export default function map<T, U>(
+function map<T, U>(
   iterable: AsyncIterable<T>,
   fn: (value: T) => U | Promise<U>,
 ): AsyncIterable<U>;
@@ -23,7 +25,7 @@ export default function map<T, U>(
  * // => Iterable yielding 1, 4, 9, 16, ...
  * ```
  */
-export default function map<T, U>(
+function map<T, U>(
   iterable: Iterable<T> | AsyncIterable<T>,
   fn: (value: T) => U | Promise<U>,
 ): Iterable<U> | AsyncIterable<U> {

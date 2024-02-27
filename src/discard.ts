@@ -1,10 +1,10 @@
-/** @ignored */
-export default function discard(iterator: Iterator<unknown>): void;
+export default discard;
 
 /** @ignored */
-export default function discard(
-  iterator: AsyncIterator<unknown>,
-): Promise<void>;
+function discard(iterator: Iterator<unknown>): void;
+
+/** @ignored */
+function discard(iterator: AsyncIterator<unknown>): Promise<void>;
 
 /**
  * Call `next()` on an iterable until it's done, discarding the results.
@@ -21,7 +21,7 @@ export default function discard(
  * // => true
  * ```
  */
-export default function discard(
+function discard(
   iterator: Iterator<unknown> | AsyncIterator<unknown>,
 ): void | Promise<void> {
   const firstIteration = iterator.next();

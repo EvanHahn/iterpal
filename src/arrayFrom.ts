@@ -1,10 +1,12 @@
 import isSync from "./_isSync.ts";
 
-/** @ignored */
-export default function arrayFrom<T>(iterable: Iterable<T>): Array<T>;
+export default arrayFrom;
 
 /** @ignored */
-export default function arrayFrom<T>(
+function arrayFrom<T>(iterable: Iterable<T>): Array<T>;
+
+/** @ignored */
+function arrayFrom<T>(
   iterable: AsyncIterable<T>,
 ): Promise<Array<T>>;
 
@@ -21,7 +23,7 @@ export default function arrayFrom<T>(
  * // => [Uint8Array(123), Uint8Array(456), ...]
  * ```
  */
-export default function arrayFrom<T>(
+function arrayFrom<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
 ): Array<T> | Promise<Array<T>> {
   return isSync(iterable) ? Array.from(iterable) : arrayFromAsync(iterable);

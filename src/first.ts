@@ -1,12 +1,14 @@
 import isSync from "./_isSync.ts";
 
+export default first;
+
 /** @ignored */
-export default function first<T>(
+function first<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
 ): undefined | T;
 
 /** @ignored */
-export default function first<T>(
+function first<T>(
   iterable: AsyncIterable<T>,
 ): Promise<undefined | T>;
 
@@ -27,7 +29,7 @@ export default function first<T>(
  * // => undefined
  * ```
  */
-export default function first<T>(
+function first<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
 ): undefined | T | Promise<undefined | T> {
   return isSync(iterable)

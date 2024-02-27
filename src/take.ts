@@ -1,10 +1,12 @@
 import isSync from "./_isSync.ts";
 
-/** @ignored */
-export default function <T>(iterable: Iterable<T>, amount: number): Iterable<T>;
+export default take;
 
 /** @ignored */
-export default function <T>(
+function take<T>(iterable: Iterable<T>, amount: number): Iterable<T>;
+
+/** @ignored */
+function take<T>(
   iterable: AsyncIterable<T>,
   amount: number,
 ): AsyncIterable<T>;
@@ -23,7 +25,7 @@ export default function <T>(
  * // => Iterable yielding "hello", "to", "you!"
  * ```
  */
-export default function <T>(
+function take<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
   amount: number,
 ): Iterable<T> | AsyncIterable<T> {
