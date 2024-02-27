@@ -10,6 +10,7 @@
 - `asyncQueue`
 - `cycle`
 - `emptyAsyncIterable`
+- `discard`
 - `fromEvents`
 - `fromInterval`
 - `hasSameValues`

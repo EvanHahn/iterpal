@@ -9,6 +9,7 @@ export { default as asyncify } from "./src/asyncify.ts";
 export { default as at } from "./src/at.ts";
 export { default as concat } from "./src/concat.ts";
 export { default as cycle } from "./src/cycle.ts";
+export { default as discard } from "./src/discard.ts";
 export { default as drop } from "./src/drop.ts";
 export { default as emptyAsyncIterable } from "./src/emptyAsyncIterable.ts";
 export { default as every } from "./src/every.ts";
