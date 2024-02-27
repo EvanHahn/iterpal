@@ -22,12 +22,11 @@
 
 ### Changed
 
-- `asyncify` now takes either sync or async iterables
+- Many functions now support sync and async iterables
 - `at` should now be slightly faster for some types
 - **Breaking:** `range` now works like Python's `range`
 - **Breaking:** `zip` now stops after the shortest iterable
-- **Breaking:** `asyncIterableToArray` renamed to `arrayFrom`, now works with
-  sync iterables
+- **Breaking:** `asyncIterableToArray` renamed to `arrayFrom`
 
 ### Removed
 
