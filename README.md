@@ -2,6 +2,24 @@
 
 Iterable tools for JavaScript.
 
+## Installation
+
+Iterpal is available from the npm registry:
+
+```sh
+npm install iterpal
+```
+
+With Deno:
+
+```typescript
+import { filter, map } from "https://evanhahn.com/tape/iterpal/0.3.0/mod.ts";
+```
+
+## Documentation
+
+[API documentation](https://doc.deno.land/https://evanhahn.com/tape/iterpal/0.3.0/mod.ts)
+
 ## Use cases
 
 - Get helpful utilities not in the standard library.
