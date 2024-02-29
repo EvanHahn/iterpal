@@ -23,6 +23,8 @@ function at<T>(
  *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
+ * Has optimizations for some types, such as arrays, to avoid iterating over the whole argument. Don't count on this behavior, as it is only an optimization.
+ *
  * @example
  * ```typescript
  * at(new Set(["hello", "world"]), 0);
