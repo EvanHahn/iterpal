@@ -15,6 +15,27 @@ Deno.test("throws when calling iterating if the iterable is empty", () => {
   }
 });
 
+Deno.test("throws if the iterable is exhausted after the first cycle", () => {
+  let allDone = false;
+  const once = {
+    *[Symbol.iterator]() {
+      if (allDone) return;
+      yield* [1, 2, 3];
+      allDone = true;
+    },
+  };
+
+  const cycled = cycle(once)[Symbol.iterator]();
+
+  cycled.next();
+  cycled.next();
+  cycled.next();
+
+  assertThrows(() => {
+    cycled.next();
+  });
+});
+
 Deno.test("repeats a one-element iterable", () => {
   const justOne = {
     *[Symbol.iterator]() {

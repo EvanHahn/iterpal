@@ -1,6 +1,8 @@
 /**
  * Returns an infinite iterable that "cycles" over `iterable`.
  *
+ * If `iterable` is empty, an error will be thrown. This can happen if the iterable is initially empty, or empty after being "exhausted" after the first cycle completes.
+ *
  * @example
  * ```typescript
  * cycle([1, 2, 3]);
