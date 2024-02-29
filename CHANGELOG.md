@@ -6,6 +6,7 @@
 
 - `cycle` now supports async iterables
 - `drop` now supports async iterables
+- `every` now supports async iterables
 - `last` now supports async iterables
 - `size` now supports async iterables
 
