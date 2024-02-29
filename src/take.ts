@@ -29,6 +29,13 @@ function take<T>(
   iterable: Iterable<T> | AsyncIterable<T>,
   amount: number,
 ): Iterable<T> | AsyncIterable<T> {
+  if (
+    (amount < 0) ||
+    (Math.floor(amount) !== amount)
+  ) {
+    throw new Error("amount must be a non-negative integer");
+  }
+
   return isSync(iterable)
     ? new TakeIterable(iterable, amount)
     : new TakeAsyncIterable(iterable, amount);

@@ -1,6 +1,17 @@
-import { assertEquals } from "assert";
+import { assertEquals, assertThrows } from "assert";
 
 import { arrayFrom, asyncify, take } from "../mod.ts";
+
+Deno.test("throws if amount is negative", () => {
+  assertThrows(() => take([], -1));
+  assertThrows(() => take([], -0.1));
+  assertThrows(() => take(asyncify([]), -1));
+});
+
+Deno.test("throws if amount is not a round number", () => {
+  assertThrows(() => take([], 1.2));
+  assertThrows(() => take(asyncify([]), 1.2));
+});
 
 Deno.test("returns the first n elements from an iterable", async () => {
   const everyNumberSync = {
@@ -19,6 +30,17 @@ Deno.test("returns the first n elements from an iterable", async () => {
     await arrayFrom(take(everyNumberAsync, 4)),
     [0, 1, 2, 3],
   );
+});
+
+Deno.test("allows an infinite amount", () => {
+  const everyNumber = {
+    *[Symbol.iterator]() {
+      for (let i = 0; true; i++) yield i;
+    },
+  };
+  const iterator = take(everyNumber, Infinity)[Symbol.iterator]();
+
+  for (let i = 0; i < 100; i++) assertEquals(iterator.next().value, i);
 });
 
 Deno.test("iterates the minimum possible amount", async () => {
