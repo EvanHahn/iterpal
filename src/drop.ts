@@ -1,5 +1,18 @@
+import isSync from "./_isSync.ts";
+import last from "./last.ts";
+
+export default drop;
+
+/** @ignored */
+function drop<T>(iterable: Iterable<T>, amount: number): Iterable<T>;
+
+/** @ignored */
+function drop<T>(iterable: AsyncIterable<T>, amount: number): AsyncIterable<T>;
+
 /**
  * Returns an iterable with the first `amount` elements removed.
+ *
+ * Works with sync and async iterables.
  *
  * @example
  * ```typescript
@@ -10,11 +23,13 @@
  * // => Empty iterable
  * ```
  */
-export default function drop<T>(
-  iterable: Iterable<T>,
+function drop<T>(
+  iterable: Iterable<T> | AsyncIterable<T>,
   amount: number,
-): Iterable<T> {
-  return new DropIterable(iterable, amount);
+): Iterable<T> | AsyncIterable<T> {
+  return isSync(iterable)
+    ? new DropIterable(iterable, amount)
+    : new DropAsyncIterable(iterable, amount);
 }
 
 class DropIterable<T> implements Iterable<T> {
@@ -28,18 +43,34 @@ class DropIterable<T> implements Iterable<T> {
 
   [Symbol.iterator]() {
     const iterator = this.#iterable[Symbol.iterator]();
-    const amount = this.#amount;
-
-    let hasDropped = false;
+    let remaining = this.#amount;
     return {
       next() {
-        if (!hasDropped) {
-          for (let i = 0; i < amount; i++) {
-            iterator.next();
-          }
-          hasDropped = true;
-        }
+        for (; remaining; remaining--) iterator.next();
         return iterator.next();
+      },
+    };
+  }
+}
+
+class DropAsyncIterable<T> implements AsyncIterable<T> {
+  #iterable: AsyncIterable<T>;
+  #amount: number;
+
+  constructor(iterable: AsyncIterable<T>, amount: number) {
+    this.#iterable = iterable;
+    this.#amount = amount;
+  }
+
+  [Symbol.asyncIterator](): AsyncIterator<T> {
+    const iterator = this.#iterable[Symbol.asyncIterator]();
+    let remaining = this.#amount;
+    return {
+      async next(): Promise<IteratorResult<T>> {
+        const promises: Array<Promise<IteratorResult<T>>> = [];
+        for (; remaining; remaining--) promises.push(iterator.next());
+        promises.push(iterator.next());
+        return last(await Promise.all(promises))!;
       },
     };
   }
