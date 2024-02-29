@@ -5,6 +5,7 @@
 ### Added
 
 - `size` now supports async iterables
+- `last` now supports async iterables
 
 ## 0.3.0 - 2024-02-27
 
