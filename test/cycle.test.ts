@@ -29,9 +29,7 @@ Deno.test("repeats a one-element iterable", () => {
 Deno.test("repeats iterables", () => {
   const abc = {
     *[Symbol.iterator]() {
-      yield "a";
-      yield "b";
-      yield "c";
+      yield* ["a", "b", "c"];
     },
   };
 
@@ -42,9 +40,7 @@ Deno.test("repeats iterables", () => {
 Deno.test("effectively does nothing to infinite iterables", () => {
   const infinite = {
     *[Symbol.iterator]() {
-      for (let i = 5; true; i++) {
-        yield i;
-      }
+      for (let i = 5; true; i++) yield i;
     },
   };
 
