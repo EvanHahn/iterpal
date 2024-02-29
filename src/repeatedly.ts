@@ -11,7 +11,9 @@
  * // => Iterable yielding "Iteration 1", "Iteration 2", "Iteration 3" ...
  * ```
  */
-export default function <T>(fn: (iterationCount: number) => T): Iterable<T> {
+export default function repeatedly<T>(
+  fn: (iterationCount: number) => T,
+): Iterable<T> {
   return new RepeatedlyIterable(fn);
 }
 
