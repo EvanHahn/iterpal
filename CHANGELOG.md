@@ -9,6 +9,7 @@
 - `every` now supports async iterables
 - `find` now supports async iterables
 - `last` now supports async iterables
+- `promiseRace`
 - `setFrom`
 - `size` now supports async iterables
 - `uniq`
