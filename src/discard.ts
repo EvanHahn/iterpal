@@ -7,7 +7,7 @@ function discard(iterator: Iterator<unknown>): void;
 function discard(iterator: AsyncIterator<unknown>): Promise<void>;
 
 /**
- * Call `next()` on an iterable until it's done, discarding the results.
+ * Call `next()` on an iterable until it's done, discarding the results. Useful when you want to exhaust an iterable.
  *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise.
  *
