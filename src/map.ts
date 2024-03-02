@@ -15,7 +15,9 @@ function map<T, U>(
 ): AsyncIterable<U>;
 
 /**
- * Creates an iterable of values by running each element in `iterable` through `fn`. Similar to `Array.prototype.map`.
+ * Creates an iterable of values by running each element in `iterable` through `fn`.
+ *
+ * Similar to `Array.prototype.map`.
  *
  * Works with sync or async iterables. If passed an async iterable, the result of `fn` will be awaited.
  *

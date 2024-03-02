@@ -11,7 +11,9 @@ function arrayFrom<T>(
 ): Promise<Array<T>>;
 
 /**
- * Like `Array.from`, but works with both sync and async iterables.
+ * Convert an iterable to an array.
+ *
+ * Similar to `Array.from`.
  *
  * If passed a sync iterable, returns an array. If passed an async iterable, returns a Promise that resolves to an array.
  *

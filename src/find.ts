@@ -17,6 +17,8 @@ function find<T>(
 /**
  * Iterates over `iterable`, returning the first element `predicate(value)` returns truthy for. Returns `undefined` if no value is found.
  *
+ * Similar to `Array.prototype.find`.
+ *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * @example

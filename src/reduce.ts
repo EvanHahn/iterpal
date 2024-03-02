@@ -17,7 +17,9 @@ function reduce<T, U>(
 ): U;
 
 /**
- * Reduces `iterable` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value. Similar to `Array.prototype.reduce`.
+ * Reduces `iterable` to a single value. On each iteration, calls `fn` with the result so far (starting at `accumulator`) and the current value.
+ *
+ * Similar to `Array.prototype.reduce`.
  *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *

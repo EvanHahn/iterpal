@@ -1,6 +1,5 @@
 /**
- * Returns an iterable that yields `fn(iterationCount)` every time. Useful when
- * "converting" a function to an iterable.
+ * Returns an iterable that yields `fn(iterationCount)` every time. Useful when "converting" a function to an iterable.
  *
  * @example
  * ```typescript

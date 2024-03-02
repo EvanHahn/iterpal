@@ -1,5 +1,9 @@
 /**
- * Returns true if at least one element matches the predicate, and false otherwise. Similar to [Array.prototype.some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some). Returns false for empty iterables.
+ * Returns true if at least one element matches the predicate, and false otherwise.
+ *
+ * Similar to `Array.prototype.some`.
+ *
+ * Returns false for empty iterables.
  *
  * @example
  * ```typescript

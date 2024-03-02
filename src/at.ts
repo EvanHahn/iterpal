@@ -22,6 +22,8 @@ function at<T>(
 /**
  * Returns the nth element from an iterable. Returns `undefined` if the index is out of range.
  *
+ * Similar to `Array.prototype.at`.
+ *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * If the index is negative, it will count from the end of the iterable. This requires exhausting the iterable and keeping at least `Math.abs(desiredIndex)` entries in memory.

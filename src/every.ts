@@ -17,6 +17,8 @@ function every<T>(
 /**
  * Returns `true` if `predicate(value)` returns true for every value in `iterable`, and false otherwise. Returns `true` for an empty iterable.
  *
+ * Similar to `Array.prototype.every`.
+ *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * @example

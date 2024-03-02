@@ -15,6 +15,8 @@ function reverse<T>(
 /**
  * Reverse an iterable.
  *
+ * Somewhat similar to `Array.prototype.reverse`.
+ *
  * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * Typically needs to "materialize" the iterable into an array to reverse it, so this is not suitable for infinite iterables.

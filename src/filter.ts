@@ -17,6 +17,8 @@ function filter<T>(
 /**
  * Returns a new iterable which iterates over `iterable`, yielding when `predicate(value)` returns a truthy value.
  *
+ * Similar to `Array.prototype.filter`.
+ *
  * The predicate function is invoked with one argument: the current value.
  *
  * Works with sync and async iterables.
