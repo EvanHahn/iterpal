@@ -18,7 +18,7 @@ Deno.test("does nothing to empty iterables", async () => {
   assertSpyCalls(fn, 0);
 });
 
-Deno.test("returns a new iterator with values filtered", async () => {
+Deno.test("returns a new iterable with values filtered", async () => {
   const fn = spy((n: number) => Boolean(n % 2));
 
   const resultSync = filter([1, 2, 3, 4, 5], fn);

@@ -4,6 +4,7 @@
 
 ### Added
 
+- `compact`
 - `cycle` now supports async iterables
 - `drop` now supports async iterables
 - `every` now supports async iterables
