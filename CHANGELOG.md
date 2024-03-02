@@ -8,6 +8,7 @@
 - `drop` now supports async iterables
 - `every` now supports async iterables
 - `find` now supports async iterables
+- `forEach`
 - `last` now supports async iterables
 - `promiseRace`
 - `setFrom`

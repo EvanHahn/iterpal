@@ -16,6 +16,7 @@ export { default as every } from "./src/every.ts";
 export { default as filter } from "./src/filter.ts";
 export { default as find } from "./src/find.ts";
 export { default as first } from "./src/first.ts";
+export { default as forEach } from "./src/forEach.ts";
 export { default as fromEvents } from "./src/fromEvents.ts";
 export { default as fromInterval } from "./src/fromInterval.ts";
 export { default as hasSameValues } from "./src/hasSameValues.ts";
