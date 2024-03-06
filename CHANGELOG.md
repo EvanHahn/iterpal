@@ -10,6 +10,7 @@
 - `every` now supports async iterables
 - `find` now supports async iterables
 - `forEach`
+- `fromArrayLike`
 - `last` now supports async iterables
 - `promiseRace`
 - `setFrom`
