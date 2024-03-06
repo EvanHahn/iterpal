@@ -11,6 +11,7 @@
 - `find` now supports async iterables
 - `forEach`
 - `fromArrayLike`
+- `hasSameValues` now supports async iterables
 - `last` now supports async iterables
 - `promiseRace`
 - `setFrom`
