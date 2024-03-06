@@ -1,7 +1,25 @@
+import isSync from "./_isSync.ts";
+
+export default some;
+
+/** @ignored */
+function some<T>(
+  iterable: Iterable<T>,
+  predicate: (value: T) => boolean,
+): boolean;
+
+/** @ignored */
+function some<T>(
+  iterable: AsyncIterable<T>,
+  predicate: (value: T) => boolean,
+): Promise<boolean>;
+
 /**
  * Returns true if at least one element matches the predicate, and false otherwise.
  *
  * Similar to `Array.prototype.some`.
+ *
+ * Works with sync and async iterables. If passed an async iterable, returns a Promise for the result.
  *
  * Returns false for empty iterables.
  *
@@ -22,11 +40,30 @@
  * // => false
  * ```
  */
-export default function some<T>(
+function some<T>(
+  iterable: Iterable<T> | AsyncIterable<T>,
+  predicate: (value: T) => boolean,
+): boolean | Promise<boolean> {
+  return isSync(iterable)
+    ? someSync(iterable, predicate)
+    : someAsync(iterable, predicate);
+}
+
+function someSync<T>(
   iterable: Iterable<T>,
   predicate: (value: T) => boolean,
 ): boolean {
   for (const value of iterable) {
+    if (predicate(value)) return true;
+  }
+  return false;
+}
+
+async function someAsync<T>(
+  iterable: AsyncIterable<T>,
+  predicate: (value: T) => boolean,
+): Promise<boolean> {
+  for await (const value of iterable) {
     if (predicate(value)) return true;
   }
   return false;
