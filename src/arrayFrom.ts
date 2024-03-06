@@ -13,7 +13,7 @@ function arrayFrom<T>(
 /**
  * Convert an iterable to an array.
  *
- * Similar to `Array.from`.
+ * Similar to `Array.from` and `Array.fromAsync`.
  *
  * If passed a sync iterable, returns an array. If passed an async iterable, returns a Promise that resolves to an array.
  *
