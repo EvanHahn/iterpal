@@ -12,7 +12,7 @@ await build({
     name: "iterpal",
     author: "Evan Hahn <me@evanhahn.com> (https://evanhahn.com)",
     description: "iterable tools",
-    version: "0.3.0",
+    version: "0.4.0",
     license: "MIT",
     keywords: ["iterator", "iterable", "generator", "stream"],
     homepage: "https://github.com/EvanHahn/iterpal",

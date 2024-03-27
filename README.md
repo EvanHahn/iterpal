@@ -13,12 +13,12 @@ npm install iterpal
 With Deno:
 
 ```typescript
-import { filter, map } from "https://evanhahn.com/tape/iterpal/0.3.0/mod.ts";
+import { filter, map } from "https://evanhahn.com/tape/iterpal/0.4.0/mod.ts";
 ```
 
 ## Documentation
 
-[API documentation](https://doc.deno.land/https://evanhahn.com/tape/iterpal/0.3.0/mod.ts)
+[API documentation](https://doc.deno.land/https://evanhahn.com/tape/iterpal/0.4.0/mod.ts)
 
 ## Use cases
 
