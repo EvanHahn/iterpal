@@ -4,10 +4,10 @@
  * @example
  * ```typescript
  * repeat("foo");
- * // => Iterable yielding 'foo', 'foo', 'foo', 'foo'...
+ * // => Iterable yielding "foo", "foo", "foo", "foo"...
  *
  * repeat("hi", 3);
- * // => Iterable yielding 'hi', 'hi', 'hi'
+ * // => Iterable yielding "hi", "hi", "hi"
  * ```
  */
 export default function repeat<T>(value: T, times = Infinity): Iterable<T> {
