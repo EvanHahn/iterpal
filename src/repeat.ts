@@ -23,10 +23,23 @@ class RepeatIterable<T> implements Iterable<T> {
     this.#times = times;
   }
 
-  *[Symbol.iterator]() {
-    const value = this.#value;
-    const times = this.#times;
+  [Symbol.iterator]() {
+    return new RepeatIterator(this.#value, this.#times);
+  }
+}
 
-    for (let i = 0; i < times; i++) yield value;
+class RepeatIterator<T> implements Iterator<T> {
+  #value: T;
+  #remaining: number;
+
+  constructor(value: T, times: number) {
+    this.#value = value;
+    this.#remaining = times;
+  }
+
+  next(): IteratorResult<T> {
+    return (this.#remaining-- > 0)
+      ? { value: this.#value, done: false }
+      : { value: undefined, done: true };
   }
 }
