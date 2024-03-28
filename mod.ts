@@ -9,6 +9,7 @@ export { default as asyncify } from "./src/asyncify.ts";
 export { default as at } from "./src/at.ts";
 export { default as compact } from "./src/compact.ts";
 export { default as concat } from "./src/concat.ts";
+export { default as count } from "./src/count.ts";
 export { default as cycle } from "./src/cycle.ts";
 export { default as discard } from "./src/discard.ts";
 export { default as drop } from "./src/drop.ts";
