@@ -5,6 +5,7 @@
 ### Added
 
 - `count`
+- `rest`
 - `sample`
 
 ## 0.4.0 - 2024-03-27
