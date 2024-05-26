@@ -22,6 +22,7 @@ export { default as forEach } from "./src/forEach.ts";
 export { default as fromArrayLike } from "./src/fromArrayLike.ts";
 export { default as fromEvents } from "./src/fromEvents.ts";
 export { default as fromInterval } from "./src/fromInterval.ts";
+export { default as fromReadableStream } from "./src/fromReadableStream.ts";
 export { default as hasSameValues } from "./src/hasSameValues.ts";
 export { default as isEmpty } from "./src/isEmpty.ts";
 export { default as join } from "./src/join.ts";

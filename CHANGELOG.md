@@ -5,6 +5,7 @@
 ### Added
 
 - `count`
+- `fromReadableStream`
 - `rest`
 - `sample`
 
