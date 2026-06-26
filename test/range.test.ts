@@ -1,4 +1,4 @@
-import { assertEquals, assertThrows } from "assert";
+import { assertEquals, assertThrows } from "@std/assert";
 
 import { range } from "../mod.ts";
 

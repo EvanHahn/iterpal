@@ -1,4 +1,4 @@
-import { assertEquals } from "assert";
+import { assertEquals } from "@std/assert";
 
 import { arrayFrom, fromReadableStream } from "../mod.ts";
 

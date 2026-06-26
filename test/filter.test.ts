@@ -1,5 +1,5 @@
-import { assertEquals } from "assert";
-import { assertSpyCalls, spy } from "mock";
+import { assertEquals } from "@std/assert";
+import { assertSpyCalls, spy } from "@std/testing/mock";
 
 import { arrayFrom, asyncify, emptyAsyncIterable, filter } from "../mod.ts";
 

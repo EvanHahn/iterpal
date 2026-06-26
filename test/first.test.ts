@@ -1,4 +1,4 @@
-import { assertEquals } from "assert";
+import { assertEquals } from "@std/assert";
 
 import { asyncify, emptyAsyncIterable, first } from "../mod.ts";
 

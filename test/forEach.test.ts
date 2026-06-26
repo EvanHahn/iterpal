@@ -1,4 +1,4 @@
-import { assertSpyCall, assertSpyCalls, spy } from "mock";
+import { assertSpyCall, assertSpyCalls, spy } from "@std/testing/mock";
 
 import { asyncify, emptyAsyncIterable, forEach } from "../mod.ts";
 

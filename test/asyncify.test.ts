@@ -1,4 +1,4 @@
-import { assertEquals, assertNotStrictEquals } from "assert";
+import { assertEquals, assertNotStrictEquals } from "@std/assert";
 import { arrayFrom, asyncify } from "../mod.ts";
 
 Deno.test("converts an empty sync iterable to an async one", async () => {

@@ -1,4 +1,4 @@
-import { assert, assertEquals, assertRejects } from "assert";
+import { assert, assertEquals, assertRejects } from "@std/assert";
 
 import { asyncify, promiseAll } from "../mod.ts";
 

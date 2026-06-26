@@ -1,5 +1,5 @@
-import { assertEquals } from "assert";
-import { FakeTime } from "time";
+import { assertEquals } from "@std/assert";
+import { FakeTime } from "@std/testing/time";
 
 import { fromInterval } from "../mod.ts";
 
