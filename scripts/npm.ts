@@ -15,13 +15,13 @@ await build({
     version: "0.4.0",
     license: "MIT",
     keywords: ["iterator", "iterable", "generator", "stream"],
-    homepage: "https://github.com/EvanHahn/iterpal",
+    homepage: "https://codeberg.org/EvanHahn/iterpal",
     repository: {
       type: "git",
-      url: "git://github.com/EvanHahn/iterpal.git",
+      url: "https://codeberg.org/EvanHahn/iterpal.git",
     },
     bugs: {
-      url: "https://github.com/EvanHahn/iterpal/issues",
+      url: "https://codeberg.org/EvanHahn/iterpal/issues",
       email: "me@evanhahn.com",
     },
     engines: {
